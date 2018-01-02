@@ -155,28 +155,3 @@ QUrl Account::accountInfoEmailScopeUrl()
 {
     return QUrl(QStringLiteral("https://www.googleapis.com/auth/userinfo.email"));
 }
-
-QUrl Account::calendarScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/calendar"));
-}
-
-QUrl Account::contactsScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.google.com/m8/feeds/"));
-}
-
-QUrl Account::latitudeScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/latitude.all.best"));
-}
-
-QUrl Account::tasksScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/tasks"));
-}
-
-QUrl Account::bloggerScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/blogger"));
-}

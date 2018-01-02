@@ -11,9 +11,7 @@ MACRO(LIBKMGRAPH_TESTS)
                ecm_mark_as_test(libkmgraph-${_testname})
                target_link_libraries(${_testname}
                                      Qt5::Test
-                                     KF5::Contacts
                                      KF5::Mime
-                                     KF5::CalendarCore
                                      KF5::KIOCore
                                      kmgraph)
        ENDFOREACH(_testname)
@@ -25,26 +23,12 @@ macro(add_libkmgraph2_test _module _testname)
     ecm_mark_as_test(libkmgraph2-${_module}-${_testname})
     target_link_libraries(${_module}-${_testname}
                           Qt5::Test
-                          KF5::Contacts
-                          KF5::CalendarCore
                           KPimMGraphOneDrive)
 endmacro(add_libkmgraph2_test)
 
 #LIBKMGRAPH_TESTS(
 #    objectsaccountinfotests
-#    objectscalendartests
-#    objectscontacttests
-#    objectscontactsgrouptests
-#    objectseventtests
-#    objectstasktests
-#    objectstasklisttests
-#    objectslocationtests
-#    objectstaticmapurltests
 #    servicesaccountinfotests
-#    servicescalendartests
-#    servicescontactstests
-#    serviceslatitudetests
-#    servicestaskstests
 #)
 
 add_libkmgraph2_test(onedrive filesearchquerytest)

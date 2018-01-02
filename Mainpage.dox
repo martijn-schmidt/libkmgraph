@@ -10,12 +10,11 @@ LibKMGraph is a library that implements various Microsoft Graph APIs so that
 <h1>Architecture</h1>
 
 <h2> Objects</h2>
-Every entity (Contact, Calendar, Event, ...) is represented by it's own
+Every entity (OneDrive, ...) is represented by its own
 object. Objects are encapsulated in KMGraph::Objects namespace. Where possible,
 the objects are subclasses from already available KDE classes to provide even
-more easy and simple integration. KMGraph::Objects::Event is subclassed from
-KCalCore::Event, KMGraph::Objects::Task from KCalCore::Task etc. All objects
-are implicitly shared, so you can copy the objects without much of an overhead.
+more easy and simple integration. All objects are implicitly shared, so you can
+copy the objects without much of an overhead.
 
 <h2>Services</h2>
 Each Microsoft Graph's API is represented by a service. Services are located in KMGraph::Services
@@ -36,10 +35,6 @@ Authentication is handeled by KMGraph::Auth and KMGraph::Account. KMGraph::Auth 
 that provides access to password-storage backend - at this moment it's on KWallet.
 KMGraph::Account represents a user account on Microsoft Graph and stores tokens to authorize requests
 sent to Microsoft Graph.
-
-<h1>Examples</h1>
-For examples of how to use LibKMGraph in KDE applications, please refer to example programs in
-the /examples folder. To compile examples, pass -DBUILD_EXAMPLES=TRUE to CMake.
 
 @authors
 Dan Vratil \<dan@progdan.cz\>

@@ -68,18 +68,6 @@ class AccountInfo;
 typedef QSharedPointer<AccountInfo> AccountInfoPtr;
 typedef QList<AccountInfoPtr> AccountInfosList;
 
-class Contact;
-typedef QSharedPointer<Contact> ContactPtr;
-typedef QList<ContactPtr> ContactsList;
-
-class ContactsGroup;
-typedef QSharedPointer<ContactsGroup> ContactsGroupPtr;
-typedef QList<ContactsGroupPtr> ContactsGroupsList;
-
-class Calendar;
-typedef QSharedPointer<Calendar> CalendarPtr;
-typedef QList<CalendarPtr> CalendarsList;
-
 namespace OneDrive
 {
 
@@ -121,46 +109,6 @@ typedef QList<UserPtr> UsersList;
 
 }
 
-class Event;
-typedef QSharedPointer<Event> EventPtr;
-typedef QList<EventPtr> EventsList;
-
-class Location;
-typedef QSharedPointer<Location> LocationPtr;
-typedef QList<LocationPtr> LocationsList;
-
-class Reminder;
-typedef QSharedPointer<Reminder> ReminderPtr;
-typedef QList<ReminderPtr> RemindersList;
-
-class Task;
-typedef QSharedPointer<Task> TaskPtr;
-typedef QList<TaskPtr> TasksList;
-
-class TaskList;
-typedef QSharedPointer<TaskList> TaskListPtr;
-typedef QList<TaskListPtr> TaskListsList;
-
-namespace Blogger
-{
-class Blog;
-typedef QSharedPointer<Blog> BlogPtr;
-typedef QList<BlogPtr> BlogsList;
-
-class Comment;
-typedef QSharedPointer<Comment> CommentPtr;
-typedef QList<CommentPtr> CommentsList;
-
-class Page;
-typedef QSharedPointer<Page> PagePtr;
-typedef QList<PagePtr> PagesList;
-
-class Post;
-typedef QSharedPointer<Post> PostPtr;
-typedef QList<PostPtr> PostsList;
-
-}
-
 template<class T>
 ObjectsList operator<<(ObjectsList &objectsList, const QList< QSharedPointer<T> > &list)
 {
@@ -190,7 +138,7 @@ enum Error {
     /* Following error codes identify Google errors */
     OK = 200,                ///< Request successfully executed.
     Created = 201,           ///< Create request successfully executed.
-    NoContent = 204,         ///< Tasks API returns 204 when task is successfully removed.
+    NoContent = 204,         ///< OneDrive API returns 204 when file is successfully removed.
     TemporarilyMoved = 302,  ///< The object is located on a different URL provided in reply.
     NotModified = 304,       ///< Request was successful, but no data were updated.
     BadRequest = 400,        ///< Invalid (malformed) request.

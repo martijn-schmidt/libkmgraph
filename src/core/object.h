@@ -36,8 +36,8 @@ namespace KMGraph2
  * @brief Base class for all objects
  *
  * There are many container classes to represent data fetched from Google servers,
- * like KMGraph2::Contact, KMGraph2::Event, etc. All these container classes must
- * be subclasses of KMGraph2::Object.
+ * like KMGraph2::OneDrive, etc. All these container classes must be subclasses of
+ * KMGraph2::Object.
  *
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0

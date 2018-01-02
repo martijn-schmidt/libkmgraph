@@ -115,7 +115,7 @@ void Job::Private::_k_replyReceived(QNetworkReply* reply)
         case KMGraph2::NoError:
         case KMGraph2::OK:           /** << OK status (fetched, updated, removed) */
         case KMGraph2::Created:      /** << OK status (created) */
-        case KMGraph2::NoContent:    /** << OK status (removed task using Tasks API) */
+        case KMGraph2::NoContent:    /** << OK status (removed file using OneDrive API) */
             break;
 
         case KMGraph2::TemporarilyMoved: {  /** << Temporarily moved - Google provides a new URL where to send the request */

@@ -173,31 +173,6 @@ class KMGRAPHCORE_EXPORT Account
      */
     static QUrl accountInfoEmailScopeUrl();
 
-    /**
-     * Returns scope URL for Google Calendar service.
-     */
-    static QUrl calendarScopeUrl();
-
-    /**
-     * Returns scope URL for Google Tasks service.
-     */
-    static QUrl tasksScopeUrl();
-
-    /**
-     * Returns scope URL for Google Contacts service.
-     */
-    static QUrl contactsScopeUrl();
-
-    /**
-     * Returns scope URL for Google Latitude service.
-     */
-    static QUrl latitudeScopeUrl();
-
-    /**
-     * Returns scope URL for Google Blogger service.
-     */
-    static QUrl bloggerScopeUrl();
-
 private:
     class Private;
     Private * const d;

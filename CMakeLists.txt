@@ -23,9 +23,6 @@ include(KDECMakeSettings)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 
 
-set(KCALENDARCORE_LIB_VERSION "5.7.40")
-set(KCONTACTS_LIB_VERSION "5.7.40")
-
 ecm_setup_version(PROJECT
     VARIABLE_PREFIX KMGraph
     VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmgraph_version.h"
@@ -48,9 +45,6 @@ find_package(KF5 ${KF5_VERSION} REQUIRED COMPONENTS
     WindowSystem
 )
 
-find_package(KF5CalendarCore ${KCALENDARCORE_LIB_VERSION} CONFIG REQUIRED)
-find_package(KF5Contacts ${KCONTACTS_LIB_VERSION} CONFIG REQUIRED)
-
 add_definitions( -DQT_NO_NARROWING_CONVERSIONS_IN_CONNECT )
 add_definitions("-DQT_NO_CAST_FROM_ASCII -DQT_NO_CAST_TO_ASCII")
 add_definitions(-DQT_NO_URL_CAST_FROM_STRING)
@@ -59,7 +53,6 @@ add_definitions(-DQT_DISABLE_DEPRECATED_BEFORE=0x000000)
 
 ############## Targets ##############
 add_subdirectory(src)
-add_subdirectory(examples)
 if (BUILD_TESTING)
     add_subdirectory(autotests)
 endif()
