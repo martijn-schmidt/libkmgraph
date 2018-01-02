@@ -27,7 +27,7 @@ macro(add_libkmgraph2_test _module _testname)
                           Qt5::Test
                           KF5::Contacts
                           KF5::CalendarCore
-                          KPimMGraphDrive)
+                          KPimMGraphOneDrive)
 endmacro(add_libkmgraph2_test)
 
 #LIBKMGRAPH_TESTS(
@@ -47,4 +47,4 @@ endmacro(add_libkmgraph2_test)
 #    servicestaskstests
 #)
 
-add_libkmgraph2_test(drive filesearchquerytest)
+add_libkmgraph2_test(onedrive filesearchquerytest)

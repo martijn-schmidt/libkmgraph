@@ -24,9 +24,9 @@
 #include "filesearchquery.h"
 
 using namespace KMGraph2;
-using namespace KMGraph2::Drive;
+using namespace KMGraph2::OneDrive;
 
-Q_DECLARE_METATYPE(KMGraph2::Drive::FileSearchQuery)
+Q_DECLARE_METATYPE(KMGraph2::OneDrive::FileSearchQuery)
 
 class FileSearchQueryTest: public QObject
 {

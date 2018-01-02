@@ -80,7 +80,7 @@ class Calendar;
 typedef QSharedPointer<Calendar> CalendarPtr;
 typedef QList<CalendarPtr> CalendarsList;
 
-namespace Drive
+namespace OneDrive
 {
 
 class About;
