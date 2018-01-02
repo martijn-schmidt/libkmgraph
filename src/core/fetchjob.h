@@ -1,5 +1,5 @@
 /*
- * This file is part of LiKGAPI library
+ * This file is part of LibKGAPI library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
