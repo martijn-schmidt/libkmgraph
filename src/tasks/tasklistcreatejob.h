@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_TASKLISTCREATEJOB_H
-#define LIBKGAPI2_TASKLISTCREATEJOB_H
+#ifndef LIBKMGRAPH2_TASKLISTCREATEJOB_H
+#define LIBKMGRAPH2_TASKLISTCREATEJOB_H
 
 #include "createjob.h"
-#include "kgapitasks_export.h"
+#include "kmgraphtasks_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to create one or more new tasklists in user's Google Tasks account
@@ -34,7 +34,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPITASKS_EXPORT TaskListCreateJob : public KGAPI2::CreateJob
+class KMGRAPHTASKS_EXPORT TaskListCreateJob : public KMGraph2::CreateJob
 {
 
     Q_OBJECT
@@ -71,12 +71,12 @@ class KGAPITASKS_EXPORT TaskListCreateJob : public KGAPI2::CreateJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::CreateJob::handleReplyWithItems implementation
+     * @brief KMGraph2::CreateJob::handleReplyWithItems implementation
      *
      * @param reply
      * @param rawData
@@ -91,6 +91,6 @@ class KGAPITASKS_EXPORT TaskListCreateJob : public KGAPI2::CreateJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_TASKLISTCREATEJOB_H
+#endif // LIBKMGRAPH2_TASKLISTCREATEJOB_H

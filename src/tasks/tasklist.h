@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -21,14 +21,14 @@
  */
 
 
-#ifndef LIBKGAPI2_TASKLIST_H
-#define LIBKGAPI2_TASKLIST_H
+#ifndef LIBKMGRAPH2_TASKLIST_H
+#define LIBKMGRAPH2_TASKLIST_H
 
 #include "object.h"
 #include "types.h"
-#include "kgapitasks_export.h"
+#include "kmgraphtasks_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -37,7 +37,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since: 0.3
  */
-class KGAPITASKS_EXPORT TaskList: public KGAPI2::Object
+class KMGRAPHTASKS_EXPORT TaskList: public KMGraph2::Object
 {
   public:
 
@@ -87,6 +87,6 @@ class KGAPITASKS_EXPORT TaskList: public KGAPI2::Object
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_TASKLIST_H
+#endif // LIBKMGRAPH2_TASKLIST_H

@@ -18,18 +18,18 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_BLOGGER_PAGEDELETEJOB_H
-#define KGAPI2_BLOGGER_PAGEDELETEJOB_H
+#ifndef KMGRAPH2_BLOGGER_PAGEDELETEJOB_H
+#define KMGRAPH2_BLOGGER_PAGEDELETEJOB_H
 
 #include "deletejob.h"
-#include "kgapiblogger_export.h"
+#include "kmgraphblogger_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 namespace Blogger
 {
 
-class KGAPIBLOGGER_EXPORT PageDeleteJob : public KGAPI2::DeleteJob
+class KMGRAPHBLOGGER_EXPORT PageDeleteJob : public KMGraph2::DeleteJob
 {
     Q_OBJECT
 
@@ -55,4 +55,4 @@ class KGAPIBLOGGER_EXPORT PageDeleteJob : public KGAPI2::DeleteJob
 }
 }
 
-#endif // KGAPI2_BLOGGER_PAGEDELETEJOB_H
+#endif // KMGRAPH2_BLOGGER_PAGEDELETEJOB_H

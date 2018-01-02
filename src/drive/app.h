@@ -18,25 +18,25 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_DRIVE_APP_H
-#define LIBKGAPI2_DRIVE_APP_H
+#ifndef LIBKMGRAPH2_DRIVE_APP_H
+#define LIBKMGRAPH2_DRIVE_APP_H
 
 #include "types.h"
 #include "object.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
 #include <QSharedPointer>
 #include <QString>
 #include <QStringList>
 #include <QUrl>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
 {
 
-class KGAPIDRIVE_EXPORT App: public KGAPI2::Object
+class KMGRAPHONEDRIVE_EXPORT App: public KMGraph2::Object
 {
     class Private;
 
@@ -99,6 +99,6 @@ class KGAPIDRIVE_EXPORT App: public KGAPI2::Object
 
 } /* namespace Drive */
 
-} /* namespace KGAPI2 */
+} /* namespace KMGraph2 */
 
-#endif // LIBKGAPI2_DRIVE_APP_H
+#endif // LIBKMGRAPH2_DRIVE_APP_H

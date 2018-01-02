@@ -52,27 +52,27 @@ MainWindow::~MainWindow()
 
 void MainWindow::authenticate()
 {
-    KGAPI2::AccountPtr account(new KGAPI2::Account);
-    account->setScopes( QList<QUrl>() << KGAPI2::Account::contactsScopeUrl() );
+    KMGraph2::AccountPtr account(new KMGraph2::Account);
+    account->setScopes( QList<QUrl>() << KMGraph2::Account::contactsScopeUrl() );
 
     /* Create AuthJob to retrieve OAuth tokens for the account */
-    KGAPI2::AuthJob *authJob = new KGAPI2::AuthJob(
+    KMGraph2::AuthJob *authJob = new KMGraph2::AuthJob(
         account,
         QStringLiteral("554041944266.apps.googleusercontent.com"),
         QStringLiteral("mdT1DjzohxN3npUUzkENT0gO"));
-    connect(authJob, &KGAPI2::Job::finished,
+    connect(authJob, &KMGraph2::Job::finished,
              this, &MainWindow::slotAuthJobFinished);
 }
 
-void MainWindow::slotAuthJobFinished(KGAPI2::Job *job)
+void MainWindow::slotAuthJobFinished(KMGraph2::Job *job)
 {
-    KGAPI2::AuthJob *authJob = qobject_cast<KGAPI2::AuthJob*>(job);
+    KMGraph2::AuthJob *authJob = qobject_cast<KMGraph2::AuthJob*>(job);
     Q_ASSERT(authJob);
     /* Always remember to delete the jobs, otherwise your application will
      * leak memory. */
     authJob->deleteLater();
 
-    if (authJob->error() != KGAPI2::NoError) {
+    if (authJob->error() != KMGraph2::NoError) {
         m_ui->errorLabel->setText(QStringLiteral("Error: %1").arg(authJob->errorString()));
         m_ui->errorLabel->setVisible(true);
         return;
@@ -94,20 +94,20 @@ void MainWindow::fetchContactList()
         return;
     }
 
-    KGAPI2::ContactFetchJob *fetchJob = new KGAPI2::ContactFetchJob(m_account, this);
-    connect(fetchJob, &KGAPI2::Job::finished,
+    KMGraph2::ContactFetchJob *fetchJob = new KMGraph2::ContactFetchJob(m_account, this);
+    connect(fetchJob, &KMGraph2::Job::finished,
             this, &MainWindow::slotFetchJobFinished);
 
     m_ui->contactListButton->setEnabled(false);
 }
 
-void MainWindow::slotFetchJobFinished(KGAPI2::Job *job)
+void MainWindow::slotFetchJobFinished(KMGraph2::Job *job)
 {
-    KGAPI2::ContactFetchJob *fetchJob = qobject_cast<KGAPI2::ContactFetchJob*>(job);
+    KMGraph2::ContactFetchJob *fetchJob = qobject_cast<KMGraph2::ContactFetchJob*>(job);
     Q_ASSERT(fetchJob);
     fetchJob->deleteLater();
 
-    if (fetchJob->error() != KGAPI2::NoError) {
+    if (fetchJob->error() != KMGraph2::NoError) {
         m_ui->errorLabel->setText(QStringLiteral("Error: %1").arg(fetchJob->errorString()));
         m_ui->errorLabel->setVisible(true);
         m_ui->contactListButton->setEnabled(true);
@@ -115,10 +115,10 @@ void MainWindow::slotFetchJobFinished(KGAPI2::Job *job)
     }
 
     /* Get all items the job has retrieved */
-    const KGAPI2::ObjectsList objects = fetchJob->items();
+    const KMGraph2::ObjectsList objects = fetchJob->items();
 
-    for (const KGAPI2::ObjectPtr &object : objects) {
-        const KGAPI2::ContactPtr contact = object.dynamicCast<KGAPI2::Contact>();
+    for (const KMGraph2::ObjectPtr &object : objects) {
+        const KMGraph2::ContactPtr contact = object.dynamicCast<KMGraph2::Contact>();
 
         /* Convert the contact to QListWidget item */
         QListWidgetItem *item = new QListWidgetItem(m_ui->contactList);
@@ -140,19 +140,19 @@ void MainWindow::contactSelected()
 
     const QString id = m_ui->contactList->selectedItems().at(0)->data(Qt::UserRole).toString();
 
-    KGAPI2::ContactFetchJob *fetchJob = new KGAPI2::ContactFetchJob(id, m_account);
-    connect(fetchJob, &KGAPI2::Job::finished,
+    KMGraph2::ContactFetchJob *fetchJob = new KMGraph2::ContactFetchJob(id, m_account);
+    connect(fetchJob, &KMGraph2::Job::finished,
             this, &MainWindow::slotContactFetchJobFinished);
 }
 
-void MainWindow::slotContactFetchJobFinished(KGAPI2::Job *job)
+void MainWindow::slotContactFetchJobFinished(KMGraph2::Job *job)
 {
-    KGAPI2::ContactFetchJob *fetchJob = qobject_cast<KGAPI2::ContactFetchJob*>(job);
+    KMGraph2::ContactFetchJob *fetchJob = qobject_cast<KMGraph2::ContactFetchJob*>(job);
     Q_ASSERT(fetchJob);
     fetchJob->deleteLater();
 
 
-    if (fetchJob->error() != KGAPI2::NoError) {
+    if (fetchJob->error() != KMGraph2::NoError) {
         m_ui->errorLabel->setText(QStringLiteral("Error: %1").arg(fetchJob->errorString()));
         m_ui->errorLabel->setVisible(true);
         m_ui->contactListButton->setEnabled(true);
@@ -160,14 +160,14 @@ void MainWindow::slotContactFetchJobFinished(KGAPI2::Job *job)
     }
 
     /* Get all items we have received from Google (should be just one) */
-    KGAPI2::ObjectsList objects = fetchJob->items();
+    KMGraph2::ObjectsList objects = fetchJob->items();
     if (objects.count() != 1) {
         m_ui->errorLabel->setText(QStringLiteral("Error: Server sent unexpected amount of contacts"));
         m_ui->errorLabel->setVisible(true);
         return;
     }
 
-    KGAPI2::ContactPtr contact = objects.first().dynamicCast<KGAPI2::Contact>();
+    KMGraph2::ContactPtr contact = objects.first().dynamicCast<KMGraph2::Contact>();
 
     QString text = QStringLiteral("Name: %1").arg(contact->name());
 

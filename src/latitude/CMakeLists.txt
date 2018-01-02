@@ -1,4 +1,4 @@
-set(kgapilatitude_SRCS
+set(kmgraphlatitude_SRCS
     latitudeservice.cpp
     latitude.h
     location.cpp
@@ -10,7 +10,7 @@ set(kgapilatitude_SRCS
     ../debug.cpp
 )
 
-ecm_generate_headers(kgapilatitude_CamelCase_HEADERS
+ecm_generate_headers(kmgraphlatitude_CamelCase_HEADERS
     HEADER_NAMES
     Location
     LocationCreateJob
@@ -18,57 +18,57 @@ ecm_generate_headers(kgapilatitude_CamelCase_HEADERS
     LocationFetchHistoryJob
     LocationFetchJob
     Latitude
-    PREFIX KGAPI/Latitude
-    REQUIRED_HEADERS kgapilatitude_HEADERS
+    PREFIX KMGraph/Latitude
+    REQUIRED_HEADERS kmgraphlatitude_HEADERS
 )
 
-add_library(KPimGAPILatitude
-    ${kgapilatitude_SRCS}
+add_library(KPimMGraphLatitude
+    ${kmgraphlatitude_SRCS}
 )
 
-generate_export_header(KPimGAPILatitude BASE_NAME kgapilatitude)
+generate_export_header(KPimMGraphLatitude BASE_NAME kmgraphlatitude)
 
-add_library(KPim::GAPILatitude ALIAS KPimGAPILatitude)
+add_library(KPim::MGraphLatitude ALIAS KPimMGraphLatitude)
 # TODO: Backwards compatibility, remove in next major release
-add_library(KF5::GAPILatitude ALIAS KPimGAPILatitude)
-target_include_directories(KPimGAPILatitude INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI>")
+add_library(KF5::MGraphLatitude ALIAS KPimMGraphLatitude)
+target_include_directories(KPimMGraphLatitude INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph>")
 
-target_link_libraries(KPimGAPILatitude
+target_link_libraries(KPimMGraphLatitude
 PUBLIC
-    KPim::GAPICore
+    KPim::MGraphCore
     KF5::Contacts
 PRIVATE
     Qt5::Network
 )
 
-set_target_properties(KPimGAPILatitude PROPERTIES
-    VERSION ${KGAPI_VERSION_STRING}
-    SOVERSION ${KGAPI_SOVERSION}
-    EXPORT_NAME GAPILatitude
+set_target_properties(KPimMGraphLatitude PROPERTIES
+    VERSION ${KMGRAPH_VERSION_STRING}
+    SOVERSION ${KMGRAPH_SOVERSION}
+    EXPORT_NAME MGraphLatitude
 )
 
 install(TARGETS
-    KPimGAPILatitude
-    EXPORT KPimGAPITargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+    KPimMGraphLatitude
+    EXPORT KPimMGraphTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 install(FILES
-    ${kgapilatitude_CamelCase_HEADERS}
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/KGAPI/Latitude"
+    ${kmgraphlatitude_CamelCase_HEADERS}
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph/Latitude"
     COMPONENT Devel
 )
 
 install(FILES
-    ${kgapilatitude_HEADERS}
-    "${CMAKE_CURRENT_BINARY_DIR}/kgapilatitude_export.h"
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/kgapi/latitude"
+    ${kmgraphlatitude_HEADERS}
+    "${CMAKE_CURRENT_BINARY_DIR}/kmgraphlatitude_export.h"
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph/latitude"
     COMPONENT Devel
 )
 
-ecm_generate_pri_file(BASE_NAME KGAPILatitude
-    LIB_NAME KPimGAPILatitude
-    DEPS "GAPICore Contacts"
-    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI"
+ecm_generate_pri_file(BASE_NAME KMGraphLatitude
+    LIB_NAME KPimMGraphLatitude
+    DEPS "MGraphCore Contacts"
+    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph"
 )
 
 install(FILES

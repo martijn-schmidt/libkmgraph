@@ -18,8 +18,8 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI_AUTHWIDGET_P_H
-#define LIBKGAPI_AUTHWIDGET_P_H
+#ifndef LIBKMGRAPH_AUTHWIDGET_P_H
+#define LIBKMGRAPH_AUTHWIDGET_P_H
 
 #include <QObject>
 
@@ -34,7 +34,7 @@
 class QVBoxLayout;
 class QLabel;
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 class Job;
 
@@ -64,12 +64,12 @@ class Q_DECL_HIDDEN AuthWidgetPrivate: public QObject {
     QLabel *label;
 
   private Q_SLOTS:
-    void emitError(const KGAPI2::Error errCode, const QString &msg);
+    void emitError(const KMGraph2::Error errCode, const QString &msg);
     void webviewUrlChanged(const QUrl &url);
     void webviewFinished(bool ok);
 
-    void tokensReceived(KGAPI2::Job *job);
-    void accountInfoReceived(KGAPI2::Job *job);
+    void tokensReceived(KMGraph2::Job *job);
+    void accountInfoReceived(KMGraph2::Job *job);
 
   private:
     void setupUi();
@@ -88,7 +88,7 @@ class Q_DECL_HIDDEN AuthWidgetPrivate: public QObject {
     friend class AuthWidget;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 
-#endif // LIBKGAPI_AUTHWIDGET_P_H
+#endif // LIBKMGRAPH_AUTHWIDGET_P_H

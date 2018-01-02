@@ -23,7 +23,7 @@
 
 #include <qtest_kde.h>
 
-namespace KGAPI {
+namespace KMGraph {
 namespace Objects {
 class Task;
 class TaskList;
@@ -35,8 +35,8 @@ class ServicesTasksTests : public QObject
     Q_OBJECT
 
   private:
-    void compareTasks(const KGAPI::Objects::Task *task, const QSettings &values, bool fromSerializer = false);
-    void compareTasklists(const KGAPI::Objects::TaskList *taskList, const QSettings &values, bool fromSerializer = false);
+    void compareTasks(const KMGraph::Objects::Task *task, const QSettings &values, bool fromSerializer = false);
+    void compareTasklists(const KMGraph::Objects::TaskList *taskList, const QSettings &values, bool fromSerializer = false);
 
   private Q_SLOTS:
     void testTasksParser();

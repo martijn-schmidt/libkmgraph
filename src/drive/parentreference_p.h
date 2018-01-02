@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,14 +20,14 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_DRIVEPARENTREFERENCE_P_H
-#define LIBKGAPI2_DRIVEPARENTREFERENCE_P_H
+#ifndef LIBKMGRAPH2_DRIVEPARENTREFERENCE_P_H
+#define LIBKMGRAPH2_DRIVEPARENTREFERENCE_P_H
 
 #include "parentreference.h"
 
 #include <QVariantMap>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -50,6 +50,6 @@ class Q_DECL_HIDDEN ParentReference::Private
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_DRIVEPARENTREFERENCE_P_H
+#endif // LIBKMGRAPH2_DRIVEPARENTREFERENCE_P_H

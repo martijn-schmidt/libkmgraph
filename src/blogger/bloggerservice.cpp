@@ -25,7 +25,7 @@ inline QUrl operator%(const QUrl &url, const QString &path)
     return QUrl(url.toString() % QLatin1Char('/') % path);
 }
 
-namespace KGAPI2
+namespace KMGraph2
 {
 namespace BloggerService
 {
@@ -64,11 +64,11 @@ namespace Private
 
 } // namespace Private
 } // namespace BloggerService
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 
-using namespace KGAPI2;
-using namespace KGAPI2::BloggerService::Private;
+using namespace KMGraph2;
+using namespace KMGraph2::BloggerService::Private;
 
 QUrl BloggerService::fetchBlogByBlogIdUrl(const QString &blogId)
 {

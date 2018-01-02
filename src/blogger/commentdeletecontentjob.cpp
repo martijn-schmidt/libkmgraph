@@ -27,8 +27,8 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Blogger;
+using namespace KMGraph2;
+using namespace KMGraph2::Blogger;
 
 class Q_DECL_HIDDEN CommentDeleteContentJob::Private
 {
@@ -86,8 +86,8 @@ ObjectsList CommentDeleteContentJob::handleReplyWithItems(const QNetworkReply *r
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
     ObjectsList items;
-    if (ct != KGAPI2::JSON) {
-        setError(KGAPI2::InvalidResponse);
+    if (ct != KMGraph2::JSON) {
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return items;

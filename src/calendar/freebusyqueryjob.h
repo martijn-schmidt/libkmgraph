@@ -18,18 +18,18 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_CALENDAR_FREEBUSYQUERYJOB_H
-#define KGAPI2_CALENDAR_FREEBUSYQUERYJOB_H
+#ifndef KMGRAPH2_CALENDAR_FREEBUSYQUERYJOB_H
+#define KMGRAPH2_CALENDAR_FREEBUSYQUERYJOB_H
 
 #include "fetchjob.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
 #include <QVector>
 #include <QDateTime>
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
-class KGAPICALENDAR_EXPORT FreeBusyQueryJob : public KGAPI2::FetchJob
+class KMGRAPHCALENDAR_EXPORT FreeBusyQueryJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
 public:
@@ -66,4 +66,4 @@ private:
 
 }
 
-#endif // KGAPI2_CALENDAR_FREEBUSYQUERYJOB_H
+#endif // KMGRAPH2_CALENDAR_FREEBUSYQUERYJOB_H

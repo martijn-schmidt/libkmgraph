@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CONTACTMODIFYJOB_H
-#define LIBKGAPI2_CONTACTMODIFYJOB_H
+#ifndef LIBKMGRAPH2_CONTACTMODIFYJOB_H
+#define LIBKMGRAPH2_CONTACTMODIFYJOB_H
 
 #include "modifyjob.h"
-#include "kgapicontacts_export.h"
+#include "kmgraphcontacts_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to modify contacts user's addressbook on Google Contacts
@@ -34,7 +34,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICONTACTS_EXPORT ContactModifyJob : public  KGAPI2::ModifyJob
+class KMGRAPHCONTACTS_EXPORT ContactModifyJob : public  KMGraph2::ModifyJob
 {
     Q_OBJECT
 
@@ -70,12 +70,12 @@ class KGAPICONTACTS_EXPORT ContactModifyJob : public  KGAPI2::ModifyJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::dispatchRequest implementation
+     * @brief KMGraph2::Job::dispatchRequest implementation
      *
      * @param accessManager
      * @param request
@@ -88,7 +88,7 @@ class KGAPICONTACTS_EXPORT ContactModifyJob : public  KGAPI2::ModifyJob
                                  const QString &contentType) override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      */
     ObjectsList handleReplyWithItems(const QNetworkReply *reply,
                                              const QByteArray& rawData) override;
@@ -100,6 +100,6 @@ class KGAPICONTACTS_EXPORT ContactModifyJob : public  KGAPI2::ModifyJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CONTACTMODIFYJOB_H
+#endif // LIBKMGRAPH2_CONTACTMODIFYJOB_H

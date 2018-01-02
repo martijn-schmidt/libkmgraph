@@ -28,7 +28,7 @@
 
 #include <QVariant>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace TasksService
@@ -302,4 +302,4 @@ ObjectsList Private::parseTasksJSONFeed(const QVariantList &items)
 
 } // namespace TasksService
 
-} // namespace KGAPI2
+} // namespace KMGraph2

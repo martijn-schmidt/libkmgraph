@@ -24,8 +24,8 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN Change::Private
 {
@@ -75,13 +75,13 @@ ChangePtr Change::Private::fromJSON(const QVariantMap &map)
 }
 
 Change::Change():
-    KGAPI2::Object(),
+    KMGraph2::Object(),
     d(new Private)
 {
 }
 
 Change::Change(const Change &other):
-    KGAPI2::Object(other),
+    KMGraph2::Object(other),
     d(new Private(*(other.d)))
 {
 }

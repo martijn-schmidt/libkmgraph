@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_EVENTMOVEJOB_H
-#define KGAPI2_EVENTMOVEJOB_H
+#ifndef KMGRAPH2_EVENTMOVEJOB_H
+#define KMGRAPH2_EVENTMOVEJOB_H
 
 #include "modifyjob.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -35,7 +35,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICALENDAR_EXPORT EventMoveJob : public KGAPI2::ModifyJob
+class KMGRAPHCALENDAR_EXPORT EventMoveJob : public KMGraph2::ModifyJob
 {
     Q_OBJECT
 
@@ -108,12 +108,12 @@ class KGAPICALENDAR_EXPORT EventMoveJob : public KGAPI2::ModifyJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::dispatchRequest implementation
+     * @brief KMGraph2::Job::dispatchRequest implementation
      *
      * @param accessManager
      * @param request
@@ -126,12 +126,12 @@ class KGAPICALENDAR_EXPORT EventMoveJob : public KGAPI2::ModifyJob
                                  const QString &contentType) override;
 
     /**
-     * @brief KGAPI2::Job::handleReplyWithItems implementation
+     * @brief KMGraph2::Job::handleReplyWithItems implementation
      *
      * @param reply
      * @param rawData
      */
-    KGAPI2::ObjectsList handleReplyWithItems(const QNetworkReply *reply,
+    KMGraph2::ObjectsList handleReplyWithItems(const QNetworkReply *reply,
                                                      const QByteArray &rawData) override;
 
   private:
@@ -141,6 +141,6 @@ class KGAPICALENDAR_EXPORT EventMoveJob : public KGAPI2::ModifyJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_EVENTMOVEJOB_H
+#endif // KMGRAPH2_EVENTMOVEJOB_H

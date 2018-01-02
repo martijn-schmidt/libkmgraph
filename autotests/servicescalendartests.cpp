@@ -30,7 +30,7 @@
 
 typedef QMap< QByteArray, QString > ByteArrayStringMap;
 
-Q_DECLARE_METATYPE(KGAPI::Objects::Event*);
+Q_DECLARE_METATYPE(KMGraph::Objects::Event*);
 Q_DECLARE_METATYPE(KCalCore::Event::Status);
 Q_DECLARE_METATYPE(KCalCore::Recurrence*);
 Q_DECLARE_METATYPE(KCalCore::Event::Transparency);
@@ -183,8 +183,8 @@ void ServicesCalendarTests::testJSONParser_data()
 
 void ServicesCalendarTests::testJSONParser()
 {
-    KGAPI::Services::Calendar *service;
-    KGAPI::Objects::Event *event;
+    KMGraph::Services::Calendar *service;
+    KMGraph::Objects::Event *event;
 
     QFETCH(QString, id);
     QFETCH(KCalCore::Event::Status, status);
@@ -205,8 +205,8 @@ void ServicesCalendarTests::testJSONParser()
     QFETCH(ByteArrayStringMap, customProperties);
     QFETCH(QByteArray, jsonData);
 
-    service = new KGAPI::Services::Calendar();
-    event = dynamic_cast< KGAPI::Objects::Event* >(service->JSONToObject(jsonData));
+    service = new KMGraph::Services::Calendar();
+    event = dynamic_cast< KMGraph::Objects::Event* >(service->JSONToObject(jsonData));
 
     QCOMPARE(event->uid(), id);
     QCOMPARE(event->status(), status);
@@ -241,9 +241,9 @@ void ServicesCalendarTests::testJSONParser()
 
 void ServicesCalendarTests::testJSONSerializer_data()
 {
-    QTest::addColumn< KGAPI::Objects::Event* >("event");
+    QTest::addColumn< KMGraph::Objects::Event* >("event");
 
-    KGAPI::Objects::Event *event = new KGAPI::Objects::Event();
+    KMGraph::Objects::Event *event = new KMGraph::Objects::Event();
     event->setUid("h@0203488aeaa000f7e787fef631d12bc0d7325ef2");
     event->setDeleted(false);
     event->setStatus(KCalCore::Incidence::StatusConfirmed);
@@ -260,11 +260,11 @@ void ServicesCalendarTests::testJSONSerializer_data()
 
 void ServicesCalendarTests::testJSONSerializer()
 {
-    KGAPI::Services::Calendar service;
+    KMGraph::Services::Calendar service;
 
-    QFETCH(KGAPI::Objects::Event*, event);
+    QFETCH(KMGraph::Objects::Event*, event);
 
-    QByteArray raw = service.objectToJSON(dynamic_cast< KGAPI::Object* >(event));
+    QByteArray raw = service.objectToJSON(dynamic_cast< KMGraph::Object* >(event));
     QJson::Parser parser;
     bool ok;
 
@@ -448,29 +448,29 @@ void ServicesCalendarTests::testJSONSerializer()
 
 void ServicesCalendarTests::testUrls()
 {
-    QCOMPARE(KGAPI::Services::Calendar::fetchCalendarsUrl().toString(),
+    QCOMPARE(KMGraph::Services::Calendar::fetchCalendarsUrl().toString(),
              QString("https://www.googleapis.com/calendar/v3/users/me/calendarList"));
-    QCOMPARE(KGAPI::Services::Calendar::fetchCalendarUrl("1234abcd").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::fetchCalendarUrl("1234abcd").toString(),
              QString("https://www.googleapis.com/calendar/v3/users/me/calendarList/1234abcd"));
-    QCOMPARE(KGAPI::Services::Calendar::updateCalendarUrl("1234abcd").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::updateCalendarUrl("1234abcd").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd"));
-    QCOMPARE(KGAPI::Services::Calendar::createCalendarUrl().toString(),
+    QCOMPARE(KMGraph::Services::Calendar::createCalendarUrl().toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars"));
-    QCOMPARE(KGAPI::Services::Calendar::updateCalendarUrl("1234abcd").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::updateCalendarUrl("1234abcd").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd"));
-    QCOMPARE(KGAPI::Services::Calendar::removeCalendarUrl("1234abcd").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::removeCalendarUrl("1234abcd").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd"));
-    QCOMPARE(KGAPI::Services::Calendar::fetchEventsUrl("1234abcd").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::fetchEventsUrl("1234abcd").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd/events?maxResults=20"));
-    QCOMPARE(KGAPI::Services::Calendar::fetchEventUrl("1234abcd", "5678efgh").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::fetchEventUrl("1234abcd", "5678efgh").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd/events/5678efgh"));
-    QCOMPARE(KGAPI::Services::Calendar::createEventUrl("1234abcd").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::createEventUrl("1234abcd").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd/events"));
-    QCOMPARE(KGAPI::Services::Calendar::updateEventUrl("1234abcd", "5678efgh").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::updateEventUrl("1234abcd", "5678efgh").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd/events/5678efgh"));
-    QCOMPARE(KGAPI::Services::Calendar::removeEventUrl("1234abcd", "5678efgh").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::removeEventUrl("1234abcd", "5678efgh").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd/events/5678efgh"));
-    QCOMPARE(KGAPI::Services::Calendar::moveEventUrl("1234abcd", "dcba4321", "5678efgh").toString(),
+    QCOMPARE(KMGraph::Services::Calendar::moveEventUrl("1234abcd", "dcba4321", "5678efgh").toString(),
              QString("https://www.googleapis.com/calendar/v3/calendars/1234abcd/events/5678efgh?destination=dcba4321"));
 }
 

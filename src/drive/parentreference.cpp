@@ -24,8 +24,8 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 ParentReference::Private::Private():
     isRoot(false)
@@ -75,14 +75,14 @@ QVariantMap ParentReference::Private::toJSON(const ParentReferencePtr &reference
 }
 
 ParentReference::ParentReference(const QString &id):
-    KGAPI2::Object(),
+    KMGraph2::Object(),
     d(new Private)
 {
     d->id = id;
 }
 
 ParentReference::ParentReference(const ParentReference &other):
-    KGAPI2::Object(other),
+    KMGraph2::Object(other),
     d(new Private(*(other.d)))
 {
 }

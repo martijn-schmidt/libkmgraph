@@ -23,7 +23,7 @@
 #include "../../debug.h"
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 
 AuthWidget::AuthWidget(QWidget* parent):
@@ -105,7 +105,7 @@ void AuthWidget::authenticate()
     url.addQueryItem(QStringLiteral("scope"), scopes.join(QStringLiteral(" ")));
     url.addQueryItem(QStringLiteral("response_type"), QStringLiteral("code"));
 
-    qCDebug(KGAPIRaw) << "Requesting new token:" << url;
+    qCDebug(KMGraphRaw) << "Requesting new token:" << url;
 
     d->sslIndicator->setVisible(true);
     d->urlEdit->setVisible(true);

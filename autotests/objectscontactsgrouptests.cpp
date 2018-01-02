@@ -22,7 +22,7 @@
 
 #include <objects/contactsgroup.h>
 
-using namespace KGAPI;
+using namespace KMGraph;
 
 void ObjectsContactsGroupTests::testContactsGroup_data()
 {
@@ -43,7 +43,7 @@ void ObjectsContactsGroupTests::testContactsGroup_data()
 
 void ObjectsContactsGroupTests::testContactsGroup()
 {
-    KGAPI::Objects::ContactsGroup contactsGroup;
+    KMGraph::Objects::ContactsGroup contactsGroup;
 
     QFETCH(QString, id);
     QFETCH(QString, title);

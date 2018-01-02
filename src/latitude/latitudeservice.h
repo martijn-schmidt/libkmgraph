@@ -19,15 +19,15 @@
 */
 
 
-#ifndef LIBKGAPI2_LATITUDESERVICE_H
-#define LIBKGAPI2_LATITUDESERVICE_H
+#ifndef LIBKMGRAPH2_LATITUDESERVICE_H
+#define LIBKMGRAPH2_LATITUDESERVICE_H
 
 #include "types.h"
 #include "latitude.h"
-#include "kgapilatitude_export.h"
+#include "kmgraphlatitude_export.h"
 
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 
@@ -44,14 +44,14 @@ namespace LatitudeService
      *
      * @param jsonData
      */
-    KGAPILATITUDE_EXPORT LocationPtr JSONToLocation(const QByteArray& jsonData);
+    KMGRAPHLATITUDE_EXPORT LocationPtr JSONToLocation(const QByteArray& jsonData);
 
     /**
      * @brief Serializes a Location object to JSON
      *
      * @param location
      */
-    KGAPILATITUDE_EXPORT QByteArray locationToJSON(const LocationPtr &location);
+    KMGRAPHLATITUDE_EXPORT QByteArray locationToJSON(const LocationPtr &location);
 
 
     /**
@@ -61,29 +61,29 @@ namespace LatitudeService
      * @param feedData The structure will be filled with additional data about
      *                 the feed
      */
-    KGAPILATITUDE_EXPORT ObjectsList parseLocationJSONFeed(const QByteArray& jsonFeed, FeedData& feedData);
+    KMGRAPHLATITUDE_EXPORT ObjectsList parseLocationJSONFeed(const QByteArray& jsonFeed, FeedData& feedData);
 
     /**
      * @brief Supported version of API
      */
-    KGAPILATITUDE_EXPORT QString APIVersion();
+    KMGRAPHLATITUDE_EXPORT QString APIVersion();
 
     /**
      * @brief Returns URL for fetch current user's location
      *
      * @param granularity
      */
-    KGAPILATITUDE_EXPORT QUrl retrieveCurrentLocationUrl(const Latitude::Granularity granularity = Latitude::City);
+    KMGRAPHLATITUDE_EXPORT QUrl retrieveCurrentLocationUrl(const Latitude::Granularity granularity = Latitude::City);
 
     /**
      *  @brief Returns URL for deleting user's current location
      */
-    KGAPILATITUDE_EXPORT QUrl deleteCurrentLocationUrl();
+    KMGRAPHLATITUDE_EXPORT QUrl deleteCurrentLocationUrl();
 
     /**
      *  @brief Returns URL for uploading user's current location
      */
-    KGAPILATITUDE_EXPORT QUrl insertCurrentLocationUrl();
+    KMGRAPHLATITUDE_EXPORT QUrl insertCurrentLocationUrl();
 
     /**
      * @brief Returns URL for fetching history of user's locations
@@ -93,7 +93,7 @@ namespace LatitudeService
      * @param maxTime Maximum timestamp since epoch (in ms)
      * @param minTime Minimum timestamp since epoch (in ms)
      */
-    KGAPILATITUDE_EXPORT QUrl locationHistoryUrl(const Latitude::Granularity granularity,
+    KMGRAPHLATITUDE_EXPORT QUrl locationHistoryUrl(const Latitude::Granularity granularity,
                                             const int maxResults = 0,
                                             const qlonglong maxTime = 0,
                                             const qlonglong minTime = 0);
@@ -104,23 +104,23 @@ namespace LatitudeService
      * @param id
      * @param granularity;
      */
-    KGAPILATITUDE_EXPORT QUrl retrieveLocationUrl(const qlonglong id,
+    KMGRAPHLATITUDE_EXPORT QUrl retrieveLocationUrl(const qlonglong id,
                                              const Latitude::Granularity granularity = Latitude::City);
 
     /**
      * @brief Returns URL for uploading a location
      */
-    KGAPILATITUDE_EXPORT QUrl insertLocationUrl();
+    KMGRAPHLATITUDE_EXPORT QUrl insertLocationUrl();
 
     /**
      * @brief Returns URL to delete a specific location
      *
      * @param id
      */
-    KGAPILATITUDE_EXPORT QUrl deleteLocationUrl(const qlonglong id);
+    KMGRAPHLATITUDE_EXPORT QUrl deleteLocationUrl(const qlonglong id);
 
 } // namespace LatitudeService
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_LATITUDESERVICE_H
+#endif // LIBKMGRAPH2_LATITUDESERVICE_H

@@ -19,20 +19,20 @@
 */
 
 
-#ifndef LIBKGAPI2_LATITUDE_H
-#define LIBKGAPI2_LATITUDE_H
+#ifndef LIBKMGRAPH2_LATITUDE_H
+#define LIBKMGRAPH2_LATITUDE_H
 
 #include <QObject>
 
-#include "kgapilatitude_export.h"
+#include "kmgraphlatitude_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
  * @brief A Helper QObject
  */
-class KGAPILATITUDE_EXPORT Latitude: public QObject
+class KMGRAPHLATITUDE_EXPORT Latitude: public QObject
 {
     Q_OBJECT
     Q_ENUMS(Granularity)
@@ -43,6 +43,6 @@ class KGAPILATITUDE_EXPORT Latitude: public QObject
     };
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 #endif

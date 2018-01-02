@@ -23,7 +23,7 @@
 
 #include <qtest_kde.h>
 
-namespace KGAPI {
+namespace KMGraph {
 namespace Objects {
 class Contact;
 class ContactsGroup;
@@ -35,8 +35,8 @@ class ServicesContactsTests : public QObject
     Q_OBJECT
 
   private:
-    void compareContacts(const KGAPI::Objects::Contact *contact, const QSettings &values, bool fromSerializer = false);
-    void compareGroups(const KGAPI::Objects::ContactsGroup *group, const QSettings &values, bool fromSerializer = false);
+    void compareContacts(const KMGraph::Objects::Contact *contact, const QSettings &values, bool fromSerializer = false);
+    void compareGroups(const KMGraph::Objects::ContactsGroup *group, const QSettings &values, bool fromSerializer = false);
 
   private Q_SLOTS:
     void testContactsParsers();

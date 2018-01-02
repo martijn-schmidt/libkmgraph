@@ -18,12 +18,12 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_DEBUG_H
-#define LIBKGAPI2_DEBUG_H
+#ifndef LIBKMGRAPH2_DEBUG_H
+#define LIBKMGRAPH2_DEBUG_H
 
 #include <QLoggingCategory>
 
-Q_DECLARE_LOGGING_CATEGORY(KGAPIDebug)
-Q_DECLARE_LOGGING_CATEGORY(KGAPIRaw)
+Q_DECLARE_LOGGING_CATEGORY(KMGraphDebug)
+Q_DECLARE_LOGGING_CATEGORY(KMGraphRaw)
 
-#endif // LIBKGAPI2_DEBUG_H
+#endif // LIBKMGRAPH2_DEBUG_H

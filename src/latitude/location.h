@@ -19,18 +19,18 @@
 */
 
 
-#ifndef LIBKGAPI2_OBJECTS_LOCATION_H
-#define LIBKGAPI2_OBJECTS_LOCATION_H
+#ifndef LIBKMGRAPH2_OBJECTS_LOCATION_H
+#define LIBKMGRAPH2_OBJECTS_LOCATION_H
 
 #include "object.h"
 #include "types.h"
-#include "kgapilatitude_export.h"
+#include "kmgraphlatitude_export.h"
 
 #include <KContacts/Geo>
 
 #include <QSharedPointer>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -40,7 +40,7 @@ namespace KGAPI2
  * @author Jan Grulich <grulja@gmail.com>
  * @since 0.4
  */
-class KGAPILATITUDE_EXPORT Location : public KGAPI2::Object,
+class KMGRAPHLATITUDE_EXPORT Location : public KMGraph2::Object,
                                       public KContacts::Geo
 {
   public:
@@ -149,6 +149,6 @@ class KGAPILATITUDE_EXPORT Location : public KGAPI2::Object,
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 #endif // LOCATION_H

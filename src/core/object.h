@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,29 +20,29 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_OBJECT_H
-#define LIBKGAPI2_OBJECT_H
+#ifndef LIBKMGRAPH2_OBJECT_H
+#define LIBKMGRAPH2_OBJECT_H
 
 #include <QString>
 #include <QSharedPointer>
 
 #include "types.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
  * @brief Base class for all objects
  *
  * There are many container classes to represent data fetched from Google servers,
- * like KGAPI2::Contact, KGAPI2::Event, etc. All these container classes must
- * be subclasses of KGAPI2::Object.
+ * like KMGraph2::Contact, KMGraph2::Event, etc. All these container classes must
+ * be subclasses of KMGraph2::Object.
  *
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICORE_EXPORT Object
+class KMGRAPHCORE_EXPORT Object
 {
   public:
     /**
@@ -84,6 +84,6 @@ class KGAPICORE_EXPORT Object
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_OBJECT_H
+#endif // LIBKMGRAPH2_OBJECT_H

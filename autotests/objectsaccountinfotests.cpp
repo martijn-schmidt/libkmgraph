@@ -22,7 +22,7 @@
 
 #include <objects/accountinfo.h>
 
-using namespace KGAPI;
+using namespace KMGraph;
 
 void ObjectsAccountInfoTests::testAccountInfo_data()
 {
@@ -56,7 +56,7 @@ void ObjectsAccountInfoTests::testAccountInfo_data()
 
 void ObjectsAccountInfoTests::testAccountInfo()
 {
-    KGAPI::Objects::AccountInfo accountInfo;
+    KMGraph::Objects::AccountInfo accountInfo;
 
     QFETCH(QString, id);
     QFETCH(QString, email);

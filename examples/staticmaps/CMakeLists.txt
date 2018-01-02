@@ -18,7 +18,7 @@ add_executable(staticmaps-example
 
 target_link_libraries(staticmaps-example
         KF5::Contacts
-        kgapi2
+        kmgraph2
 )
 
-add_dependencies(staticmaps-example kgapi2)
+add_dependencies(staticmaps-example kmgraph2)

@@ -1,9 +1,9 @@
 cmake_minimum_required(VERSION 3.0)
 set(PIM_VERSION "5.7.40")
 
-set(KGAPI_LIB_VERSION ${PIM_VERSION})
+set(KMGRAPH_LIB_VERSION ${PIM_VERSION})
 
-project(kgapi VERSION ${KGAPI_LIB_VERSION})
+project(kmgraph VERSION ${KMGRAPH_LIB_VERSION})
 
 # ECM setup
 set(KF5_VERSION "5.41.0")
@@ -27,9 +27,9 @@ set(KCALENDARCORE_LIB_VERSION "5.7.40")
 set(KCONTACTS_LIB_VERSION "5.7.40")
 
 ecm_setup_version(PROJECT
-    VARIABLE_PREFIX KGAPI
-    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kgapi_version.h"
-    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPimGAPIConfigVersion.cmake"
+    VARIABLE_PREFIX KMGraph
+    VERSION_HEADER "${CMAKE_CURRENT_BINARY_DIR}/kmgraph_version.h"
+    PACKAGE_VERSION_FILE "${CMAKE_CURRENT_BINARY_DIR}/KPimMGraphConfigVersion.cmake"
     SOVERSION 5
 )
 
@@ -65,29 +65,29 @@ if (BUILD_TESTING)
 endif()
 
 ############## CMake Config Files ##############
-set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KPimGAPI")
-set(KGAPI_KF5_COMPAT FALSE)
+set(CMAKECONFIG_INSTALL_DIR "${KDE_INSTALL_CMAKEPACKAGEDIR}/KPimMGraph")
+set(KMGRAPH_KF5_COMPAT FALSE)
 configure_package_config_file(
-    "${CMAKE_CURRENT_SOURCE_DIR}/KPimGAPIConfig.cmake.in"
-    "${CMAKE_CURRENT_BINARY_DIR}/KPimGAPIConfig.cmake"
+    "${CMAKE_CURRENT_SOURCE_DIR}/KPimMGraphConfig.cmake.in"
+    "${CMAKE_CURRENT_BINARY_DIR}/KPimMGraphConfig.cmake"
     INSTALL_DESTINATION ${CMAKECONFIG_INSTALL_DIR}
 )
 
 install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/KPimGAPIConfig.cmake"
-    "${CMAKE_CURRENT_BINARY_DIR}/KPimGAPIConfigVersion.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/KPimMGraphConfig.cmake"
+    "${CMAKE_CURRENT_BINARY_DIR}/KPimMGraphConfigVersion.cmake"
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
     COMPONENT Devel
 )
 
-install(EXPORT KPimGAPITargets
+install(EXPORT KPimMGraphTargets
     DESTINATION "${CMAKECONFIG_INSTALL_DIR}"
-    FILE KPimGAPITargets.cmake
+    FILE KPimMGraphTargets.cmake
     NAMESPACE KPim::
 )
 
 install(FILES
-    "${CMAKE_CURRENT_BINARY_DIR}/kgapi_version.h"
+    "${CMAKE_CURRENT_BINARY_DIR}/kmgraph_version.h"
     DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim"
     COMPONENT Devel
 )

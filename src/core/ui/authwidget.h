@@ -18,20 +18,20 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_UI_AUTHWIDGET_H
-#define LIBKGAPI2_UI_AUTHWIDGET_H
+#ifndef LIBKMGRAPH2_UI_AUTHWIDGET_H
+#define LIBKMGRAPH2_UI_AUTHWIDGET_H
 
 #include <QWidget>
 
 #include "types.h"
 #include "account.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
-namespace KGAPI {
-    typedef KGAPI2::Account Account;
+namespace KMGraph {
+    typedef KMGraph2::Account Account;
 }
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 class AuthWidgetPrivate;
 
@@ -41,7 +41,7 @@ class AuthWidgetPrivate;
  *
  * @since 0.3.2
  */
-class KGAPICORE_EXPORT AuthWidget : public QWidget
+class KMGRAPHCORE_EXPORT AuthWidget : public QWidget
 {
     Q_OBJECT
     Q_PROPERTY(bool showProgressBar WRITE setShowProgressBar READ getShowProgressBar)
@@ -68,7 +68,7 @@ class KGAPICORE_EXPORT AuthWidget : public QWidget
      *
      * Displays the webview and starts the actual process of authentication.
      *
-     * The method will throw an KGAPI::InvalidAccount exception if
+     * The method will throw an KMGraph::InvalidAccount exception if
      * no account was set via setAccount() before invoking this method.
      */
     void authenticate();
@@ -112,7 +112,7 @@ class KGAPICORE_EXPORT AuthWidget : public QWidget
     /**
      * Sets an account for which to obtain authentication.
      */
-    void setAccount(const KGAPI2::AccountPtr &account);
+    void setAccount(const KMGraph2::AccountPtr &account);
 
     /**
      * Sets whether to show progressbar above the webview when loading
@@ -145,21 +145,21 @@ class KGAPICORE_EXPORT AuthWidget : public QWidget
      * This signal is emitted when the authentication was successful
      * and tokens were stored within the \p account
      */
-    void authenticated(const KGAPI2::AccountPtr &account);
+    void authenticated(const KMGraph2::AccountPtr &account);
 
     /**
      * Emitted when an error occurs
      *
      * Signalizes any authentication error
      */
-    void error(const KGAPI2::Error errCode, const QString &msg);
+    void error(const KMGraph2::Error errCode, const QString &msg);
 
     /**
      * Emitted whenever a state of the authentication process changes.
      *
      * @param progress The new state of authentication
      */
-    void progress(KGAPI2::AuthWidget::Progress progress);
+    void progress(KMGraph2::AuthWidget::Progress progress);
 
   private:
     AuthWidgetPrivate * const d;
@@ -168,6 +168,6 @@ class KGAPICORE_EXPORT AuthWidget : public QWidget
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_UI_AUTHWIDGET_H
+#endif // LIBKMGRAPH2_UI_AUTHWIDGET_H

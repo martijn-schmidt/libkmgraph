@@ -24,8 +24,8 @@
 
 #include <QMainWindow>
 
-#include <libkgapi2/staticmaps/staticmaptilefetchjob.h>
-#include <libkgapi2/staticmaps/staticmapmarker.h>
+#include <libkmgraph2/staticmaps/staticmaptilefetchjob.h>
+#include <libkmgraph2/staticmaps/staticmapmarker.h>
 
 namespace Ui
 {
@@ -43,12 +43,12 @@ class MainWindow : public QMainWindow
   public Q_SLOTS:
     void getImage();
     void addMarker();
-    void slotTileFetched(KGAPI2::Job*);
+    void slotTileFetched(KMGraph2::Job*);
 
   private:
     Ui::MainWindow * m_ui;
 
-    QList<KGAPI2::StaticMapMarker> m_markers;
+    QList<KMGraph2::StaticMapMarker> m_markers;
 };
 
 #endif // MAINWINDOW_H

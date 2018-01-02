@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -32,7 +32,7 @@
 #include <QNetworkReply>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN TaskModifyJob::Private
 {
@@ -85,7 +85,7 @@ void TaskModifyJob::start()
     for (const QByteArray &str : qAsConst(rawHeaderList)) {
         headers << QLatin1String(str) + QLatin1String(": ") + QLatin1String(request.rawHeader(str));
     }
-    qCDebug(KGAPIRaw) << headers;
+    qCDebug(KMGraphRaw) << headers;
 
     enqueueRequest(request, rawData, QStringLiteral("application/json"));
 }
@@ -95,8 +95,8 @@ ObjectsList TaskModifyJob::handleReplyWithItems(const QNetworkReply *reply, cons
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
     ObjectsList items;
-    if (ct != KGAPI2::JSON) {
-        setError(KGAPI2::InvalidResponse);
+    if (ct != KMGraph2::JSON) {
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return items;

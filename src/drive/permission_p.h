@@ -18,12 +18,12 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_DRIVEPERMISSION_P_H
-#define LIBKGAPI2_DRIVEPERMISSION_P_H
+#ifndef LIBKMGRAPH2_DRIVEPERMISSION_P_H
+#define LIBKMGRAPH2_DRIVEPERMISSION_P_H
 
 #include "permission.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -57,6 +57,6 @@ class Q_DECL_HIDDEN Permission::Private
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif //LIBKGAPI2_DRIVEPERMISSION_P_H
+#endif //LIBKMGRAPH2_DRIVEPERMISSION_P_H

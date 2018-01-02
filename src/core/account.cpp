@@ -22,7 +22,7 @@
 
 #include <QDateTime>
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN Account::Private
 {

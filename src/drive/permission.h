@@ -18,18 +18,18 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_DRIVEPERMISSION_H
-#define LIBKGAPI2_DRIVEPERMISSION_H
+#ifndef LIBKMGRAPH2_DRIVEPERMISSION_H
+#define LIBKMGRAPH2_DRIVEPERMISSION_H
 
 #include "object.h"
 #include "types.h"
 #include "file.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
 #include <QString>
 #include <QUrl>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -45,7 +45,7 @@ namespace Drive
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>
  * @author Daniel Vrátil <dvratil@redhat.com>
  */
-class KGAPIDRIVE_EXPORT Permission: public KGAPI2::Object
+class KMGRAPHONEDRIVE_EXPORT Permission: public KMGraph2::Object
 {
 
   public:
@@ -180,6 +180,6 @@ class KGAPIDRIVE_EXPORT Permission: public KGAPI2::Object
 
 } /* namespace Drive */
 
-} /* namespace KGAPI2 */
+} /* namespace KMGraph2 */
 
-#endif // LIBKGAPI2_DRIVEPERMISSION_H
+#endif // LIBKMGRAPH2_DRIVEPERMISSION_H

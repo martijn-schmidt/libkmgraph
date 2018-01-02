@@ -23,8 +23,8 @@
 #include <QVariant>
 #include <QJsonDocument>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Blogger;
+using namespace KMGraph2;
+using namespace KMGraph2::Blogger;
 
 class Q_DECL_HIDDEN Page::Private
 {

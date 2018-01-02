@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,8 +20,8 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI_JOB_P_H
-#define KGAPI_JOB_P_H
+#ifndef KMGRAPH_JOB_P_H
+#define KMGRAPH_JOB_P_H
 
 #include "job.h"
 
@@ -31,7 +31,7 @@
 
 #include <KIO/AccessManager>
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 struct Request
 {
@@ -72,4 +72,4 @@ class Q_DECL_HIDDEN Job::Private
 
 }
 
-#endif // KGAPI_JOB_P_H
+#endif // KMGRAPH_JOB_P_H

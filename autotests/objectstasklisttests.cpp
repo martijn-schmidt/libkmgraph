@@ -22,7 +22,7 @@
 
 #include <objects/tasklist.h>
 
-using namespace KGAPI;
+using namespace KMGraph;
 
 void ObjectsTaskListTests::testTaskList_data()
 {
@@ -36,7 +36,7 @@ void ObjectsTaskListTests::testTaskList_data()
 
 void ObjectsTaskListTests::testTaskList()
 {
-    KGAPI::Objects::TaskList taskList;
+    KMGraph::Objects::TaskList taskList;
 
     QFETCH(QString, uid);
     QFETCH(QString, title);

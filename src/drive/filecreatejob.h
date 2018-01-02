@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,19 +20,19 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_DRIVEFILECREATEJOB_H
-#define KGAPI2_DRIVEFILECREATEJOB_H
+#ifndef KMGRAPH2_DRIVEFILECREATEJOB_H
+#define KMGRAPH2_DRIVEFILECREATEJOB_H
 
 #include "fileabstractuploadjob.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
 {
 
-class KGAPIDRIVE_EXPORT FileCreateJob : public KGAPI2::Drive::FileAbstractUploadJob
+class KMGRAPHONEDRIVE_EXPORT FileCreateJob : public KMGraph2::Drive::FileAbstractUploadJob
 {
     Q_OBJECT
 
@@ -69,6 +69,6 @@ class KGAPIDRIVE_EXPORT FileCreateJob : public KGAPI2::Drive::FileAbstractUpload
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_DRIVEFILECREATEJOB_H
+#endif // KMGRAPH2_DRIVEFILECREATEJOB_H

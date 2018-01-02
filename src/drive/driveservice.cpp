@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -23,7 +23,7 @@
 #include "driveservice.h"
 #include "utils.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Private
@@ -284,5 +284,5 @@ QUrl modifyRevisionUrl(const QString &fileId, const QString &revisionId)
 
 } // namespace DriveService
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 

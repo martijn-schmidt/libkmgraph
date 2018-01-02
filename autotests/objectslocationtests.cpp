@@ -69,7 +69,7 @@ void ObjectsLocationTests::testDefaultLocation_data()
 
 void ObjectsLocationTests::testLocation()
 {
-    KGAPI::Objects::Location location;
+    KMGraph::Objects::Location location;
 
     QFETCH(qulonglong, timestamp);
     QFETCH(float, latitude);
@@ -102,7 +102,7 @@ void ObjectsLocationTests::testLocation()
 void ObjectsLocationTests::testDefaultLocation()
 {
 
-    KGAPI::Objects::Location location;
+    KMGraph::Objects::Location location;
 
     QFETCH(qulonglong, timestamp);
     QFETCH(float, latitude);

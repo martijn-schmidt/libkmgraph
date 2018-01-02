@@ -35,7 +35,7 @@
 
 #include <QDateTime>
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 namespace
 {
@@ -174,7 +174,7 @@ void AuthWidgetPrivate::setupUi()
 
 void AuthWidgetPrivate::setProgress(AuthWidget::Progress progress)
 {
-    qCDebug(KGAPIDebug) << progress;
+    qCDebug(KMGraphDebug) << progress;
     this->progress = progress;
     Q_EMIT q->progress(progress);
 }
@@ -197,7 +197,7 @@ void AuthWidgetPrivate::emitError(const enum Error errCode, const QString& msg)
 
 void AuthWidgetPrivate::webviewUrlChanged(const QUrl &url)
 {
-    qCDebug(KGAPIDebug) << "URLChange:" << url;
+    qCDebug(KMGraphDebug) << "URLChange:" << url;
 
     // Whoa! That should not happen!
     if (url.scheme() != QLatin1String("https")) {
@@ -258,13 +258,13 @@ void AuthWidgetPrivate::webviewUrlChanged(const QUrl &url)
 void AuthWidgetPrivate::webviewFinished(bool ok)
 {
     if (!ok) {
-        qCWarning(KGAPIDebug) << "Failed to load" << webview->url();
+        qCWarning(KMGraphDebug) << "Failed to load" << webview->url();
     }
 
     const QUrl url = webview->url();
     urlEdit->setText(url.toDisplayString(QUrl::PrettyDecoded));
     urlEdit->setCursorPosition(0);
-    qCDebug(KGAPIDebug) << "URLFinished:" << url;
+    qCDebug(KMGraphDebug) << "URLFinished:" << url;
 
     if (!isGoogleHost(url)) {
         return;
@@ -273,62 +273,62 @@ void AuthWidgetPrivate::webviewFinished(bool ok)
     if (isTokenPage(url)) {
         const auto token = url.queryItemValue(QStringLiteral("approvalCode"));
         if (!token.isEmpty()) {
-            qCDebug(KGAPIDebug) << "Got token: " << token;
-            auto fetch = new KGAPI2::NewTokensFetchJob(token, apiKey, secretKey);
+            qCDebug(KMGraphDebug) << "Got token: " << token;
+            auto fetch = new KMGraph2::NewTokensFetchJob(token, apiKey, secretKey);
             connect(fetch, &Job::finished, this, &AuthWidgetPrivate::tokensReceived);
         } else {
-            qCWarning(KGAPIDebug) << "Failed to parse token from URL, peaking into HTML...";
+            qCWarning(KMGraphDebug) << "Failed to parse token from URL, peaking into HTML...";
             webview->page()->runJavaScript(
                 QStringLiteral("document.getElementById(\"code\").value;"),
                 [this](const QVariant &result) {
                     const auto token = result.toString();
                     if (token.isEmpty()) {
-                        qCWarning(KGAPIDebug) << "Peaked into HTML, but cound not find token :(";
+                        qCWarning(KMGraphDebug) << "Peaked into HTML, but cound not find token :(";
                         webview->page()->toHtml([](const QString &html) {
-                            qCDebug(KGAPIDebug) << "Parsing token page failed";
-                            qCDebug(KGAPIDebug) << html;
+                            qCDebug(KMGraphDebug) << "Parsing token page failed";
+                            qCDebug(KMGraphDebug) << html;
                         });
                         emitError(AuthError, tr("Parsing token page failed."));
                         return;
                     }
-                    qCDebug(KGAPIDebug) << "Peaked into HTML and found token: " << token;
-                    auto fetch = new KGAPI2::NewTokensFetchJob(token, apiKey, secretKey);
+                    qCDebug(KMGraphDebug) << "Peaked into HTML and found token: " << token;
+                    auto fetch = new KMGraph2::NewTokensFetchJob(token, apiKey, secretKey);
                     connect(fetch, &Job::finished, this, &AuthWidgetPrivate::tokensReceived);
                 });
         }
     } else {
-        //qCDebug(KGAPIDebug) << "Unhandled page:" << url.host() << ", " << url.path();
+        //qCDebug(KMGraphDebug) << "Unhandled page:" << url.host() << ", " << url.path();
     }
 }
 
-void AuthWidgetPrivate::tokensReceived(KGAPI2::Job* job)
+void AuthWidgetPrivate::tokensReceived(KMGraph2::Job* job)
 {
-    KGAPI2::NewTokensFetchJob *tokensFetchJob = qobject_cast<KGAPI2::NewTokensFetchJob*>(job);
+    KMGraph2::NewTokensFetchJob *tokensFetchJob = qobject_cast<KMGraph2::NewTokensFetchJob*>(job);
 
     account->setAccessToken(tokensFetchJob->accessToken());
     account->setRefreshToken(tokensFetchJob->refreshToken());
     account->setExpireDateTime(QDateTime::currentDateTime().addSecs(tokensFetchJob->expiresIn()));
     tokensFetchJob->deleteLater();
 
-    KGAPI2::AccountInfoFetchJob *fetchJob = new KGAPI2::AccountInfoFetchJob(account, this);
+    KMGraph2::AccountInfoFetchJob *fetchJob = new KMGraph2::AccountInfoFetchJob(account, this);
 
     connect(fetchJob, &Job::finished,
             this, &AuthWidgetPrivate::accountInfoReceived);
-    qCDebug(KGAPIDebug) << "Requesting AccountInfo";
+    qCDebug(KMGraphDebug) << "Requesting AccountInfo";
 }
 
-void AuthWidgetPrivate::accountInfoReceived(KGAPI2::Job* job)
+void AuthWidgetPrivate::accountInfoReceived(KMGraph2::Job* job)
 {
     if (job->error()) {
-        qCDebug(KGAPIDebug) << "Error when retrieving AccountInfo:" << job->errorString();
+        qCDebug(KMGraphDebug) << "Error when retrieving AccountInfo:" << job->errorString();
         emitError((enum Error) job->error(), job->errorString());
         return;
     }
 
-    KGAPI2::ObjectsList objects = qobject_cast<KGAPI2::AccountInfoFetchJob*>(job)->items();
+    KMGraph2::ObjectsList objects = qobject_cast<KMGraph2::AccountInfoFetchJob*>(job)->items();
     Q_ASSERT(!objects.isEmpty());
 
-    KGAPI2::AccountInfoPtr accountInfo = objects.first().staticCast<KGAPI2::AccountInfo>();
+    KMGraph2::AccountInfoPtr accountInfo = objects.first().staticCast<KMGraph2::AccountInfo>();
     account->setAccountName(accountInfo->email());
 
     job->deleteLater();

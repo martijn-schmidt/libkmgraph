@@ -21,7 +21,7 @@
 #include "objectstaticmapurltests.h"
 #include "objects/staticmapurl.h"
 
-using namespace KGAPI;
+using namespace KMGraph;
 using namespace Objects;
 
 Q_DECLARE_METATYPE(StaticMapUrl::ImageFormat);

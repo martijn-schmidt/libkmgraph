@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -21,13 +21,13 @@
  */
 
 
-#ifndef LIBKGAPI2_TASKMOVEJOB_H
-#define LIBKGAPI2_TASKMOVEJOB_H
+#ifndef LIBKMGRAPH2_TASKMOVEJOB_H
+#define LIBKMGRAPH2_TASKMOVEJOB_H
 
 #include "modifyjob.h"
-#include "kgapitasks_export.h"
+#include "kmgraphtasks_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job that can reparent tasks to become subtasks of another task
@@ -35,7 +35,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPITASKS_EXPORT TaskMoveJob : public KGAPI2::ModifyJob
+class KMGRAPHTASKS_EXPORT TaskMoveJob : public KMGraph2::ModifyJob
 {
 
     Q_OBJECT
@@ -122,12 +122,12 @@ class KGAPITASKS_EXPORT TaskMoveJob : public KGAPI2::ModifyJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::dispatchRequest implementation
+     * @brief KMGraph2::Job::dispatchRequest implementation
      *
      * @param accessManager
      * @param request
@@ -140,7 +140,7 @@ class KGAPITASKS_EXPORT TaskMoveJob : public KGAPI2::ModifyJob
                                  const QString &contentType) override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      *
      * @param reply
      * @param rawData
@@ -155,6 +155,6 @@ class KGAPITASKS_EXPORT TaskMoveJob : public KGAPI2::ModifyJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_TASKMOVEJOB_H
+#endif // LIBKMGRAPH2_TASKMOVEJOB_H

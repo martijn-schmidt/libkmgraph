@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CALENDARMODIFYJOB_H
-#define LIBKGAPI2_CALENDARMODIFYJOB_H
+#ifndef LIBKMGRAPH2_CALENDARMODIFYJOB_H
+#define LIBKMGRAPH2_CALENDARMODIFYJOB_H
 
 #include "modifyjob.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to modify calendars on user's Google Calendar account.
@@ -34,7 +34,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICALENDAR_EXPORT CalendarModifyJob : public KGAPI2::ModifyJob
+class KMGRAPHCALENDAR_EXPORT CalendarModifyJob : public KMGraph2::ModifyJob
 {
     Q_OBJECT
 
@@ -70,12 +70,12 @@ class KGAPICALENDAR_EXPORT CalendarModifyJob : public KGAPI2::ModifyJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2:::ModifyJob::handleReplyWithItems implementation
+     * @brief KMGraph2:::ModifyJob::handleReplyWithItems implementation
      *
      * @param reply
      * @param rawData
@@ -89,6 +89,6 @@ class KGAPICALENDAR_EXPORT CalendarModifyJob : public KGAPI2::ModifyJob
     friend class Private;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CALENDARMODIFYJOB_H
+#endif // LIBKMGRAPH2_CALENDARMODIFYJOB_H

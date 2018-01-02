@@ -60,8 +60,8 @@ void ServicesLatitudeTests::testJSONParser_data()
 
 void ServicesLatitudeTests::testJSONParser()
 {
-    KGAPI::Objects::Location *location;
-    KGAPI::Services::Latitude *service;
+    KMGraph::Objects::Location *location;
+    KMGraph::Services::Latitude *service;
 
     QFETCH(qulonglong, timestamp);
     QFETCH(float, latitude);
@@ -73,9 +73,9 @@ void ServicesLatitudeTests::testJSONParser()
     QFETCH(qint32, altitudeAccuracy);
     QFETCH(QByteArray, jsonData);
 
-    service = new KGAPI::Services::Latitude();
+    service = new KMGraph::Services::Latitude();
 
-    location = dynamic_cast<KGAPI::Objects::Location*>(service->JSONToObject(jsonData));
+    location = dynamic_cast<KMGraph::Objects::Location*>(service->JSONToObject(jsonData));
 
     QCOMPARE(location->timestamp(), timestamp);
     QCOMPARE(location->latitude(), latitude);

@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,11 +20,11 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_JOB_H
-#define LIBKGAPI2_JOB_H
+#ifndef LIBKMGRAPH2_JOB_H
+#define LIBKMGRAPH2_JOB_H
 
 #include "types.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
 #include <QObject>
 
@@ -32,11 +32,11 @@ class QNetworkAccessManager;
 class QNetworkReply;
 class QNetworkRequest;
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @headerfile Job
- * @brief Abstract base class for all jobs in LibKGAPI
+ * @brief Abstract base class for all jobs in LibKMGraph
  *
  * Usual workflow of Job subclasses is to reimplement Job::start,
  * Job::dispatchRequest and Job::handleReply, then enqueue a QNetworkRequest using
@@ -50,7 +50,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICORE_EXPORT Job : public QObject
+class KMGRAPHCORE_EXPORT Job : public QObject
 {
     Q_OBJECT
 
@@ -106,12 +106,12 @@ class KGAPICORE_EXPORT Job : public QObject
      *
      * This method can only be called after the job has emitted Job::finished
      * signal. Calling this method on a running job will always return
-     * KGAPI2::NoError.
+     * KMGraph2::NoError.
      *
-     * @return Returns code of ocurred error or KGAPI2::NoError when no error
+     * @return Returns code of ocurred error or KMGraph2::NoError when no error
      *         has ocurred.
      */
-    KGAPI2::Error error() const;
+    KMGraph2::Error error() const;
 
     /**
      * @brief Error string
@@ -205,7 +205,7 @@ class KGAPICORE_EXPORT Job : public QObject
      * @param job The job that has finished
      * @sa emitFinished()
      */
-    void finished(KGAPI2::Job *job);
+    void finished(KMGraph2::Job *job);
 
     /**
      * @brief Emitted when a job progress changes.
@@ -217,7 +217,7 @@ class KGAPICORE_EXPORT Job : public QObject
      * @param processed Amount of already processed items
      * @param total Total amount of items to process
      */
-    void progress(KGAPI2::Job *job, int processed, int total);
+    void progress(KMGraph2::Job *job, int processed, int total);
 
   protected:
 
@@ -227,7 +227,7 @@ class KGAPICORE_EXPORT Job : public QObject
      * @param error Error code to set
      * @see Job::error
      */
-    void setError(KGAPI2::Error error);
+    void setError(KMGraph2::Error error);
 
    /**
      * @brief Set job error description to @p errorString
@@ -329,6 +329,6 @@ class KGAPICORE_EXPORT Job : public QObject
     friend class AuthJob;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_JOB_H
+#endif // LIBKMGRAPH2_JOB_H

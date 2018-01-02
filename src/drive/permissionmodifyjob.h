@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -21,19 +21,19 @@
  */
 
 
-#ifndef KGAPI2_DRIVEPERMISSIONMODIFYJOB_H
-#define KGAPI2_DRIVEPERMISSIONMODIFYJOB_H
+#ifndef KMGRAPH2_DRIVEPERMISSIONMODIFYJOB_H
+#define KMGRAPH2_DRIVEPERMISSIONMODIFYJOB_H
 
 #include "modifyjob.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
 {
 
-class KGAPIDRIVE_EXPORT PermissionModifyJob : public KGAPI2::ModifyJob
+class KMGRAPHONEDRIVE_EXPORT PermissionModifyJob : public KMGraph2::ModifyJob
 {
     Q_OBJECT
 
@@ -48,7 +48,7 @@ class KGAPIDRIVE_EXPORT PermissionModifyJob : public KGAPI2::ModifyJob
 
   protected:
     void start() override;
-    KGAPI2::ObjectsList handleReplyWithItems(const QNetworkReply *reply,
+    KMGraph2::ObjectsList handleReplyWithItems(const QNetworkReply *reply,
             const QByteArray &rawData) override;
 
   private:
@@ -59,6 +59,6 @@ class KGAPIDRIVE_EXPORT PermissionModifyJob : public KGAPI2::ModifyJob
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_DRIVEPERMISSIONMODIFYJOB_H
+#endif // KMGRAPH2_DRIVEPERMISSIONMODIFYJOB_H

@@ -18,18 +18,18 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_ACCOUNT_H
-#define LIBKGAPI2_ACCOUNT_H
+#ifndef LIBKMGRAPH2_ACCOUNT_H
+#define LIBKMGRAPH2_ACCOUNT_H
 
 #include <QString>
 #include <QUrl>
 #include <QMetaType>
 #include <QSharedPointer>
 
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 #include "types.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -43,7 +43,7 @@ namespace KGAPI2
  * when the old one expires) and list of scopes (APIs that current access token
  * can be used to access).
  *
- * Unlike in previous versions, account management is not handled by LibKGAPI
+ * Unlike in previous versions, account management is not handled by LibKMGraph
  * anymore and it's up to programmer to store the account in a persistent storage.
  *
  * To obtain a new account, use AuthJob.
@@ -51,7 +51,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 0.1
  */
-class KGAPICORE_EXPORT Account
+class KMGRAPHCORE_EXPORT Account
 {
 
   public:
@@ -220,8 +220,8 @@ private:
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-Q_DECLARE_METATYPE(KGAPI2::AccountPtr)
+Q_DECLARE_METATYPE(KMGraph2::AccountPtr)
 
-#endif // LIBKGAPI2_ACCOUNT_H
+#endif // LIBKMGRAPH2_ACCOUNT_H

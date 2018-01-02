@@ -18,8 +18,8 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_DRIVEFILE_H
-#define LIBKGAPI2_DRIVEFILE_H
+#ifndef LIBKMGRAPH2_DRIVEFILE_H
+#define LIBKMGRAPH2_DRIVEFILE_H
 
 #include "object.h"
 #include "types.h"
@@ -33,7 +33,7 @@
 
 #include <QDateTime>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -48,7 +48,7 @@ namespace Drive
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>
  * @author Daniel Vrátil <dvratil@redhat.com>
  */
-class KGAPIDRIVE_EXPORT File: public KGAPI2::Object
+class KMGRAPHONEDRIVE_EXPORT File: public KMGraph2::Object
 {
   private:
     class Private;
@@ -81,16 +81,16 @@ class KGAPIDRIVE_EXPORT File: public KGAPI2::Object
          * @deprecated The 'hidden' label has been deprecated in the v2 api and removed in the v3 one.
          *             You can just ignore it.
          */
-#ifndef KGAPIDRIVE_NO_DEPRECATED
-        KGAPIDRIVE_DEPRECATED bool hidden() const;
+#ifndef KMGRAPHONEDRIVE_NO_DEPRECATED
+        KMGRAPHONEDRIVE_DEPRECATED bool hidden() const;
 #endif
 
         /**
          * @brief Sets whether this file has the 'hidden' label set.
          * @deprecated The 'hidden' label has been deprecated in the v2 api and removed in the v3 one.
          */
-#ifndef KGAPIDRIVE_NO_DEPRECATED
-        KGAPIDRIVE_DEPRECATED void setHidden(bool hidden);
+#ifndef KMGRAPHONEDRIVE_NO_DEPRECATED
+        KMGRAPHONEDRIVE_DEPRECATED void setHidden(bool hidden);
 #endif
 
         /**
@@ -606,8 +606,8 @@ private:
 
 } /* namespace Drive */
 
-} /* namespace KGAPI2 */
+} /* namespace KMGraph2 */
 
-Q_DECLARE_OPERATORS_FOR_FLAGS(KGAPI2::Drive::File::SerializationOptions)
+Q_DECLARE_OPERATORS_FOR_FLAGS(KMGraph2::Drive::File::SerializationOptions)
 
-#endif // LIBKGAPI2_DRIVEFILE_H
+#endif // LIBKMGRAPH2_DRIVEFILE_H

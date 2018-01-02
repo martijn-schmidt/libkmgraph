@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CONTACTSGROUPCREATEJOB_H
-#define LIBKGAPI2_CONTACTSGROUPCREATEJOB_H
+#ifndef LIBKMGRAPH2_CONTACTSGROUPCREATEJOB_H
+#define LIBKMGRAPH2_CONTACTSGROUPCREATEJOB_H
 
 #include "createjob.h"
-#include "kgapicontacts_export.h"
+#include "kmgraphcontacts_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to create one or more new groups (folders) in Google Contacts 
@@ -35,7 +35,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICONTACTS_EXPORT ContactsGroupCreateJob : public KGAPI2::CreateJob
+class KMGRAPHCONTACTS_EXPORT ContactsGroupCreateJob : public KMGraph2::CreateJob
 {
     Q_OBJECT
 
@@ -73,12 +73,12 @@ class KGAPICONTACTS_EXPORT ContactsGroupCreateJob : public KGAPI2::CreateJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      *
      * @param rawData
      * @param contentType
@@ -93,6 +93,6 @@ class KGAPICONTACTS_EXPORT ContactsGroupCreateJob : public KGAPI2::CreateJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CONTACTSGROUPCREATEJOB_H
+#endif // LIBKMGRAPH2_CONTACTSGROUPCREATEJOB_H

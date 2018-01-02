@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -36,8 +36,8 @@
 #include <QFile>
 #include <QCryptographicHash>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN FileAbstractUploadJob::Private
 {
@@ -76,7 +76,7 @@ QByteArray FileAbstractUploadJob::Private::readFile(const QString &filePath,
 {
     QFile file(filePath);
     if (!file.open(QIODevice::ReadOnly)) {
-        qCWarning(KGAPIDebug) << "Failed to access" << filePath;
+        qCWarning(KMGraphDebug) << "Failed to access" << filePath;
         return QByteArray();
     }
 
@@ -134,7 +134,7 @@ void FileAbstractUploadJob::Private::processNext()
 
     const QString filePath = files.cbegin().key();
     if (!filePath.startsWith(QLatin1String("?=")) && !QFile::exists(filePath)) {
-        qCWarning(KGAPIDebug) << filePath << "is not a valid file path";
+        qCWarning(KMGraphDebug) << filePath << "is not a valid file path";
         processNext();
         return;
     }
@@ -278,7 +278,7 @@ FileAbstractUploadJob::~FileAbstractUploadJob()
 void FileAbstractUploadJob::setUseContentAsIndexableText(bool useContentAsIndexableText)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify useContentAsIndexableText property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify useContentAsIndexableText property when job is running";
         return;
     }
 
@@ -313,7 +313,7 @@ void FileAbstractUploadJob::handleReply(const QNetworkReply *reply,
 {
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         const QNetworkRequest request = reply->request();
         const QString filePath = request.attribute(QNetworkRequest::User).toString();
 
@@ -321,7 +321,7 @@ void FileAbstractUploadJob::handleReply(const QNetworkReply *reply,
 
         d->uploadedFiles.insert(filePath, file);
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return;

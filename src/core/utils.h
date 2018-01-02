@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_UTILS_H
-#define LIBKGAPI2_UTILS_H
+#ifndef LIBKMGRAPH2_UTILS_H
+#define LIBKMGRAPH2_UTILS_H
 
 #include <QString>
 
 #include "types.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
 namespace Utils
 {
@@ -35,36 +35,36 @@ namespace Utils
      * @brief Converts string content type into enum.
      *
      * @param contentType Content type in form of "text/plain" or "application/xml"
-     * @return Corresponding enum member or KGAPI2::UnknownContentType
+     * @return Corresponding enum member or KMGraph2::UnknownContentType
      *
      * @since 2.0
      */
-    KGAPICORE_EXPORT KGAPI2::ContentType stringToContentType(const QString &contentType);
+    KMGRAPHCORE_EXPORT KMGraph2::ContentType stringToContentType(const QString &contentType);
 
     /**
      * @brief Converts given boolean value to strings "true" or "false".
      *
      * @param val
      */
-    KGAPICORE_EXPORT QString bool2Str(bool val);
+    KMGRAPHCORE_EXPORT QString bool2Str(bool val);
 
     /**
      * @brief Converts given timestamp into RFC3339 date string
      *
      * @param timestamp
      */
-    KGAPICORE_EXPORT QString ts2Str(quint64 timestamp);
+    KMGRAPHCORE_EXPORT QString ts2Str(quint64 timestamp);
 
     /**
      * @brief Converts given string in RFC3339 format into QDateTime
      */
-    KGAPICORE_EXPORT QDateTime rfc3339DateFromString(const QString &string);
+    KMGRAPHCORE_EXPORT QDateTime rfc3339DateFromString(const QString &string);
 
     /**
      * @brief Converts given date time to RFC3339 format
      */
-    KGAPICORE_EXPORT QString rfc3339DateToString(const QDateTime &dt);
+    KMGRAPHCORE_EXPORT QString rfc3339DateToString(const QDateTime &dt);
 
 } // namespace Utils
 
-#endif // LIBKGAPI2_UTILS_H
+#endif // LIBKMGRAPH2_UTILS_H

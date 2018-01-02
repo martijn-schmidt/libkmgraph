@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CONTACTFETCHJOB_H
-#define LIBKGAPI2_CONTACTFETCHJOB_H
+#ifndef LIBKMGRAPH2_CONTACTFETCHJOB_H
+#define LIBKMGRAPH2_CONTACTFETCHJOB_H
 
 #include "fetchjob.h"
-#include "kgapicontacts_export.h"
+#include "kmgraphcontacts_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to fetch contacts from user's addressbook on Google Contacts
@@ -34,7 +34,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICONTACTS_EXPORT ContactFetchJob : public KGAPI2::FetchJob
+class KMGRAPHCONTACTS_EXPORT ContactFetchJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
 
@@ -43,7 +43,7 @@ class KGAPICONTACTS_EXPORT ContactFetchJob : public KGAPI2::FetchJob
      *
      * When a contact is deleted in Google Contacts, it's stored as a placeholder
      * on Google server and can still be retrieved. Such event will have
-     * KGAPI2::Contact::deleted set to @p true.
+     * KMGraph2::Contact::deleted set to @p true.
      *
      * By default, the job will fetch deleted contacts.
      *
@@ -155,12 +155,12 @@ class KGAPICONTACTS_EXPORT ContactFetchJob : public KGAPI2::FetchJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      *
      * @param reply
      * @param rawData
@@ -175,6 +175,6 @@ class KGAPICONTACTS_EXPORT ContactFetchJob : public KGAPI2::FetchJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CONTACTFETCHJOB_H
+#endif // LIBKMGRAPH2_CONTACTFETCHJOB_H

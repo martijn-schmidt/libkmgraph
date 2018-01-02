@@ -27,8 +27,8 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Blogger;
+using namespace KMGraph2;
+using namespace KMGraph2::Blogger;
 
 class Q_DECL_HIDDEN CommentFetchJob::Private
 {
@@ -189,14 +189,14 @@ ObjectsList CommentFetchJob::handleReplyWithItems(const QNetworkReply *reply, co
 
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         if (d->commentId.isEmpty()) {
             items =  Comment::fromJSONFeed(rawData, feedData);
         } else {
             items << Comment::fromJSON(rawData);
         }
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return items;

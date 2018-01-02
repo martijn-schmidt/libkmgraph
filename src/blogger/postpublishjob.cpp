@@ -28,8 +28,8 @@
 #include <QNetworkReply>
 #include <QNetworkAccessManager>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Blogger;
+using namespace KMGraph2;
+using namespace KMGraph2::Blogger;
 
 class Q_DECL_HIDDEN PostPublishJob::Private
 {
@@ -137,8 +137,8 @@ void PostPublishJob::handleReply(const QNetworkReply *reply,
 {
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct != KGAPI2::JSON) {
-        setError(KGAPI2::InvalidResponse);
+    if (ct != KMGraph2::JSON) {
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
     }

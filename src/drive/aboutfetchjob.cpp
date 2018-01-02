@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -31,8 +31,8 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN AboutFetchJob::Private
 {
@@ -65,7 +65,7 @@ AboutFetchJob::~AboutFetchJob()
 void AboutFetchJob::setIncludeSubscribed(bool includeSubscribed)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify includeSubscribed property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify includeSubscribed property when job is running";
         return;
     }
 
@@ -80,7 +80,7 @@ bool AboutFetchJob::includeSubscribed() const
 void AboutFetchJob::setMaxChangeIdCount(qlonglong maxChangeIdCount)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify maxChangeIdCount property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify maxChangeIdCount property when job is running";
         return;
     }
 
@@ -95,7 +95,7 @@ qlonglong AboutFetchJob::maxChangeIdCount() const
 void AboutFetchJob::setStartChangeId(qlonglong startChangeId)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify startChangeId property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify startChangeId property when job is running";
         return;
     }
 
@@ -125,18 +125,18 @@ void AboutFetchJob::start()
     enqueueRequest(request);
 }
 
-KGAPI2::ObjectsList AboutFetchJob::handleReplyWithItems(const QNetworkReply *reply,
+KMGraph2::ObjectsList AboutFetchJob::handleReplyWithItems(const QNetworkReply *reply,
                                                         const QByteArray &rawData)
 {
     ObjectsList items;
 
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         AboutPtr about = About::fromJSON(rawData);
         items << about;
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
     }
 

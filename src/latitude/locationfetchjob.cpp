@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -32,7 +32,7 @@
 #include <QNetworkReply>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN LocationFetchJob::Private
 {
@@ -75,7 +75,7 @@ Latitude::Granularity LocationFetchJob::granularity() const
 void LocationFetchJob::setGranularity(Latitude::Granularity granularity)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify granularity property when the job is running";
+        qCWarning(KMGraphDebug) << "Can't modify granularity property when the job is running";
     }
     d->granularity = granularity;
 }
@@ -101,10 +101,10 @@ ObjectsList LocationFetchJob::handleReplyWithItems(const QNetworkReply *reply, c
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
     ObjectsList items;
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         items << LatitudeService::JSONToLocation(rawData).dynamicCast<Object>();
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
     }

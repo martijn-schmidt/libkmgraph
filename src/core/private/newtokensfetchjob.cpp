@@ -29,7 +29,7 @@
 #include <QJsonDocument>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN NewTokensFetchJob::Private
 {
@@ -66,7 +66,7 @@ NewTokensFetchJob::~NewTokensFetchJob()
 QString NewTokensFetchJob::accessToken() const
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called accessToken() on running job!";
+        qCWarning(KMGraphDebug) << "Called accessToken() on running job!";
         return QString();
     }
 
@@ -76,7 +76,7 @@ QString NewTokensFetchJob::accessToken() const
 QString NewTokensFetchJob::refreshToken() const
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called refreshToken() on running job!";
+        qCWarning(KMGraphDebug) << "Called refreshToken() on running job!";
         return QString();
     }
 
@@ -86,7 +86,7 @@ QString NewTokensFetchJob::refreshToken() const
 qulonglong NewTokensFetchJob::expiresIn() const
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called expiresIn() on running job!";
+        qCWarning(KMGraphDebug) << "Called expiresIn() on running job!";
         return 0;
     }
 
@@ -123,15 +123,15 @@ void NewTokensFetchJob::handleReply(const QNetworkReply *reply, const QByteArray
 
     QJsonDocument document = QJsonDocument::fromJson(rawData);
     if (document.isNull()) {
-        qCDebug(KGAPIDebug) << "Failed to parse server response.";
-        qCDebug(KGAPIRaw) << rawData;
-        setError(KGAPI2::AuthCancelled);
+        qCDebug(KMGraphDebug) << "Failed to parse server response.";
+        qCDebug(KMGraphRaw) << rawData;
+        setError(KMGraph2::AuthCancelled);
         setErrorString(tr("Failed to parse server response."));
         return;
     }
     QVariantMap parsed_data = document.toVariant().toMap();
 
-    qCDebug(KGAPIRaw) << "Retrieved new tokens pair:" << parsed_data;
+    qCDebug(KMGraphRaw) << "Retrieved new tokens pair:" << parsed_data;
 
     d->accessToken = parsed_data.value(QStringLiteral("access_token")).toString();
     d->refreshToken = parsed_data.value(QStringLiteral("refresh_token")).toString();

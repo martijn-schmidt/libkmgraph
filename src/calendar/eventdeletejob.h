@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_EVENTDELETEJOB_H
-#define LIBKGAPI2_EVENTDELETEJOB_H
+#ifndef LIBKMGRAPH2_EVENTDELETEJOB_H
+#define LIBKMGRAPH2_EVENTDELETEJOB_H
 
 #include "deletejob.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to delete one or more events from calendar in user's Google 
@@ -37,7 +37,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICALENDAR_EXPORT EventDeleteJob : public KGAPI2::DeleteJob
+class KMGRAPHCALENDAR_EXPORT EventDeleteJob : public KMGraph2::DeleteJob
 {
     Q_OBJECT
 
@@ -99,12 +99,12 @@ class KGAPICALENDAR_EXPORT EventDeleteJob : public KGAPI2::DeleteJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      *
      * @param reply
      * @param rawData
@@ -118,6 +118,6 @@ class KGAPICALENDAR_EXPORT EventDeleteJob : public KGAPI2::DeleteJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_EVENTDELETEJOB_H
+#endif // LIBKMGRAPH2_EVENTDELETEJOB_H

@@ -20,7 +20,7 @@
 
 #include "staticmapurl.h"
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 
 class Q_DECL_HIDDEN StaticMapUrl::Private

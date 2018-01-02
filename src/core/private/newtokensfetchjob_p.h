@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,20 +20,20 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_PRIVATE_NEWTOKENSFETCHJOB_P_H
-#define LIBKGAPI2_PRIVATE_NEWTOKENSFETCHJOB_P_H
+#ifndef LIBKMGRAPH2_PRIVATE_NEWTOKENSFETCHJOB_P_H
+#define LIBKMGRAPH2_PRIVATE_NEWTOKENSFETCHJOB_P_H
 
 #include "job.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @internal
  *
  * Exported, but not publicly avilable!
  */
-class KGAPICORE_EXPORT NewTokensFetchJob : public KGAPI2::Job
+class KMGRAPHCORE_EXPORT NewTokensFetchJob : public KMGraph2::Job
 {
     Q_OBJECT
 
@@ -56,6 +56,6 @@ class KGAPICORE_EXPORT NewTokensFetchJob : public KGAPI2::Job
     friend class Private;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_PRIVATE_NEWTOKENSFETCHJOB_P_H
+#endif // LIBKMGRAPH2_PRIVATE_NEWTOKENSFETCHJOB_P_H

@@ -1,4 +1,4 @@
-set(kgapicontacts_SRCS
+set(kmgraphcontacts_SRCS
     contact.cpp
     contactcreatejob.cpp
     contactdeletejob.cpp
@@ -15,7 +15,7 @@ set(kgapicontacts_SRCS
     ../debug.cpp
 )
 
-ecm_generate_headers(kgapicontacts_CamelCase_HEADERS
+ecm_generate_headers(kmgraphcontacts_CamelCase_HEADERS
     HEADER_NAMES
     Contact
     ContactCreateJob
@@ -28,58 +28,58 @@ ecm_generate_headers(kgapicontacts_CamelCase_HEADERS
     ContactsGroupDeleteJob
     ContactsGroupFetchJob
     ContactsGroupModifyJob
-    PREFIX KGAPI/Contacts
-    REQUIRED_HEADERS kgapicontacts_HEADERS
+    PREFIX KMGraph/Contacts
+    REQUIRED_HEADERS kmgraphcontacts_HEADERS
 )
 
-add_library(KPimGAPIContacts
-    ${kgapicontacts_SRCS}
+add_library(KPimMGraphContacts
+    ${kmgraphcontacts_SRCS}
 )
 
-generate_export_header(KPimGAPIContacts BASE_NAME kgapicontacts)
+generate_export_header(KPimMGraphContacts BASE_NAME kmgraphcontacts)
 
-add_library(KPim::GAPIContacts ALIAS KPimGAPIContacts)
+add_library(KPim::MGraphContacts ALIAS KPimMGraphContacts)
 # TODO: Backwards compatibility, remove in next major release
-add_library(KF5::GAPIContacts ALIAS KPimGAPIContacts)
-target_include_directories(KPimGAPIContacts INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI>")
+add_library(KF5::MGraphContacts ALIAS KPimMGraphContacts)
+target_include_directories(KPimMGraphContacts INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph>")
 
-target_link_libraries(KPimGAPIContacts
+target_link_libraries(KPimMGraphContacts
 PUBLIC
-    KPim::GAPICore
+    KPim::MGraphCore
     KF5::Contacts
 PRIVATE
     Qt5::Xml
     Qt5::Network
 )
 
-set_target_properties(KPimGAPIContacts PROPERTIES
-    VERSION ${KGAPI_VERSION_STRING}
-    SOVERSION ${KGAPI_SOVERSION}
-    EXPORT_NAME GAPIContacts
+set_target_properties(KPimMGraphContacts PROPERTIES
+    VERSION ${KMGRAPH_VERSION_STRING}
+    SOVERSION ${KMGRAPH_SOVERSION}
+    EXPORT_NAME MGraphContacts
 )
 
 install(TARGETS
-    KPimGAPIContacts
-    EXPORT KPimGAPITargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+    KPimMGraphContacts
+    EXPORT KPimMGraphTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 install(FILES
-    ${kgapicontacts_CamelCase_HEADERS}
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/KGAPI/Contacts"
+    ${kmgraphcontacts_CamelCase_HEADERS}
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph/Contacts"
     COMPONENT Devel
 )
 
 install(FILES
-    ${kgapicontacts_HEADERS}
-    "${CMAKE_CURRENT_BINARY_DIR}/kgapicontacts_export.h"
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/kgapi/contacts"
+    ${kmgraphcontacts_HEADERS}
+    "${CMAKE_CURRENT_BINARY_DIR}/kmgraphcontacts_export.h"
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph/contacts"
     COMPONENT Devel
 )
 
-ecm_generate_pri_file(BASE_NAME KGAPIContacts
-    LIB_NAME KPimGAPIContacts
-    DEPS "KPim::GAPICore KF5::Contacts Qt5::Xml"
-    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI"
+ecm_generate_pri_file(BASE_NAME KMGraphContacts
+    LIB_NAME KPimMGraphContacts
+    DEPS "KPim::MGraphCore KF5::Contacts Qt5::Xml"
+    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph"
 )
 
 install(FILES

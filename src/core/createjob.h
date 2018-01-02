@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CREATEJOB_H
-#define LIBKGAPI2_CREATEJOB_H
+#ifndef LIBKMGRAPH2_CREATEJOB_H
+#define LIBKMGRAPH2_CREATEJOB_H
 
 #include "job.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @headerfile CreateJob
@@ -36,7 +36,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICORE_EXPORT CreateJob: public KGAPI2::Job
+class KMGRAPHCORE_EXPORT CreateJob: public KMGraph2::Job
 {
     Q_OBJECT
 
@@ -55,7 +55,7 @@ class KGAPICORE_EXPORT CreateJob: public KGAPI2::Job
      * @param account Account to use to authenticate the requests send by this job
      * @param parent
      */
-    explicit CreateJob(const KGAPI2::AccountPtr &account, QObject* parent = nullptr);
+    explicit CreateJob(const KMGraph2::AccountPtr &account, QObject* parent = nullptr);
 
     /**
      * @brief Destructor
@@ -70,7 +70,7 @@ class KGAPICORE_EXPORT CreateJob: public KGAPI2::Job
   protected:
 
     /**
-     * @brief KGAPI::Job::dispatchRequest()
+     * @brief KMGraph::Job::dispatchRequest()
      *
      * @param accessManager
      * @param request
@@ -82,7 +82,7 @@ class KGAPICORE_EXPORT CreateJob: public KGAPI2::Job
                                  const QByteArray& data, const QString& contentType) override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      *
      * \param rawData
      * \param contentType
@@ -90,7 +90,7 @@ class KGAPICORE_EXPORT CreateJob: public KGAPI2::Job
     void handleReply(const QNetworkReply *reply, const QByteArray& rawData) override;
 
     /**
-     * @brief KGAPI2::Job::aboutToStart() implementation
+     * @brief KMGraph2::Job::aboutToStart() implementation
      */
     void aboutToStart() override;
 
@@ -124,6 +124,6 @@ class KGAPICORE_EXPORT CreateJob: public KGAPI2::Job
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CREATEJOB_H
+#endif // LIBKMGRAPH2_CREATEJOB_H

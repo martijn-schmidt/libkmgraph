@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -23,7 +23,7 @@
 
 #include "reminder.h"
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 using namespace KCalCore;
 
 class Q_DECL_HIDDEN Reminder::Private
@@ -90,7 +90,7 @@ Duration Reminder::startOffset() const
     return d->offset;
 }
 
-// In LibKGAPI1 we return AlarmPtr
+// In LibKMGraph1 we return AlarmPtr
 Alarm* Reminder::toAlarm (Incidence* incidence) const
 {
     Alarm* alarm = new Alarm(incidence);

@@ -29,7 +29,7 @@
 #include <QNetworkReply>
 #include <QJsonDocument>
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN FreeBusyQueryJob::Private
 {
@@ -115,13 +115,13 @@ void FreeBusyQueryJob::handleReply(const QNetworkReply *reply, const QByteArray 
 {
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         const QJsonDocument document = QJsonDocument::fromJson(rawData);
         const QVariantMap data = document.toVariant().toMap();
         const QVariantMap cals = data[QStringLiteral("calendars")].toMap();
         const QVariantMap cal = cals[d->id].toMap();
         if (cal.contains(QStringLiteral("errors"))) {
-            setError(KGAPI2::NotFound);
+            setError(KMGraph2::NotFound);
             setErrorString(tr("FreeBusy information is not available"));
         } else {
             const QVariantList busyList = cal[QStringLiteral("busy")].toList();
@@ -134,7 +134,7 @@ void FreeBusyQueryJob::handleReply(const QNetworkReply *reply, const QByteArray 
             }
         }
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
     }
 

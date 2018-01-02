@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -19,17 +19,17 @@
  * You should have received a copy of the GNU Lesser General Public
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
-#ifndef KGAPI2_DRIVEUSER_H
-#define KGAPI2_DRIVEUSER_H
+#ifndef KMGRAPH2_DRIVEUSER_H
+#define KMGRAPH2_DRIVEUSER_H
 
 #include "types.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
 #include <QString>
 #include <QUrl>
 #include <QVariantMap>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -38,7 +38,7 @@ namespace Drive
 /**
  * @brief The authenticated user.
  */
-class KGAPIDRIVE_EXPORT User
+class KMGRAPHONEDRIVE_EXPORT User
 {
   public:
     explicit User(const User &other);
@@ -77,6 +77,6 @@ class KGAPIDRIVE_EXPORT User
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_DRIVEUSER_H
+#endif // KMGRAPH2_DRIVEUSER_H

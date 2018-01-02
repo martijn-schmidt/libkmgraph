@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_TASKCREATEJOB_H
-#define LIBKGAPI2_TASKCREATEJOB_H
+#ifndef LIBKMGRAPH2_TASKCREATEJOB_H
+#define LIBKMGRAPH2_TASKCREATEJOB_H
 
 #include "createjob.h"
-#include "kgapitasks_export.h"
+#include "kmgraphtasks_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to create one or more new tasks in Google Tasks
@@ -34,7 +34,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPITASKS_EXPORT TaskCreateJob : public KGAPI2::CreateJob
+class KMGRAPHTASKS_EXPORT TaskCreateJob : public KMGraph2::CreateJob
 {
     Q_OBJECT
 
@@ -104,6 +104,6 @@ class KGAPITASKS_EXPORT TaskCreateJob : public KGAPI2::CreateJob
     friend class Private;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_TASKCREATEJOB_H
+#endif // KMGRAPH2_TASKCREATEJOB_H

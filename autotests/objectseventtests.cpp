@@ -22,7 +22,7 @@
 
 #include <objects/event.h>
 
-using namespace KGAPI;
+using namespace KMGraph;
 
 void ObjectsEventTests::testEvent_data()
 {
@@ -40,7 +40,7 @@ void ObjectsEventTests::testEvent_data()
 
 void ObjectsEventTests::testEvent()
 {
-    KGAPI::Objects::Event event;
+    KMGraph::Objects::Event event;
 
     QFETCH(bool, deleted);
     QFETCH(bool, useDefaultReminders);

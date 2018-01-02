@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -24,9 +24,9 @@
 #define CONTACTFETCHPHOTOJOB_H
 
 #include "fetchjob.h"
-#include "kgapicontacts_export.h"
+#include "kmgraphcontacts_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -35,7 +35,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICONTACTS_EXPORT ContactFetchPhotoJob : public KGAPI2::FetchJob
+class KMGRAPHCONTACTS_EXPORT ContactFetchPhotoJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
   public:
@@ -76,17 +76,17 @@ class KGAPICONTACTS_EXPORT ContactFetchPhotoJob : public KGAPI2::FetchJob
      * @param job This job
      * @param contact A contact with KContacts::Addressee::photo filled
      */
-    void photoFetched(KGAPI2::Job *job, const KGAPI2::ContactPtr &contact);
+    void photoFetched(KMGraph2::Job *job, const KMGraph2::ContactPtr &contact);
 
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      *
      * @param reply
      * @param rawData
@@ -101,6 +101,6 @@ class KGAPICONTACTS_EXPORT ContactFetchPhotoJob : public KGAPI2::FetchJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 #endif // CONTACTFETCHPHOTOJOB_H

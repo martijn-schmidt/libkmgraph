@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CALENDARCREATEJOB_H
-#define LIBKGAPI2_CALENDARCREATEJOB_H
+#ifndef LIBKMGRAPH2_CALENDARCREATEJOB_H
+#define LIBKMGRAPH2_CALENDARCREATEJOB_H
 
 #include "createjob.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to create one or more new calendars in user's Google Calendar
@@ -35,7 +35,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICALENDAR_EXPORT CalendarCreateJob : public KGAPI2::CreateJob
+class KMGRAPHCALENDAR_EXPORT CalendarCreateJob : public KMGraph2::CreateJob
 {
     Q_OBJECT
 
@@ -71,12 +71,12 @@ class KGAPICALENDAR_EXPORT CalendarCreateJob : public KGAPI2::CreateJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::CreateJob::handleReplyWithItems implementation
+     * @brief KMGraph2::CreateJob::handleReplyWithItems implementation
      *
      * @param reply
      * @param rawData
@@ -91,6 +91,6 @@ class KGAPICALENDAR_EXPORT CalendarCreateJob : public KGAPI2::CreateJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CALENDARCREATEJOB_H
+#endif // LIBKMGRAPH2_CALENDARCREATEJOB_H

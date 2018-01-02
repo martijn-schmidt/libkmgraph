@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_MODIFYJOB_H
-#define LIBKGAPI2_MODIFYJOB_H
+#ifndef LIBKMGRAPH2_MODIFYJOB_H
+#define LIBKMGRAPH2_MODIFYJOB_H
 
 #include "job.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @headerfile FetchJob
@@ -35,7 +35,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICORE_EXPORT ModifyJob : public KGAPI2::Job
+class KMGRAPHCORE_EXPORT ModifyJob : public KMGraph2::Job
 {
     Q_OBJECT
   public:
@@ -53,7 +53,7 @@ class KGAPICORE_EXPORT ModifyJob : public KGAPI2::Job
      * @param account Account to use to authenticate the requests send by this job
      * @param parent
      */
-    explicit ModifyJob(const KGAPI2::AccountPtr& account, QObject* parent = nullptr);
+    explicit ModifyJob(const KMGraph2::AccountPtr& account, QObject* parent = nullptr);
 
     /**
      * Destructor
@@ -90,7 +90,7 @@ class KGAPICORE_EXPORT ModifyJob : public KGAPI2::Job
 
 
     /**
-     * KGAPI2::Job::dispatchRequest implementation
+     * KMGraph2::Job::dispatchRequest implementation
      *
      * @param accessManager
      * @param request
@@ -103,7 +103,7 @@ class KGAPICORE_EXPORT ModifyJob : public KGAPI2::Job
                                  const QString& contentType) override;
 
     /**
-     * KGAPI2::Job::handleReply implementation
+     * KMGraph2::Job::handleReply implementation
      *
      * @param reply
      * @param rawData
@@ -111,7 +111,7 @@ class KGAPICORE_EXPORT ModifyJob : public KGAPI2::Job
     void handleReply(const QNetworkReply *reply, const QByteArray& rawData) override;
 
     /**
-     * KGAPI2::Job::aboutToStart() implementation
+     * KMGraph2::Job::aboutToStart() implementation
      */
     void aboutToStart() override;
 
@@ -121,6 +121,6 @@ class KGAPICORE_EXPORT ModifyJob : public KGAPI2::Job
     friend class Private;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_MODIFYJOB_H
+#endif // LIBKMGRAPH2_MODIFYJOB_H

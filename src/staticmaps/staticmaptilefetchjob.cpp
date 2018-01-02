@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -29,7 +29,7 @@
 #include <QNetworkReply>
 #include <QPixmap>
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN StaticMapTileFetchJob::Private
 {
@@ -61,7 +61,7 @@ StaticMapTileFetchJob::~StaticMapTileFetchJob()
 QPixmap StaticMapTileFetchJob::tilePixmap() const
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called tilePixmap on a running job!";
+        qCWarning(KMGraphDebug) << "Called tilePixmap on a running job!";
         return QPixmap();
     }
 

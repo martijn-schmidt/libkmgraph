@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -30,9 +30,9 @@
 #include <QNetworkReply>
 #include <QImage>
 
-Q_DECLARE_METATYPE(KGAPI2::ContactPtr)
+Q_DECLARE_METATYPE(KMGraph2::ContactPtr)
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN ContactFetchPhotoJob::Private
 {
@@ -99,7 +99,7 @@ void ContactFetchPhotoJob::handleReply(const QNetworkReply *reply, const QByteAr
         d->contacts.currentProcessed();
         d->processNextContact();
         // If the last photo failed, make sure we don't fail the whole job!
-        setError(KGAPI2::NoError);
+        setError(KMGraph2::NoError);
         setErrorString(QString());
         return;
     }

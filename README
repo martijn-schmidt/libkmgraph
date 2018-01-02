@@ -1,8 +1,8 @@
-LibKGAPI
+LibKMGraph
 ========================
 
-LibKGAPI (previously called LibKGoogle) is a C++ library that implements APIs for
-various Google services.
+LibKMGraph (forked from LibKGAPI) is a C++ library that implements APIs for
+various Microsoft Graph services.
 
 Currently supported APIs:
   - Calendar API v3 (https://developers.google.com/google-apps/calendar)
@@ -29,15 +29,15 @@ Compiling:
   # As root:
   make install
 
-To compile example applications, run cmake with -DKGAPI_BUILD_EXAMPLES=TRUE argument.
+To compile example applications, run cmake with -DKMGRAPH_BUILD_EXAMPLES=TRUE argument.
 To compile automated tests, run 'make buildtests'. To run automated tests, run 'make test'
 
 BUGS:
 -----
-Submit bugs and feature requests to KDE bugzilla, product libkgapi:
+Submit bugs and feature requests to KDE bugzilla, product libkmgraph:
 
-https://bugs.kde.org/enter_bug.cgi?product=libkgapi
+https://bugs.kde.org/enter_bug.cgi?product=libkmgraph
 
 API Documentation:
 ------------------
-http://api.kde.org/extragear-api/libs-apidocs/libkgapi/html/index.html
+http://api.kde.org/extragear-api/libs-apidocs/libkmgraph/html/index.html

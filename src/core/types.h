@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,22 +20,22 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_TYPES_H
-#define LIBKGAPI2_TYPES_H
+#ifndef LIBKMGRAPH2_TYPES_H
+#define LIBKMGRAPH2_TYPES_H
 
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
 #include <QSharedPointer>
 #include <QList>
 #include <QUrl>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
  * @brief Structure to store additional information about a feed.
  */
-class KGAPICORE_EXPORT FeedData {
+class KMGRAPHCORE_EXPORT FeedData {
 
   public:
     explicit FeedData():
@@ -175,17 +175,17 @@ ObjectsList operator<<(ObjectsList &objectsList, const QList< QSharedPointer<T> 
  * @brief Job error codes
  */
 enum Error {
-    /* Internal LibKGAPI errors */
-    NoError = 0,             ///< LibKGAPI error - no error.
-    UnknownError = 1,        ///< LibKGAPI error - a general unidentified error.
-    AuthError = 2,           ///< LibKGAPI error - authentication process failed.
-    UnknownAccount = 3,      ///< LibKGAPI error - application requested unknown account.
-    UnknownService = 4,      ///< LibKGAPI error - application requested unknown service.
-    InvalidResponse = 5,     ///< LibKGAPI error - Google returned invalid response.
-    BackendNotReady = 6,     ///< @deprecated LibKGAPI error - backend is not ready (for example KWallet is not opened).
-    InvalidAccount = 7,      ///< LibKGAPI error - the KGAPI2::Account object is invalid.
-    NetworkError = 8,        ///< LibKGAPI error - standard network request returned other code then 200.
-    AuthCancelled = 9,       ///< LibKGAPI error - when authentication dialog is canceled
+    /* Internal LibKMGraph errors */
+    NoError = 0,             ///< LibKMGraph error - no error.
+    UnknownError = 1,        ///< LibKMGraph error - a general unidentified error.
+    AuthError = 2,           ///< LibKMGraph error - authentication process failed.
+    UnknownAccount = 3,      ///< LibKMGraph error - application requested unknown account.
+    UnknownService = 4,      ///< LibKMGraph error - application requested unknown service.
+    InvalidResponse = 5,     ///< LibKMGraph error - Google returned invalid response.
+    BackendNotReady = 6,     ///< @deprecated LibKMGraph error - backend is not ready (for example KWallet is not opened).
+    InvalidAccount = 7,      ///< LibKMGraph error - the KMGraph2::Account object is invalid.
+    NetworkError = 8,        ///< LibKMGraph error - standard network request returned other code then 200.
+    AuthCancelled = 9,       ///< LibKMGraph error - when authentication dialog is canceled
 
     /* Following error codes identify Google errors */
     OK = 200,                ///< Request successfully executed.
@@ -194,10 +194,10 @@ enum Error {
     TemporarilyMoved = 302,  ///< The object is located on a different URL provided in reply.
     NotModified = 304,       ///< Request was successful, but no data were updated.
     BadRequest = 400,        ///< Invalid (malformed) request.
-    Unauthorized = 401,      ///< Invalid or expired token. See KGAPI2::Account::refreshTokens().
+    Unauthorized = 401,      ///< Invalid or expired token. See KMGraph2::Account::refreshTokens().
     Forbidden = 403,         ///< The requested data are not accessible to this account
     NotFound = 404,          ///< Requested object was not found on the remote side
-    Conflict = 409,          ///< Object on the remote site differs from the submitted one. @see KGAPI2::Object::setEtag.
+    Conflict = 409,          ///< Object on the remote site differs from the submitted one. @see KMGraph2::Object::setEtag.
     Gone = 410,              ///< The requested does not exist anymore on the remote site
     InternalError = 500,     ///< An unexpected error on the Google service occurred
     QuotaExceeded = 503      ///< User quota has been exceeded, the request should be send again later.
@@ -212,8 +212,8 @@ enum ContentType {
     XML
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 
 
-#endif // LIBKGAPI2_TYPES_H
+#endif // LIBKMGRAPH2_TYPES_H
