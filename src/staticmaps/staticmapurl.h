@@ -18,12 +18,12 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_STATICMAPURL_H
-#define LIBKGAPI2_STATICMAPURL_H
+#ifndef LIBKMGRAPH2_STATICMAPURL_H
+#define LIBKMGRAPH2_STATICMAPURL_H
 
 #include "staticmapmarker.h"
 #include "staticmappath.h"
-#include "kgapimaps_export.h"
+#include "kmgraphmaps_export.h"
 
 #include <QUrl>
 #include <QSize>
@@ -31,7 +31,7 @@
 #include <KContacts/Address>
 #include <KContacts/Geo>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -41,7 +41,7 @@ namespace KGAPI2
  * @author Jan Grulich <grulja@gmail.com>
  * @since 0.4
  */
-class KGAPIMAPS_EXPORT StaticMapUrl
+class KMGRAPHMAPS_EXPORT StaticMapUrl
 {
   public:
 
@@ -379,6 +379,6 @@ class KGAPIMAPS_EXPORT StaticMapUrl
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_STATICMAPURL_H
+#endif // LIBKMGRAPH2_STATICMAPURL_H

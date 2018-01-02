@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -27,8 +27,8 @@
 
 #include <QNetworkRequest>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN ChildReferenceDeleteJob::Private
 {

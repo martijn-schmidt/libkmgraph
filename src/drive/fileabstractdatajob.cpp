@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -24,8 +24,8 @@
 #include "../debug.h"
 #include "utils.h"
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN FileAbstractDataJob::Private
 {
@@ -67,7 +67,7 @@ bool FileAbstractDataJob::convert() const
 void FileAbstractDataJob::setConvert(bool convert)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify setConvert property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify setConvert property when job is running";
         return;
     }
 
@@ -82,7 +82,7 @@ bool FileAbstractDataJob::ocr() const
 void FileAbstractDataJob::setOcr(bool ocr)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify ocr property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify ocr property when job is running";
         return;
     }
 
@@ -97,7 +97,7 @@ QString FileAbstractDataJob::ocrLanguage() const
 void FileAbstractDataJob::setOcrLanguage(const QString &ocrLanguage)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify ocrLanguage property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify ocrLanguage property when job is running";
         return;
     }
 
@@ -112,7 +112,7 @@ bool FileAbstractDataJob::pinned() const
 void FileAbstractDataJob::setPinned(bool pinned)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify pinned property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify pinned property when job is running";
         return;
     }
 
@@ -128,7 +128,7 @@ QString FileAbstractDataJob::timedTextLanguage() const
 void FileAbstractDataJob::setTimedTextLanguage(const QString &timedTextLanguage)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify timedTextLanguage property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify timedTextLanguage property when job is running";
         return;
     }
 
@@ -143,7 +143,7 @@ QString FileAbstractDataJob::timedTextTrackName() const
 void FileAbstractDataJob::setTimedTextTrackName(const QString &timedTextTrackName)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify timedTextTrackName property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify timedTextTrackName property when job is running";
         return;
     }
 

@@ -18,14 +18,14 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_DRIVEFILE_P_H
-#define LIBKGAPI2_DRIVEFILE_P_H
+#ifndef LIBKMGRAPH2_DRIVEFILE_P_H
+#define LIBKMGRAPH2_DRIVEFILE_P_H
 
 #include "file.h"
 
 #include <QVariantMap>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -81,6 +81,6 @@ class Q_DECL_HIDDEN File::Private
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_DRIVEFILE_P_H
+#endif // LIBKMGRAPH2_DRIVEFILE_P_H

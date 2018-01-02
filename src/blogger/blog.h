@@ -18,22 +18,22 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_BLOG_H
-#define KGAPI2_BLOG_H
+#ifndef KMGRAPH2_BLOG_H
+#define KMGRAPH2_BLOG_H
 
 #include "object.h"
-#include "kgapiblogger_export.h"
+#include "kmgraphblogger_export.h"
 
 #include <QDateTime>
 #include <QVariant>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Blogger
 {
 
-class KGAPIBLOGGER_EXPORT Blog : public KGAPI2::Object
+class KMGRAPHBLOGGER_EXPORT Blog : public KMGraph2::Object
 {
   public:
     explicit Blog();
@@ -64,6 +64,6 @@ class KGAPIBLOGGER_EXPORT Blog : public KGAPI2::Object
 };
 
 } // namespace Blogger
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_BLOG_H
+#endif // KMGRAPH2_BLOG_H

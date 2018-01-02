@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,14 +20,14 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_LOCATIONFETCHHISTORYJOB_H
-#define LIBKGAPI2_LOCATIONFETCHHISTORYJOB_H
+#ifndef LIBKMGRAPH2_LOCATIONFETCHHISTORYJOB_H
+#define LIBKMGRAPH2_LOCATIONFETCHHISTORYJOB_H
 
 #include "fetchjob.h"
 #include "latitude.h"
-#include "kgapilatitude_export.h"
+#include "kmgraphlatitude_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to fetch all past locations from user's account on Google Latitude
@@ -35,7 +35,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPILATITUDE_EXPORT LocationFetchHistoryJob : public KGAPI2::FetchJob
+class KMGRAPHLATITUDE_EXPORT LocationFetchHistoryJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
 
@@ -152,12 +152,12 @@ class KGAPILATITUDE_EXPORT LocationFetchHistoryJob : public KGAPI2::FetchJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::handleReplyWithItems
+     * @brief KMGraph2::Job::handleReplyWithItems
      *
      * @param reply
      * @param rawData
@@ -172,6 +172,6 @@ class KGAPILATITUDE_EXPORT LocationFetchHistoryJob : public KGAPI2::FetchJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_LOCATIONFETCHHISTORYJOB_H
+#endif // LIBKMGRAPH2_LOCATIONFETCHHISTORYJOB_H

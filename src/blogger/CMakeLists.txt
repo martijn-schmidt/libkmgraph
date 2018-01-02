@@ -1,4 +1,4 @@
-set(kgapiblogger_SRCS
+set(kmgraphblogger_SRCS
     blog.cpp
     blogfetchjob.cpp
     bloggerservice.cpp
@@ -23,7 +23,7 @@ set(kgapiblogger_SRCS
     ../debug.cpp
 )
 
-ecm_generate_headers(kgapiblogger_CamelCase_HEADERS
+ecm_generate_headers(kmgraphblogger_CamelCase_HEADERS
     HEADER_NAMES
     Blog
     BlogFetchJob
@@ -44,56 +44,56 @@ ecm_generate_headers(kgapiblogger_CamelCase_HEADERS
     PostModifyJob
     PostPublishJob
     PostSearchJob
-    PREFIX KGAPI/Blogger
-    REQUIRED_HEADERS kgapiblogger_HEADERS
+    PREFIX KMGraph/Blogger
+    REQUIRED_HEADERS kmgraphblogger_HEADERS
 )
 
-add_library(KPimGAPIBlogger
-    ${kgapiblogger_SRCS}
+add_library(KPimMGraphBlogger
+    ${kmgraphblogger_SRCS}
 )
 
-generate_export_header(KPimGAPIBlogger BASE_NAME kgapiblogger)
+generate_export_header(KPimMGraphBlogger BASE_NAME kmgraphblogger)
 
-add_library(KPim::GAPIBlogger ALIAS KPimGAPIBlogger)
+add_library(KPim::MGraphBlogger ALIAS KPimMGraphBlogger)
 # TODO: Backwards compatibility, remove in next major release
-add_library(KF5::GAPIBlogger ALIAS KPimGAPIBlogger)
-target_include_directories(KPimGAPIBlogger INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI>")
+add_library(KF5::MGraphBlogger ALIAS KPimMGraphBlogger)
+target_include_directories(KPimMGraphBlogger INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph>")
 
-target_link_libraries(KPimGAPIBlogger
+target_link_libraries(KPimMGraphBlogger
 PUBLIC
-    KPim::GAPICore
+    KPim::MGraphCore
 PRIVATE
     Qt5::Network
 )
 
-set_target_properties(KPimGAPIBlogger PROPERTIES
-    VERSION ${KGAPI_VERSION_STRING}
-    SOVERSION ${KGAPI_SOVERSION}
-    EXPORT_NAME GAPIBlogger
+set_target_properties(KPimMGraphBlogger PROPERTIES
+    VERSION ${KMGRAPH_VERSION_STRING}
+    SOVERSION ${KMGRAPH_SOVERSION}
+    EXPORT_NAME MGraphBlogger
 )
 
 install(TARGETS
-    KPimGAPIBlogger
-    EXPORT KPimGAPITargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+    KPimMGraphBlogger
+    EXPORT KPimMGraphTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 install(FILES
-    ${kgapiblogger_CamelCase_HEADERS}
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/KGAPI/Blogger"
+    ${kmgraphblogger_CamelCase_HEADERS}
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph/Blogger"
     COMPONENT Devel
 )
 
 install(FILES
-    ${kgapiblogger_HEADERS}
-    "${CMAKE_CURRENT_BINARY_DIR}/kgapiblogger_export.h"
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/kgapi/blogger"
+    ${kmgraphblogger_HEADERS}
+    "${CMAKE_CURRENT_BINARY_DIR}/kmgraphblogger_export.h"
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph/blogger"
     COMPONENT Devel
 )
 
-ecm_generate_pri_file(BASE_NAME KGAPIBlogger
-    LIB_NAME KPimGAPIBlogger
-    DEPS "GAPICore"
-    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI"
+ecm_generate_pri_file(BASE_NAME KMGraphBlogger
+    LIB_NAME KPimMGraphBlogger
+    DEPS "MGraphCore"
+    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph"
 )
 
 install(FILES

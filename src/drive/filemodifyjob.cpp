@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -29,8 +29,8 @@
 #include <QNetworkRequest>
 #include <QNetworkAccessManager>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN FileModifyJob::Private
 {
@@ -116,7 +116,7 @@ bool FileModifyJob::createNewRevision() const
 void FileModifyJob::setCreateNewRevision(bool createNewRevision)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify createNewRevision property when the job is running";
+        qCWarning(KMGraphDebug) << "Can't modify createNewRevision property when the job is running";
         return;
     }
 
@@ -131,7 +131,7 @@ bool FileModifyJob::updateModifiedDate() const
 void FileModifyJob::setUpdateModifiedDate(bool updateModifiedDate)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify updateModifiedDate property when the job is running";
+        qCWarning(KMGraphDebug) << "Can't modify updateModifiedDate property when the job is running";
         return;
     }
 
@@ -146,7 +146,7 @@ bool FileModifyJob::updateViewedDate() const
 void FileModifyJob::setUpdateViewedDate(bool updateViewedDate)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify updateViewedDate property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify updateViewedDate property when job is running";
         return;
     }
 

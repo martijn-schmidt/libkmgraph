@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_TASKLISTDELETEJOB_H
-#define LIBKGAPI2_TASKLISTDELETEJOB_H
+#ifndef LIBKMGRAPH2_TASKLISTDELETEJOB_H
+#define LIBKMGRAPH2_TASKLISTDELETEJOB_H
 
 #include "deletejob.h"
-#include "kgapitasks_export.h"
+#include "kmgraphtasks_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to delete one or more tasklists from user's Google Calendar
@@ -38,7 +38,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPITASKS_EXPORT TaskListDeleteJob : public KGAPI2::DeleteJob
+class KMGRAPHTASKS_EXPORT TaskListDeleteJob : public KMGraph2::DeleteJob
 {
 
     Q_OBJECT
@@ -97,12 +97,12 @@ class KGAPITASKS_EXPORT TaskListDeleteJob : public KGAPI2::DeleteJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start
+     * @brief KMGraph2::Job::start
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::handleReply
+     * @brief KMGraph2::Job::handleReply
      *
      * @param reply
      * @param rawData
@@ -116,6 +116,6 @@ class KGAPITASKS_EXPORT TaskListDeleteJob : public KGAPI2::DeleteJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_TASKLISTDELETEJOB_H
+#endif // LIBKMGRAPH2_TASKLISTDELETEJOB_H

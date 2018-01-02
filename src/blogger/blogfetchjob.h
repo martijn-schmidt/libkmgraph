@@ -22,15 +22,15 @@
 #define BLOGFETCHJOB_H
 
 #include "fetchjob.h"
-#include "kgapiblogger_export.h"
+#include "kmgraphblogger_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Blogger
 {
 
-class KGAPIBLOGGER_EXPORT BlogFetchJob : public KGAPI2::FetchJob
+class KMGRAPHBLOGGER_EXPORT BlogFetchJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
 
@@ -57,6 +57,6 @@ class KGAPIBLOGGER_EXPORT BlogFetchJob : public KGAPI2::FetchJob
 };
 
 } // namespace Blogger
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 #endif // BLOGFETCHJOB_H

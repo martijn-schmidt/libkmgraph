@@ -19,6 +19,6 @@ target_link_libraries(contacts-example
         KF5::Contacts
         Qt5::Widgets
         Qt5::Core
-        KF5::GAPICore
-        KF5::GAPIContacts
+        KF5::MGraphCore
+        KF5::MGraphContacts
 )

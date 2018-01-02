@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,21 +20,21 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_DRIVECHILDREFERENCECREATEJOB_H
-#define KGAPI2_DRIVECHILDREFERENCECREATEJOB_H
+#ifndef KMGRAPH2_DRIVECHILDREFERENCECREATEJOB_H
+#define KMGRAPH2_DRIVECHILDREFERENCECREATEJOB_H
 
 #include "createjob.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
 #include <QStringList>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
 {
 
-class KGAPIDRIVE_EXPORT ChildReferenceCreateJob : public KGAPI2::CreateJob
+class KMGRAPHONEDRIVE_EXPORT ChildReferenceCreateJob : public KMGraph2::CreateJob
 {
     Q_OBJECT
 
@@ -70,6 +70,6 @@ class KGAPIDRIVE_EXPORT ChildReferenceCreateJob : public KGAPI2::CreateJob
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_DRIVECHILDREFERENCECREATEJOB_H
+#endif // KMGRAPH2_DRIVECHILDREFERENCECREATEJOB_H

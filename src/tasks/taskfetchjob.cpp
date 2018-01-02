@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -31,7 +31,7 @@
 #include <QNetworkReply>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN TaskFetchJob::Private
 {
@@ -77,7 +77,7 @@ QNetworkRequest TaskFetchJob::Private::createRequest(const QUrl& url)
     for (const QByteArray &str : qAsConst(rawHeaderList)) {
         headers << QLatin1String(str) + QLatin1String(": ") + QLatin1String(request.rawHeader(str));
     }
-    qCDebug(KGAPIRaw) << headers;
+    qCDebug(KMGraphRaw) << headers;
 
     return request;
 }
@@ -106,7 +106,7 @@ TaskFetchJob::~TaskFetchJob()
 void TaskFetchJob::setFetchOnlyUpdated(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify fetchOnlyUpdated property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify fetchOnlyUpdated property when job is running";
         return;
     }
     d->updatedTimestamp = timestamp;
@@ -120,7 +120,7 @@ quint64 TaskFetchJob::fetchOnlyUpdated()
 void TaskFetchJob::setFetchCompleted(bool fetchCompleted)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify fetchCompleted property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify fetchCompleted property when job is running";
         return;
     }
     d->fetchCompleted = fetchCompleted;
@@ -134,7 +134,7 @@ bool TaskFetchJob::fetchCompleted() const
 void TaskFetchJob::setFetchDeleted(bool fetchDeleted)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify fetchDeleted property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify fetchDeleted property when job is running";
         return;
     }
     d->fetchDeleted = fetchDeleted;
@@ -148,7 +148,7 @@ bool TaskFetchJob::fetchDeleted() const
 void TaskFetchJob::setCompletedMin(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify completedMin property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify completedMin property when job is running";
         return;
     }
     d->completedMin = timestamp;
@@ -162,7 +162,7 @@ quint64 TaskFetchJob::completedMin() const
 void TaskFetchJob::setCompletedMax(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify completedMax property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify completedMax property when job is running";
         return;
     }
     d->completedMax = timestamp;
@@ -176,7 +176,7 @@ quint64 TaskFetchJob::completedMax() const
 void TaskFetchJob::setDueMin(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify dueMin property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify dueMin property when job is running";
         return;
     }
     d->dueMin = timestamp;
@@ -190,7 +190,7 @@ quint64 TaskFetchJob::dueMin() const
 void TaskFetchJob::setDueMax(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify dueMax property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify dueMax property when job is running";
         return;
     }
     d->dueMax = timestamp;
@@ -240,14 +240,14 @@ ObjectsList TaskFetchJob::handleReplyWithItems(const QNetworkReply *reply, const
     QString itemId;
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         if (d->taskId.isEmpty()) {
             items =  TasksService::parseJSONFeed(rawData, feedData);
         } else {
             items << TasksService::JSONToTask(rawData);
         }
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return items;

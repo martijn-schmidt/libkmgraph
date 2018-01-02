@@ -25,12 +25,12 @@
 
 #include <objects/calendar.h>
 
-using namespace KGAPI;
+using namespace KMGraph;
 using namespace KCalCore;
 
 Q_DECLARE_METATYPE(KCalCore::Alarm::Type);
 Q_DECLARE_METATYPE(KCalCore::Incidence::Ptr);
-Q_DECLARE_METATYPE(KGAPI::Objects::Reminder::List);
+Q_DECLARE_METATYPE(KMGraph::Objects::Reminder::List);
 
 void ObjectsCalendarTests::testReminder_data()
 {
@@ -56,7 +56,7 @@ void ObjectsCalendarTests::testReminder_data()
 
 void ObjectsCalendarTests::testReminder()
 {
-    KGAPI::Objects::Reminder reminder;
+    KMGraph::Objects::Reminder reminder;
     KCalCore::Alarm::Ptr oAlarm;
 
     QFETCH(Alarm::Type, type);

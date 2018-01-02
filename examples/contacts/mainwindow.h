@@ -31,7 +31,7 @@ namespace Ui {
     class MainWindow;
 }
 
-namespace KGAPI2 {
+namespace KMGraph2 {
   class Job;
 }
 
@@ -56,17 +56,17 @@ class MainWindow : public QMainWindow
     /**
      * Authentication has finished
      */
-    void slotAuthJobFinished(KGAPI2::Job *job);
+    void slotAuthJobFinished(KMGraph2::Job *job);
 
     /**
      * All contacts were fetched.
      */
-    void slotFetchJobFinished(KGAPI2::Job *job);
+    void slotFetchJobFinished(KMGraph2::Job *job);
 
     /**
      * Contact details were fetched.
      */
-    void slotContactFetchJobFinished(KGAPI2::Job *job);
+    void slotContactFetchJobFinished(KMGraph2::Job *job);
 
     /**
      * Retrieves list of all contacts from user's Google Contacts
@@ -83,7 +83,7 @@ class MainWindow : public QMainWindow
   private:
     Ui::MainWindow *m_ui;
 
-    KGAPI2::AccountPtr m_account;
+    KMGraph2::AccountPtr m_account;
 
 };
 

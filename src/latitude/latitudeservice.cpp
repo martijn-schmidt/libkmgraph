@@ -25,7 +25,7 @@
 
 #include <QJsonDocument>
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 namespace LatitudeService {
 
@@ -225,4 +225,4 @@ QUrl deleteLocationUrl(const qlonglong id)
 
 } // namespace LatitudeService
 
-} // namespace KGAPI2
+} // namespace KMGraph2

@@ -24,7 +24,7 @@
 #include "objects/tasklist.h"
 #include "services/tasks.h"
 
-void ServicesTasksTests::compareTasks(const KGAPI::Objects::Task* task, const QSettings& values, bool fromSerializer)
+void ServicesTasksTests::compareTasks(const KMGraph::Objects::Task* task, const QSettings& values, bool fromSerializer)
 {
     if (!fromSerializer) {
         QCOMPARE(task->uid(), values.value("uid").toString());
@@ -40,7 +40,7 @@ void ServicesTasksTests::compareTasks(const KGAPI::Objects::Task* task, const QS
     QCOMPARE(task->relatedTo(), values.value("parent").toString());
 }
 
-void ServicesTasksTests::compareTasklists(const KGAPI::Objects::TaskList* taskList, const QSettings& values, bool fromSerializer)
+void ServicesTasksTests::compareTasklists(const KMGraph::Objects::TaskList* taskList, const QSettings& values, bool fromSerializer)
 {
     if (!fromSerializer)
         QCOMPARE(taskList->uid(), values.value("uid").toString());
@@ -49,13 +49,13 @@ void ServicesTasksTests::compareTasklists(const KGAPI::Objects::TaskList* taskLi
 
 void ServicesTasksTests::testTasksParser()
 {
-   KGAPI::Services::Tasks service;
+   KMGraph::Services::Tasks service;
 
     QSettings src("../../tests/data/tasks.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Objects::Task *task;
+        KMGraph::Objects::Task *task;
 
         src.beginGroup(group);
 
@@ -63,7 +63,7 @@ void ServicesTasksTests::testTasksParser()
         if (jsonSrc.exists()) {
             qDebug() << "Running JSON parser test" << group;
             jsonSrc.open(QIODevice::ReadOnly);
-            task = static_cast< KGAPI::Objects::Task* >(service.JSONToObject(jsonSrc.readAll()));
+            task = static_cast< KMGraph::Objects::Task* >(service.JSONToObject(jsonSrc.readAll()));
             compareTasks(task, src);
             jsonSrc.close();
             qDebug() << "Passed";
@@ -77,13 +77,13 @@ void ServicesTasksTests::testTasksParser()
 
 void ServicesTasksTests::testTasklistsParser()
 {
-   KGAPI::Services::Tasks service;
+   KMGraph::Services::Tasks service;
 
     QSettings src("../../tests/data/tasklists.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Objects::TaskList *tasklist;
+        KMGraph::Objects::TaskList *tasklist;
 
         src.beginGroup(group);
 
@@ -91,7 +91,7 @@ void ServicesTasksTests::testTasklistsParser()
         if (jsonSrc.exists()) {
             qDebug() << "Running JSON parser test" << group;
             jsonSrc.open(QIODevice::ReadOnly);
-            tasklist = static_cast< KGAPI::Objects::TaskList* >(service.JSONToObject(jsonSrc.readAll()));
+            tasklist = static_cast< KMGraph::Objects::TaskList* >(service.JSONToObject(jsonSrc.readAll()));
             compareTasklists(tasklist, src);
             jsonSrc.close();
             qDebug() << "Passed";
@@ -105,13 +105,13 @@ void ServicesTasksTests::testTasklistsParser()
 
 void ServicesTasksTests::testTasksSerializer()
 {
-    KGAPI::Services::Tasks service;
+    KMGraph::Services::Tasks service;
 
     QSettings src("../../tests/data/tasks.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Object *task;
+        KMGraph::Object *task;
 
         src.beginGroup(group);
 
@@ -122,7 +122,7 @@ void ServicesTasksTests::testTasksSerializer()
             task = service.JSONToObject(jsonSrc.readAll());
             QByteArray rawJson = service.objectToJSON(task);
             task = service.JSONToObject(rawJson);
-            compareTasks(static_cast< KGAPI::Objects::Task* >(task), src, true);
+            compareTasks(static_cast< KMGraph::Objects::Task* >(task), src, true);
             jsonSrc.close();
             qDebug() << "Passed";
         } else {
@@ -135,13 +135,13 @@ void ServicesTasksTests::testTasksSerializer()
 
 void ServicesTasksTests::testTasklistsSerializer()
 {
-    KGAPI::Services::Tasks service;
+    KMGraph::Services::Tasks service;
 
     QSettings src("../../tests/data/tasklists.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Object *task;
+        KMGraph::Object *task;
 
         src.beginGroup(group);
 
@@ -152,7 +152,7 @@ void ServicesTasksTests::testTasklistsSerializer()
             task = service.JSONToObject(jsonSrc.readAll());
             QByteArray rawJson = service.objectToJSON(task);
             task = service.JSONToObject(rawJson);
-            compareTasklists(static_cast< KGAPI::Objects::TaskList* >(task), src, true);
+            compareTasklists(static_cast< KMGraph::Objects::TaskList* >(task), src, true);
             jsonSrc.close();
             qDebug() << "Passed";
         } else {
@@ -167,26 +167,26 @@ void ServicesTasksTests::testTasklistsSerializer()
 
 void ServicesTasksTests::testUrls()
 {
-    QCOMPARE(KGAPI::Services::Tasks::fetchTaskListsUrl(),
+    QCOMPARE(KMGraph::Services::Tasks::fetchTaskListsUrl(),
              QUrl("https://www.googleapis.com/tasks/v1/users/@me/lists"));
-    QCOMPARE(KGAPI::Services::Tasks::createTaskListUrl(),
+    QCOMPARE(KMGraph::Services::Tasks::createTaskListUrl(),
              QUrl("https://www.googleapis.com/tasks/v1/users/@me/lists"));
-    QCOMPARE(KGAPI::Services::Tasks::updateTaskListUrl("1234abcd"),
+    QCOMPARE(KMGraph::Services::Tasks::updateTaskListUrl("1234abcd"),
              QUrl("https://www.googleapis.com/tasks/v1/users/@me/lists/1234abcd"));
-    QCOMPARE(KGAPI::Services::Tasks::removeTaskListUrl("1234abcd"),
+    QCOMPARE(KMGraph::Services::Tasks::removeTaskListUrl("1234abcd"),
              QUrl("https://www.googleapis.com/tasks/v1/users/@me/lists/1234abcd"));
 
-    QCOMPARE(KGAPI::Services::Tasks::fetchAllTasksUrl("1234abcd"),
+    QCOMPARE(KMGraph::Services::Tasks::fetchAllTasksUrl("1234abcd"),
              QUrl("https://www.googleapis.com/tasks/v1/lists/1234abcd/tasks"));
-    QCOMPARE(KGAPI::Services::Tasks::fetchTaskUrl("1234abcd", "5678efgh"),
+    QCOMPARE(KMGraph::Services::Tasks::fetchTaskUrl("1234abcd", "5678efgh"),
              QUrl("https://www.googleapis.com/tasks/v1/lists/1234abcd/tasks/5678efgh"));
-    QCOMPARE(KGAPI::Services::Tasks::createTaskUrl("1234abcd"),
+    QCOMPARE(KMGraph::Services::Tasks::createTaskUrl("1234abcd"),
              QUrl("https://www.googleapis.com/tasks/v1/lists/1234abcd/tasks"));
-    QCOMPARE(KGAPI::Services::Tasks::updateTaskUrl("1234abcd", "5678efgh"),
+    QCOMPARE(KMGraph::Services::Tasks::updateTaskUrl("1234abcd", "5678efgh"),
              QUrl("https://www.googleapis.com/tasks/v1/lists/1234abcd/tasks/5678efgh"));
-    QCOMPARE(KGAPI::Services::Tasks::removeTaskUrl("1234abcd", "5678efgh"),
+    QCOMPARE(KMGraph::Services::Tasks::removeTaskUrl("1234abcd", "5678efgh"),
              QUrl("https://www.googleapis.com/tasks/v1/lists/1234abcd/tasks/5678efgh"));
-    QCOMPARE(KGAPI::Services::Tasks::moveTaskUrl("1234abcd", "5678efgh", "dcba4321"),
+    QCOMPARE(KMGraph::Services::Tasks::moveTaskUrl("1234abcd", "5678efgh", "dcba4321"),
              QUrl("https://www.googleapis.com/tasks/v1/lists/1234abcd/tasks/5678efgh/move?parent=dcba4321"));
 }
 

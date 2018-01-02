@@ -24,29 +24,29 @@
 
 #include <QDateTime>
 
-#include <libkgapi/objects/contact.h>
+#include <libkmgraph/objects/contact.h>
 
-using namespace KGAPI::Objects;
+using namespace KMGraph::Objects;
 
 void ObjectsContactTests::testIMTypeConversion()
 {
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::AIM),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::AIM),
              QString("AIM"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::GoogleTalk),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::GoogleTalk),
              QString("GOOGLE_TALK"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::ICQ),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::ICQ),
              QString("ICQ"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::Jabber),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::Jabber),
              QString("JABBER"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::MSN),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::MSN),
              QString("MSN"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::Other),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::Other),
              QString("Other"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::QQ),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::QQ),
              QString("QQ"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::Skype),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::Skype),
              QString("SKYPE"));
-    QCOMPARE(Contact::IMProtocolToScheme(KGAPI::Objects::Contact::Yahoo),
+    QCOMPARE(Contact::IMProtocolToScheme(KMGraph::Objects::Contact::Yahoo),
              QString("YAHOO"));
 
     QCOMPARE(Contact::IMSchemeToProtocolName("http://schemas.google.com/g/2005#AIM"),
@@ -88,25 +88,25 @@ void ObjectsContactTests::testIMTypeConversion()
              QString("RandomProtocol"));
 
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#AIM"),
-             KGAPI::Objects::Contact::AIM);
+             KMGraph::Objects::Contact::AIM);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#GOOGLE_TALK"),
-             KGAPI::Objects::Contact::GoogleTalk);
+             KMGraph::Objects::Contact::GoogleTalk);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#ICQ"),
-             KGAPI::Objects::Contact::ICQ);
+             KMGraph::Objects::Contact::ICQ);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#XMPP"),
-             KGAPI::Objects::Contact::Jabber);
+             KMGraph::Objects::Contact::Jabber);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#JABBER"),
-             KGAPI::Objects::Contact::Jabber);
+             KMGraph::Objects::Contact::Jabber);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#MSN"),
-             KGAPI::Objects::Contact::MSN);
+             KMGraph::Objects::Contact::MSN);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#OTHER"),
-             KGAPI::Objects::Contact::Other);
+             KMGraph::Objects::Contact::Other);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#QQ"),
-             KGAPI::Objects::Contact::QQ);
+             KMGraph::Objects::Contact::QQ);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#SKYPE"),
-             KGAPI::Objects::Contact::Skype);
+             KMGraph::Objects::Contact::Skype);
     QCOMPARE(Contact::IMSchemeToProtocol("http://schemas.google.com/g/2005#YAHOO"),
-             KGAPI::Objects::Contact::Yahoo);
+             KMGraph::Objects::Contact::Yahoo);
 }
 
 void ObjectsContactTests::testAddressTypeConversion()
@@ -231,7 +231,7 @@ void ObjectsContactTests::testContact_data()
 
 void ObjectsContactTests::testContact()
 {
-    KGAPI::Objects::Contact contact;
+    KMGraph::Objects::Contact contact;
 
     QFETCH(bool, deleted);
     QFETCH(QUrl, photoUrl);

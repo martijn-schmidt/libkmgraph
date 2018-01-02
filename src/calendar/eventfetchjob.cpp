@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -31,7 +31,7 @@
 #include <QNetworkReply>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN EventFetchJob::Private
 {
@@ -73,7 +73,7 @@ QNetworkRequest EventFetchJob::Private::createRequest(const QUrl& url)
     for (const QByteArray &str : qAsConst(rawHeaderList)) {
         headers << QLatin1String(str) + QLatin1String(": ") + QLatin1String(request.rawHeader(str));
     }
-    qCDebug(KGAPIRaw) << headers;
+    qCDebug(KMGraphRaw) << headers;
 
     return request;
 }
@@ -101,7 +101,7 @@ EventFetchJob::~EventFetchJob()
 void EventFetchJob::setFetchDeleted(bool fetchDeleted)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify fetchDeleted property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify fetchDeleted property when job is running";
         return;
     }
 
@@ -116,7 +116,7 @@ bool EventFetchJob::fetchDeleted()
 void EventFetchJob::setFetchOnlyUpdated(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify setFetchOnlyUpdated property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify setFetchOnlyUpdated property when job is running";
         return;
     }
 
@@ -131,7 +131,7 @@ quint64 EventFetchJob::fetchOnlyUpdated()
 void EventFetchJob::setTimeMax(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify timeMax property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify timeMax property when job is running";
         return;
     }
 
@@ -146,7 +146,7 @@ quint64 EventFetchJob::timeMax() const
 void EventFetchJob::setTimeMin(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify timeMin property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify timeMin property when job is running";
         return;
     }
 
@@ -161,7 +161,7 @@ quint64 EventFetchJob::timeMin() const
 void EventFetchJob::setFilter(const QString &query)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify filter property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify filter property when job is running";
         return;
     }
 
@@ -206,14 +206,14 @@ ObjectsList EventFetchJob::handleReplyWithItems(const QNetworkReply *reply, cons
     ObjectsList items;
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         if (d->eventId.isEmpty()) {
             items =  CalendarService::parseEventJSONFeed(rawData, feedData);
         } else {
             items << CalendarService::JSONToEvent(rawData).dynamicCast<Object>();
         }
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return items;

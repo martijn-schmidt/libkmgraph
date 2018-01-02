@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -31,7 +31,7 @@
 #include <QNetworkReply>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN LocationFetchHistoryJob::Private
 {
@@ -87,7 +87,7 @@ int LocationFetchHistoryJob::maxResults() const
 void LocationFetchHistoryJob::setMaxResults(int results)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify maxResults property while job is running";
+        qCWarning(KMGraphDebug) << "Can't modify maxResults property while job is running";
     }
     d->maxResults = results;
 }
@@ -100,7 +100,7 @@ Latitude::Granularity LocationFetchHistoryJob::granularity() const
 void LocationFetchHistoryJob::setGranularity(Latitude::Granularity granularity)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify maxResults property while job is running";
+        qCWarning(KMGraphDebug) << "Can't modify maxResults property while job is running";
     }
     d->granularity = granularity;
 }
@@ -113,7 +113,7 @@ qlonglong LocationFetchHistoryJob::minTimestamp() const
 void LocationFetchHistoryJob::setMinTimestamp(qlonglong minTimestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify maxResults property while job is running";
+        qCWarning(KMGraphDebug) << "Can't modify maxResults property while job is running";
     }
     d->minTimestamp = minTimestamp;
 }
@@ -126,7 +126,7 @@ qlonglong LocationFetchHistoryJob::maxTimestamp() const
 void LocationFetchHistoryJob::setMaxTimestamp(qlonglong maxTimestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify maxResults property while job is running";
+        qCWarning(KMGraphDebug) << "Can't modify maxResults property while job is running";
     }
     d->maxTimestamp = maxTimestamp;
 }
@@ -145,10 +145,10 @@ ObjectsList LocationFetchHistoryJob::handleReplyWithItems(const QNetworkReply *r
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
     ObjectsList items;
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         items << LatitudeService::parseLocationJSONFeed(rawData, feedData);
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
     }

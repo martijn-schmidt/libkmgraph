@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CONTACTDELETEJOB_H
-#define LIBKGAPI2_CONTACTDELETEJOB_H
+#ifndef LIBKMGRAPH2_CONTACTDELETEJOB_H
+#define LIBKMGRAPH2_CONTACTDELETEJOB_H
 
 #include "deletejob.h"
-#include "kgapicontacts_export.h"
+#include "kmgraphcontacts_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to delete one or more contacts from addressbook in
@@ -37,7 +37,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICONTACTS_EXPORT ContactDeleteJob : public KGAPI2::DeleteJob
+class KMGRAPHCONTACTS_EXPORT ContactDeleteJob : public KMGraph2::DeleteJob
 {
     Q_OBJECT
 
@@ -95,12 +95,12 @@ class KGAPICONTACTS_EXPORT ContactDeleteJob : public KGAPI2::DeleteJob
   protected:
 
     /**
-     * @brief KGAPI::Job::start implementation
+     * @brief KMGraph::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI::Job::handleReply implementation
+     * @brief KMGraph::Job::handleReply implementation
      *
      * @param reply
      * @param rawData
@@ -115,6 +115,6 @@ class KGAPICONTACTS_EXPORT ContactDeleteJob : public KGAPI2::DeleteJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CONTACTDELETEJOB_H
+#endif // LIBKMGRAPH2_CONTACTDELETEJOB_H

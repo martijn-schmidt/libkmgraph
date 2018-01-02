@@ -23,8 +23,8 @@
 #include <QString>
 #include <QDateTime>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN FileSearchQuery::Private : public QSharedData
 {

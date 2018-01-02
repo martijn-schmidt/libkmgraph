@@ -24,8 +24,8 @@
 #include <QJsonDocument>
 
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN App::Icon::Private
 {
@@ -189,13 +189,13 @@ AppPtr App::Private::fromJSON(const QVariantMap &map)
 }
 
 App::App():
-    KGAPI2::Object(),
+    KMGraph2::Object(),
     d(new Private)
 {
 }
 
 App::App(const App &other):
-    KGAPI2::Object(other),
+    KMGraph2::Object(other),
     d(new Private(*(other.d)))
 {
 }

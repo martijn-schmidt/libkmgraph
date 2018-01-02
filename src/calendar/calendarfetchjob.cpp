@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -32,7 +32,7 @@
 #include <QNetworkReply>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN CalendarFetchJob::Private
 {
@@ -65,7 +65,7 @@ QNetworkRequest CalendarFetchJob::Private::createRequest(const QUrl& url)
     for (const QByteArray &str : qAsConst(rawHeaderList)) {
         headers << QLatin1String(str) + QLatin1String(": ") + QLatin1String(request.rawHeader(str));
     }
-    qCDebug(KGAPIRaw) << headers;
+    qCDebug(KMGraphRaw) << headers;
 
     return request;
 }
@@ -96,7 +96,7 @@ void CalendarFetchJob::start()
     } else {
         url = CalendarService::fetchCalendarUrl(d->calendarId);
     }
-    qCDebug(KGAPIRaw) << "CalendarFetchJob::url()" << CalendarService::fetchCalendarsUrl();
+    qCDebug(KMGraphRaw) << "CalendarFetchJob::url()" << CalendarService::fetchCalendarsUrl();
     const QNetworkRequest request = d->createRequest(url);
     enqueueRequest(request);
 }
@@ -109,14 +109,14 @@ ObjectsList CalendarFetchJob::handleReplyWithItems(const QNetworkReply *reply, c
     ObjectsList items;
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         if (d->calendarId.isEmpty()) {
             items =  CalendarService::parseCalendarJSONFeed(rawData, feedData);
         } else {
             items << CalendarService::JSONToCalendar(rawData);
         }
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return items;

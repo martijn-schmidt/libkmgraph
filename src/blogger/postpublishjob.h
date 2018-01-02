@@ -18,20 +18,20 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_BLOGGER_POSTPUBLISHJOB_H
-#define KGAPI2_BLOGGER_POSTPUBLISHJOB_H
+#ifndef KMGRAPH2_BLOGGER_POSTPUBLISHJOB_H
+#define KMGRAPH2_BLOGGER_POSTPUBLISHJOB_H
 
 #include "job.h"
-#include "kgapiblogger_export.h"
+#include "kmgraphblogger_export.h"
 
 #include <QDateTime>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 namespace Blogger
 {
 
-class KGAPIBLOGGER_EXPORT PostPublishJob : public KGAPI2::Job
+class KMGRAPHBLOGGER_EXPORT PostPublishJob : public KMGraph2::Job
 {
     Q_OBJECT
   public:
@@ -78,4 +78,4 @@ class KGAPIBLOGGER_EXPORT PostPublishJob : public KGAPI2::Job
 }
 }
 
-#endif // KGAPI2_BLOGGER_POSTPUBLISHJOB_H
+#endif // KMGRAPH2_BLOGGER_POSTPUBLISHJOB_H

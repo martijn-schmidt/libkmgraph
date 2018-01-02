@@ -23,8 +23,8 @@
 #include <QVariantMap>
 #include <QJsonDocument>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN ChildReference::Private
 {
@@ -65,14 +65,14 @@ ChildReferencePtr ChildReference::Private::fromJSON(const QVariantMap &map)
 }
 
 ChildReference::ChildReference(const QString &id):
-    KGAPI2::Object(),
+    KMGraph2::Object(),
     d(new Private)
 {
     d->id = id;
 }
 
 ChildReference::ChildReference(const ChildReference &other):
-    KGAPI2::Object(other),
+    KMGraph2::Object(other),
     d(new Private(*(other.d)))
 {
 }

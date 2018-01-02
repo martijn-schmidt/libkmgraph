@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -21,16 +21,16 @@
  */
 
 
-#ifndef LIBKGAPI2_CONTACTSGROUP_H
-#define LIBKGAPI2_CONTACTSGROUP_H
+#ifndef LIBKMGRAPH2_CONTACTSGROUP_H
+#define LIBKMGRAPH2_CONTACTSGROUP_H
 
 #include "object.h"
 #include "types.h"
-#include "kgapicontacts_export.h"
+#include "kmgraphcontacts_export.h"
 
 #include <QDateTime>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -45,7 +45,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 0.1
  */
-class KGAPICONTACTS_EXPORT ContactsGroup : public KGAPI2::Object
+class KMGRAPHCONTACTS_EXPORT ContactsGroup : public KMGraph2::Object
 {
   public:
 
@@ -135,6 +135,6 @@ class KGAPICONTACTS_EXPORT ContactsGroup : public KGAPI2::Object
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CONTACTSGROUP_H
+#endif // LIBKMGRAPH2_CONTACTSGROUP_H

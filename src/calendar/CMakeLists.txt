@@ -1,4 +1,4 @@
-set(kgapicalendar_SRCS
+set(kmgraphcalendar_SRCS
     calendar.cpp
     calendarcreatejob.cpp
     calendardeletejob.cpp
@@ -16,7 +16,7 @@ set(kgapicalendar_SRCS
     ../debug.cpp
 )
 
-ecm_generate_headers(kgapicalendar_CamelCase_HEADERS
+ecm_generate_headers(kmgraphcalendar_CamelCase_HEADERS
     HEADER_NAMES
     Calendar
     CalendarCreateJob
@@ -31,57 +31,57 @@ ecm_generate_headers(kgapicalendar_CamelCase_HEADERS
     EventMoveJob
     Reminder
     FreeBusyQueryJob
-    PREFIX KGAPI/Calendar
-    REQUIRED_HEADERS kgapicalendar_HEADERS
+    PREFIX KMGraph/Calendar
+    REQUIRED_HEADERS kmgraphcalendar_HEADERS
 )
 
-add_library(KPimGAPICalendar
-    ${kgapicalendar_SRCS}
+add_library(KPimMGraphCalendar
+    ${kmgraphcalendar_SRCS}
 )
 
-generate_export_header(KPimGAPICalendar BASE_NAME kgapicalendar)
+generate_export_header(KPimMGraphCalendar BASE_NAME kmgraphcalendar)
 
-add_library(KPim::GAPICalendar ALIAS KPimGAPICalendar)
+add_library(KPim::MGraphCalendar ALIAS KPimMGraphCalendar)
 # TODO: Backwards compatibility, remove in next major release
-add_library(KF5::GAPICalendar ALIAS KPimGAPICalendar)
-target_include_directories(KPimGAPICalendar INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI>")
+add_library(KF5::MGraphCalendar ALIAS KPimMGraphCalendar)
+target_include_directories(KPimMGraphCalendar INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph>")
 
-target_link_libraries(KPimGAPICalendar
+target_link_libraries(KPimMGraphCalendar
 PUBLIC
-    KPim::GAPICore
+    KPim::MGraphCore
     KF5::CalendarCore
 PRIVATE
     Qt5::Network
 )
 
-set_target_properties(KPimGAPICalendar PROPERTIES
-    VERSION ${KGAPI_VERSION_STRING}
-    SOVERSION ${KGAPI_SOVERSION}
-    EXPORT_NAME GAPICalendar
+set_target_properties(KPimMGraphCalendar PROPERTIES
+    VERSION ${KMGRAPH_VERSION_STRING}
+    SOVERSION ${KMGRAPH_SOVERSION}
+    EXPORT_NAME MGraphCalendar
 )
 
 install(TARGETS
-    KPimGAPICalendar
-    EXPORT KPimGAPITargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+    KPimMGraphCalendar
+    EXPORT KPimMGraphTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 install(FILES
-    ${kgapicalendar_CamelCase_HEADERS}
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/KGAPI/Calendar"
+    ${kmgraphcalendar_CamelCase_HEADERS}
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph/Calendar"
     COMPONENT Devel
 )
 
 install(FILES
-    ${kgapicalendar_HEADERS}
-    "${CMAKE_CURRENT_BINARY_DIR}/kgapicalendar_export.h"
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/kgapi/calendar"
+    ${kmgraphcalendar_HEADERS}
+    "${CMAKE_CURRENT_BINARY_DIR}/kmgraphcalendar_export.h"
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph/calendar"
     COMPONENT Devel
 )
 
-ecm_generate_pri_file(BASE_NAME KGAPICalendar
-    LIB_NAME KPimGAPICalendar
-    DEPS "GAPICore CalendarCore"
-    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI"
+ecm_generate_pri_file(BASE_NAME KMGraphCalendar
+    LIB_NAME KPimMGraphCalendar
+    DEPS "MGraphCore CalendarCore"
+    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph"
 )
 
 install(FILES

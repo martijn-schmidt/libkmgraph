@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,16 +20,16 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CALENDAR_H
-#define LIBKGAPI2_CALENDAR_H
+#ifndef LIBKMGRAPH2_CALENDAR_H
+#define LIBKMGRAPH2_CALENDAR_H
 
 #include "object.h"
 #include "types.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
 #include <QColor>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -38,7 +38,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 0.1
  */
-class KGAPICALENDAR_EXPORT Calendar: public KGAPI2::Object
+class KMGRAPHCALENDAR_EXPORT Calendar: public KMGraph2::Object
 {
 
   public:
@@ -186,6 +186,6 @@ class KGAPICALENDAR_EXPORT Calendar: public KGAPI2::Object
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_CALENDAR_H
+#endif // LIBKMGRAPH2_CALENDAR_H

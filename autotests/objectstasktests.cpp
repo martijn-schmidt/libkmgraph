@@ -22,7 +22,7 @@
 
 #include <objects/task.h>
 
-using namespace KGAPI;
+using namespace KMGraph;
 
 void ObjectsTaskTests::testTask_data()
 {
@@ -36,7 +36,7 @@ void ObjectsTaskTests::testTask_data()
 
 void ObjectsTaskTests::testTask()
 {
-    KGAPI::Objects::Task task;
+    KMGraph::Objects::Task task;
 
     QFETCH(bool, deleted);
 

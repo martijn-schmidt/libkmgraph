@@ -18,19 +18,19 @@
     License along with this library.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef LIBKGAPI2_DRIVE_ABOUT_H
-#define LIBKGAPI2_DRIVE_ABOUT_H
+#ifndef LIBKMGRAPH2_DRIVE_ABOUT_H
+#define LIBKMGRAPH2_DRIVE_ABOUT_H
 
 #include "types.h"
 #include "object.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
 #include <QString>
 #include <QStringList>
 #include <QSharedPointer>
 #include <QUrl>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -47,7 +47,7 @@ namespace Drive
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>
  * @author Daniel Vrátil <dvratil@redhat.com>
  */
-class KGAPIDRIVE_EXPORT About: public KGAPI2::Object
+class KMGRAPHONEDRIVE_EXPORT About: public KMGraph2::Object
 {
 
 public:
@@ -251,8 +251,8 @@ public:
      *        (Drive, Picasa, etc.).
      * @deprecated since 5.3.2, use quotaBytesUsedAggregate() instead.
      */
-#ifndef KGAPIDRIVE_NO_DEPRECATED
-    KGAPIDRIVE_DEPRECATED_EXPORT qlonglong quotaBytesUserAggregate() const;
+#ifndef KMGRAPHONEDRIVE_NO_DEPRECATED
+    KMGRAPHONEDRIVE_DEPRECATED_EXPORT qlonglong quotaBytesUserAggregate() const;
 #endif
 
     /**
@@ -336,6 +336,6 @@ public:
 
 } /* namespace Drive */
 
-} /* namespace KGAPI2 */
+} /* namespace KMGraph2 */
 
-#endif // LIBKGAPI2_DRIVE_ABOUT_H
+#endif // LIBKMGRAPH2_DRIVE_ABOUT_H

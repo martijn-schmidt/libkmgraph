@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -21,8 +21,8 @@
  */
 
 
-#ifndef LIBKGAPI2_PRIVATE_QUEUEHELPER_H
-#define LIBKGAPI2_PRIVATE_QUEUEHELPER_H
+#ifndef LIBKMGRAPH2_PRIVATE_QUEUEHELPER_H
+#define LIBKMGRAPH2_PRIVATE_QUEUEHELPER_H
 
 #include <QQueue>
 

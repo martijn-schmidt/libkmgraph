@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -31,7 +31,7 @@
 #include <QNetworkReply>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN ContactFetchJob::Private
 {
@@ -69,7 +69,7 @@ QNetworkRequest ContactFetchJob::Private::createRequest(const QUrl& url)
     for (const QByteArray &str : qAsConst(rawHeaderList)) {
         headers << QLatin1String(str) + QLatin1String(": ") + QLatin1String(request.rawHeader(str));
     }
-    qCDebug(KGAPIRaw) << headers;
+    qCDebug(KMGraphRaw) << headers;
 
     return request;
 }
@@ -100,7 +100,7 @@ bool ContactFetchJob::fetchDeleted() const
 void ContactFetchJob::setFetchDeleted(bool fetchDeleted)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify fetchDeleted property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify fetchDeleted property when job is running";
         return;
     }
 
@@ -115,7 +115,7 @@ quint64 ContactFetchJob::fetchOnlyUpdated()
 void ContactFetchJob::setFetchOnlyUpdated(quint64 timestamp)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify fetchOnlyUpdated property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify fetchOnlyUpdated property when job is running";
         return;
     }
 
@@ -130,7 +130,7 @@ QString ContactFetchJob::filter() const
 void ContactFetchJob::setFilter(const QString &query)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify filter property when job is running";
+        qCWarning(KMGraphDebug) << "Can't modify filter property when job is running";
         return;
     }
 
@@ -163,7 +163,7 @@ ObjectsList ContactFetchJob::handleReplyWithItems(const QNetworkReply *reply, co
     QString itemId;
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         if (d->contactId.isEmpty()) {
             items =  ContactsService::parseJSONFeed(rawData, feedData);
         } else {

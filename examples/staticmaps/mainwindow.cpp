@@ -22,9 +22,9 @@
 #include "mainwindow.h"
 #include "ui_main.h"
 
-#include <libkgapi2/staticmaps/staticmapurl.h>
+#include <libkmgraph2/staticmaps/staticmapurl.h>
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 MainWindow::MainWindow(QWidget * parent) :
     QMainWindow(parent),
@@ -88,11 +88,11 @@ void MainWindow::getImage()
     map.setMarkers(m_markers);
 
     StaticMapTileFetchJob *fetchJob = new StaticMapTileFetchJob(map.url(), this);
-    connect(fetchJob, SIGNAL(finished(KGAPI2::Job*)),
-            this, SLOT(slotTileFetched(KGAPI2::Job*)));
+    connect(fetchJob, SIGNAL(finished(KMGraph2::Job*)),
+            this, SLOT(slotTileFetched(KMGraph2::Job*)));
 }
 
-void MainWindow::slotTileFetched(KGAPI2::Job *job)
+void MainWindow::slotTileFetched(KMGraph2::Job *job)
 {
     StaticMapTileFetchJob *fetchJob = qobject_cast<StaticMapTileFetchJob*>(job);
     Q_ASSERT(fetchJob);

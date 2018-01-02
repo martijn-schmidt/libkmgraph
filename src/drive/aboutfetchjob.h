@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_DRIVEABOUTFETCHJOB_H
-#define KGAPI2_DRIVEABOUTFETCHJOB_H
+#ifndef KMGRAPH2_DRIVEABOUTFETCHJOB_H
+#define KMGRAPH2_DRIVEABOUTFETCHJOB_H
 
 #include "fetchjob.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
@@ -35,7 +35,7 @@ namespace Drive
 /**
  * @brief A fetch job that retrieves DriveAbout data.
  */
-class KGAPIDRIVE_EXPORT AboutFetchJob : public KGAPI2::FetchJob
+class KMGRAPHONEDRIVE_EXPORT AboutFetchJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
 
@@ -144,17 +144,17 @@ class KGAPIDRIVE_EXPORT AboutFetchJob : public KGAPI2::FetchJob
 
   protected:
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::Job::handleReply implementation
+     * @brief KMGraph2::Job::handleReply implementation
      *
      * @param reply
      * @param rawData
      */
-    KGAPI2::ObjectsList handleReplyWithItems(const QNetworkReply *reply,
+    KMGraph2::ObjectsList handleReplyWithItems(const QNetworkReply *reply,
                                                      const QByteArray &rawData) override;
 
   private:
@@ -166,6 +166,6 @@ class KGAPIDRIVE_EXPORT AboutFetchJob : public KGAPI2::FetchJob
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
 #endif // DRIVEABOUTFETCHJOB_H

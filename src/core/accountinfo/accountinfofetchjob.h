@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_ACCOUNTINFOFETCHJOB_H
-#define LIBKGAPI2_ACCOUNTINFOFETCHJOB_H
+#ifndef LIBKMGRAPH2_ACCOUNTINFOFETCHJOB_H
+#define LIBKMGRAPH2_ACCOUNTINFOFETCHJOB_H
 
 #include "fetchjob.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @brief A job to fetch AccountInfo
@@ -37,7 +37,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since: 2.0
  */
-class KGAPICORE_EXPORT AccountInfoFetchJob : public KGAPI2::FetchJob
+class KMGRAPHCORE_EXPORT AccountInfoFetchJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
 
@@ -59,12 +59,12 @@ class KGAPICORE_EXPORT AccountInfoFetchJob : public KGAPI2::FetchJob
   protected:
 
     /**
-     * @brief KGAPI2::Job::start implementation
+     * @brief KMGraph2::Job::start implementation
      */
     void start() override;
 
     /**
-     * @brief KGAPI2::FetchJob::handleReplyWithItems implementation
+     * @brief KMGraph2::FetchJob::handleReplyWithItems implementation
      *
      * @param reply
      * @param rawData
@@ -79,6 +79,6 @@ class KGAPICORE_EXPORT AccountInfoFetchJob : public KGAPI2::FetchJob
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_ACCOUNTINFOFETCHJOB_H
+#endif // LIBKMGRAPH2_ACCOUNTINFOFETCHJOB_H

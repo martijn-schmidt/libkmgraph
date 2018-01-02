@@ -7,6 +7,6 @@ SORT_MEMBER_DOCS = YES
 
 ## Predefined macros, to remove all the _EXPORT things
 ## from function definitions.
-PREDEFINED = LIBKGAPI_EXPORT="" \
+PREDEFINED = LIBKMGRAPH_EXPORT="" \
     Q_SLOTS="slots" \
     Q_SIGNALS="signals"

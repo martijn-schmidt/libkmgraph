@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,17 +20,17 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_REMINDER_H
-#define LIBKGAPI2_REMINDER_H
+#ifndef LIBKMGRAPH2_REMINDER_H
+#define LIBKMGRAPH2_REMINDER_H
 
 #include "object.h"
 #include "types.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
 #include <KCalCore/Alarm>
 #include <KCalCore/Incidence>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -39,7 +39,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 0.4
  */
-class KGAPICALENDAR_EXPORT Reminder
+class KMGRAPHCALENDAR_EXPORT Reminder
 {
   public:
 
@@ -102,6 +102,6 @@ class KGAPICALENDAR_EXPORT Reminder
     Private *const d;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_REMINDER_H
+#endif // LIBKMGRAPH2_REMINDER_H

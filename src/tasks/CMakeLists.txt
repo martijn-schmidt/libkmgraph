@@ -1,4 +1,4 @@
-set(kgapitasks_SRCS
+set(kmgraphtasks_SRCS
     task.cpp
     taskcreatejob.cpp
     taskdeletejob.cpp
@@ -15,7 +15,7 @@ set(kgapitasks_SRCS
     ../debug.cpp
 )
 
-ecm_generate_headers(kgapitasks_CamelCase_HEADERS
+ecm_generate_headers(kmgraphtasks_CamelCase_HEADERS
     HEADER_NAMES
     Task
     TaskCreateJob
@@ -28,57 +28,57 @@ ecm_generate_headers(kgapitasks_CamelCase_HEADERS
     TaskListModifyJob
     TaskModifyJob
     TaskMoveJob
-    PREFIX KGAPI/Tasks
-    REQUIRED_HEADERS kgapitasks_HEADERS
+    PREFIX KMGraph/Tasks
+    REQUIRED_HEADERS kmgraphtasks_HEADERS
 )
 
-add_library(KPimGAPITasks
-    ${kgapitasks_SRCS}
+add_library(KPimMGraphTasks
+    ${kmgraphtasks_SRCS}
 )
 
-generate_export_header(KPimGAPITasks BASE_NAME kgapitasks)
+generate_export_header(KPimMGraphTasks BASE_NAME kmgraphtasks)
 
-add_library(KPim::GAPITasks ALIAS KPimGAPITasks)
+add_library(KPim::MGraphTasks ALIAS KPimMGraphTasks)
 # TODO: Backwards compatibility, remove in next major release
-add_library(KF5::GAPITasks ALIAS KPimGAPITasks)
-target_include_directories(KPimGAPITasks INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI>")
+add_library(KF5::MGraphTasks ALIAS KPimMGraphTasks)
+target_include_directories(KPimMGraphTasks INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph>")
 
-target_link_libraries(KPimGAPITasks
+target_link_libraries(KPimMGraphTasks
 PUBLIC
-    KPim::GAPICore
+    KPim::MGraphCore
     KF5::CalendarCore
 PRIVATE
     Qt5::Network
 )
 
-set_target_properties(KPimGAPITasks PROPERTIES
-    VERSION ${KGAPI_VERSION_STRING}
-    SOVERSION ${KGAPI_SOVERSION}
-    EXPORT_NAME GAPITasks
+set_target_properties(KPimMGraphTasks PROPERTIES
+    VERSION ${KMGRAPH_VERSION_STRING}
+    SOVERSION ${KMGRAPH_SOVERSION}
+    EXPORT_NAME MGraphTasks
 )
 
 install(TARGETS
-    KPimGAPITasks
-    EXPORT KPimGAPITargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+    KPimMGraphTasks
+    EXPORT KPimMGraphTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 install(FILES
-    ${kgapitasks_CamelCase_HEADERS}
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/KGAPI/Tasks"
+    ${kmgraphtasks_CamelCase_HEADERS}
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph/Tasks"
     COMPONENT Devel
 )
 
 install(FILES
-    ${kgapitasks_HEADERS}
-    "${CMAKE_CURRENT_BINARY_DIR}/kgapitasks_export.h"
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/kgapi/tasks"
+    ${kmgraphtasks_HEADERS}
+    "${CMAKE_CURRENT_BINARY_DIR}/kmgraphtasks_export.h"
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph/tasks"
     COMPONENT Devel
 )
 
-ecm_generate_pri_file(BASE_NAME KGAPITasks
-    LIB_NAME KPimGAPITasks
-    DEPS "GAPICore CalendarCore"
-    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI"
+ecm_generate_pri_file(BASE_NAME KMGraphTasks
+    LIB_NAME KPimMGraphTasks
+    DEPS "MGraphCore CalendarCore"
+    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph"
 )
 
 install(FILES

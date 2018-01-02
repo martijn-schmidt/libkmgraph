@@ -33,11 +33,11 @@
 class IM {
   public:
       explicit IM() { }
-      IM(const QString &address, const KGAPI::Objects::Contact::IMProtocol &protocol):
+      IM(const QString &address, const KMGraph::Objects::Contact::IMProtocol &protocol):
         address(address),
         protocol(protocol) { }
       QString address;
-      KGAPI::Objects::Contact::IMProtocol protocol;
+      KMGraph::Objects::Contact::IMProtocol protocol;
 };
 
 Q_DECLARE_METATYPE(IM)
@@ -48,7 +48,7 @@ Q_DECLARE_METATYPE(KContacts::PhoneNumber)
 Q_DECLARE_METATYPE(KContacts::Address)
 
 
-void ServicesContactsTests::compareGroups(const KGAPI::Objects::ContactsGroup *group, const QSettings &src, bool fromSerializer)
+void ServicesContactsTests::compareGroups(const KMGraph::Objects::ContactsGroup *group, const QSettings &src, bool fromSerializer)
 {
     QVERIFY(group != 0);
 
@@ -63,13 +63,13 @@ void ServicesContactsTests::compareGroups(const KGAPI::Objects::ContactsGroup *g
 
 void ServicesContactsTests::testContactsGroupParsers()
 {
-    KGAPI::Services::Contacts service;
+    KMGraph::Services::Contacts service;
 
     QSettings src("../../tests/data/contacts_groups.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Objects::ContactsGroup *contactGroup;
+        KMGraph::Objects::ContactsGroup *contactGroup;
 
         src.beginGroup(group);
 
@@ -77,7 +77,7 @@ void ServicesContactsTests::testContactsGroupParsers()
         if (jsonSrc.exists()) {
             qDebug() << "Running JSON parser test" << group;
             jsonSrc.open(QIODevice::ReadOnly);
-            contactGroup = static_cast< KGAPI::Objects::ContactsGroup* >(service.JSONToObject(jsonSrc.readAll()));
+            contactGroup = static_cast< KMGraph::Objects::ContactsGroup* >(service.JSONToObject(jsonSrc.readAll()));
             compareGroups(contactGroup, src);
             qDebug() << "Passed";
         } else {
@@ -88,7 +88,7 @@ void ServicesContactsTests::testContactsGroupParsers()
         if (xmlSrc.exists()) {
             qDebug() << "Running XML parser test" << group;
             xmlSrc.open(QIODevice::ReadOnly);
-            contactGroup = static_cast< KGAPI::Objects::ContactsGroup* >(service.XMLToObject(xmlSrc.readAll()));
+            contactGroup = static_cast< KMGraph::Objects::ContactsGroup* >(service.XMLToObject(xmlSrc.readAll()));
             compareGroups(contactGroup, src);
             qDebug() << "Passed";
         } else {
@@ -100,7 +100,7 @@ void ServicesContactsTests::testContactsGroupParsers()
 }
 
 
-void ServicesContactsTests::compareContacts(const KGAPI::Objects::Contact *contact, const QSettings &src, bool fromSerializer)
+void ServicesContactsTests::compareContacts(const KMGraph::Objects::Contact *contact, const QSettings &src, bool fromSerializer)
 {
     QVERIFY(contact != 0);
 
@@ -167,13 +167,13 @@ void ServicesContactsTests::compareContacts(const KGAPI::Objects::Contact *conta
 
 void ServicesContactsTests::testContactsParsers()
 {
-    KGAPI::Services::Contacts service;
+    KMGraph::Services::Contacts service;
 
     QSettings src("../../tests/data/contacts.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Objects::Contact *contact;
+        KMGraph::Objects::Contact *contact;
 
         src.beginGroup(group);
 
@@ -181,7 +181,7 @@ void ServicesContactsTests::testContactsParsers()
         if (jsonSrc.exists()) {
             qDebug() << "Running JSON parser test" << group;
             jsonSrc.open(QIODevice::ReadOnly);
-            contact = static_cast< KGAPI::Objects::Contact* >(service.JSONToObject(jsonSrc.readAll()));
+            contact = static_cast< KMGraph::Objects::Contact* >(service.JSONToObject(jsonSrc.readAll()));
             compareContacts(contact, src);
             jsonSrc.close();
             qDebug() << "Passed";
@@ -193,7 +193,7 @@ void ServicesContactsTests::testContactsParsers()
         if (xmlSrc.exists()) {
             qDebug() << "Running XML parser test" << group;
             xmlSrc.open(QIODevice::ReadOnly);
-            contact = static_cast< KGAPI::Objects::Contact* >(service.XMLToObject(jsonSrc.readAll()));
+            contact = static_cast< KMGraph::Objects::Contact* >(service.XMLToObject(jsonSrc.readAll()));
             compareContacts(contact, src);
             xmlSrc.close();
             qDebug() << "Passed";
@@ -207,13 +207,13 @@ void ServicesContactsTests::testContactsParsers()
 
 void ServicesContactsTests::testContactsGroupSerializer()
 {
-    KGAPI::Services::Contacts service;
+    KMGraph::Services::Contacts service;
 
     QSettings src("../../tests/data/contacts_groups.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Object *contactGroup;
+        KMGraph::Object *contactGroup;
 
         src.beginGroup(group);
 
@@ -228,7 +228,7 @@ void ServicesContactsTests::testContactsGroupSerializer()
             rawXml.prepend("<entry xmlns=\"http://www.w3.org/2005/Atom\" xmlns:gContact=\"http://schemas.google.com/contact/2008\" xmlns:batch=\"http://schemas.google.com/gdata/batch\" xmlns:gd=\"http://schemas.google.com/g/2005\">");
             rawXml.append("</entry>");
             contactGroup = service.XMLToObject(rawXml);
-            compareGroups(static_cast< KGAPI::Objects::ContactsGroup* >(contactGroup), src, true);
+            compareGroups(static_cast< KMGraph::Objects::ContactsGroup* >(contactGroup), src, true);
             xmlSrc.close();
             qDebug() << "Passed";
         } else {
@@ -241,13 +241,13 @@ void ServicesContactsTests::testContactsGroupSerializer()
 
 void ServicesContactsTests::testContactsSerializer()
 {
-    KGAPI::Services::Contacts service;
+    KMGraph::Services::Contacts service;
 
     QSettings src("../../tests/data/contacts.ini", QSettings::IniFormat);
     QStringList groups = src.childGroups();
 
     Q_FOREACH (const QString &group, groups) {
-        KGAPI::Object *contact;
+        KMGraph::Object *contact;
 
         src.beginGroup(group);
 
@@ -262,7 +262,7 @@ void ServicesContactsTests::testContactsSerializer()
             rawXml.prepend("<entry xmlns=\"http://www.w3.org/2005/Atom\" xmlns:gContact=\"http://schemas.google.com/contact/2008\" xmlns:batch=\"http://schemas.google.com/gdata/batch\" xmlns:gd=\"http://schemas.google.com/g/2005\">");
             rawXml.append("</entry>");
             contact = service.XMLToObject(rawXml);
-            compareContacts(static_cast< KGAPI::Objects::Contact* >(contact), src, true);
+            compareContacts(static_cast< KMGraph::Objects::Contact* >(contact), src, true);
             xmlSrc.close();
             qDebug() << "Passed";
         } else {
@@ -275,29 +275,29 @@ void ServicesContactsTests::testContactsSerializer()
 
 void ServicesContactsTests::testUrls()
 {
-    QCOMPARE(KGAPI::Services::Contacts::fetchAllContactsUrl("xyz%40no.where", true),
+    QCOMPARE(KMGraph::Services::Contacts::fetchAllContactsUrl("xyz%40no.where", true),
              QUrl("https://www.google.com/m8/feeds/contacts/xyz%40no.where/full?alt=json&showdeleted=true"));
-    QCOMPARE(KGAPI::Services::Contacts::fetchContactUrl("xyz%40no.where", "5678efgh"),
+    QCOMPARE(KMGraph::Services::Contacts::fetchContactUrl("xyz%40no.where", "5678efgh"),
              QUrl("https://www.google.com/m8/feeds/contacts/xyz%40no.where/full/5678efgh?alt=json"));
-    QCOMPARE(KGAPI::Services::Contacts::createContactUrl("xyz%40no.where"),
+    QCOMPARE(KMGraph::Services::Contacts::createContactUrl("xyz%40no.where"),
              QUrl("https://www.google.com/m8/feeds/contacts/xyz%40no.where/full"));
-    QCOMPARE(KGAPI::Services::Contacts::updateContactUrl("xyz%40no.where", "5678efgh"),
+    QCOMPARE(KMGraph::Services::Contacts::updateContactUrl("xyz%40no.where", "5678efgh"),
              QUrl("https://www.google.com/m8/feeds/contacts/xyz%40no.where/full/5678efgh"));
-    QCOMPARE(KGAPI::Services::Contacts::removeContactUrl("xyz%40no.where", "5678efgh"),
+    QCOMPARE(KMGraph::Services::Contacts::removeContactUrl("xyz%40no.where", "5678efgh"),
              QUrl("https://www.google.com/m8/feeds/contacts/xyz%40no.where/full/5678efgh"));
 
-    QCOMPARE(KGAPI::Services::Contacts::fetchAllGroupsUrl("xyz%40no.where"),
+    QCOMPARE(KMGraph::Services::Contacts::fetchAllGroupsUrl("xyz%40no.where"),
              QUrl("https://www.google.com/m8/feeds/groups/xyz%40no.where/full?alt=json"));
-    QCOMPARE(KGAPI::Services::Contacts::fetchGroupUrl("xyz%40no.where", "1234abcd"),
+    QCOMPARE(KMGraph::Services::Contacts::fetchGroupUrl("xyz%40no.where", "1234abcd"),
              QUrl("https://www.google.com/m8/feeds/groups/xyz%40no.where/base/1234abcd?alt=json"));
-    QCOMPARE(KGAPI::Services::Contacts::createGroupUrl("xyz%40no.where"),
+    QCOMPARE(KMGraph::Services::Contacts::createGroupUrl("xyz%40no.where"),
              QUrl("https://www.google.com/m8/feeds/groups/xyz%40no.where/full"));
-    QCOMPARE(KGAPI::Services::Contacts::updateGroupUrl("xyz%40no.where", "1234abcd"),
+    QCOMPARE(KMGraph::Services::Contacts::updateGroupUrl("xyz%40no.where", "1234abcd"),
              QUrl("https://www.google.com/m8/feeds/groups/xyz%40no.where/full/1234abcd"));
-    QCOMPARE(KGAPI::Services::Contacts::removeGroupUrl("xyz%40no.where", "1234abcd"),
+    QCOMPARE(KMGraph::Services::Contacts::removeGroupUrl("xyz%40no.where", "1234abcd"),
              QUrl("https://www.google.com/m8/feeds/groups/xyz%40no.where/full/1234abcd"));
 
-    QCOMPARE(KGAPI::Services::Contacts::photoUrl("xyz%40no.where", "1234abcd"),
+    QCOMPARE(KMGraph::Services::Contacts::photoUrl("xyz%40no.where", "1234abcd"),
              QUrl("https://www.google.com/m8/feeds/photos/media/xyz%40no.where/1234abcd"));
 }
 

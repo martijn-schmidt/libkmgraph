@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -24,18 +24,18 @@
 
 #include <QDateTime>
 
-KGAPI2::ContentType Utils::stringToContentType(const QString& contentType)
+KMGraph2::ContentType Utils::stringToContentType(const QString& contentType)
 {
     if (contentType.contains(QLatin1String("application/json")) ||
         contentType.contains(QLatin1String("text/plain")) ||
         contentType.contains(QLatin1String("text/javascript"))) {
-            return KGAPI2::JSON;
+            return KMGraph2::JSON;
      } else if (contentType.contains(QLatin1String("application/atom+xml")) ||
                 contentType.contains(QLatin1String("text/xml"))) {
-            return KGAPI2::XML;
+            return KMGraph2::XML;
     }
 
-    return KGAPI2::UnknownContentType;
+    return KMGraph2::UnknownContentType;
 }
 
 QString Utils::bool2Str(bool val)

@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -38,7 +38,7 @@
 #include <KWindowSystem>
 
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN AuthJob::Private
 {
@@ -48,8 +48,8 @@ class Q_DECL_HIDDEN AuthJob::Private
     QWidget* fullAuthentication();
     void refreshTokens();
 
-    void _k_fullAuthenticationFinished(const KGAPI2::AccountPtr& account);
-    void _k_fullAuthenticationFailed(KGAPI2::Error errorCode, const QString &errorMessage);
+    void _k_fullAuthenticationFinished(const KMGraph2::AccountPtr& account);
+    void _k_fullAuthenticationFailed(KMGraph2::Error errorCode, const QString &errorMessage);
     void _k_destructDelayed();
 
     AccountPtr account;
@@ -79,9 +79,9 @@ QWidget* AuthJob::Private::fullAuthentication()
     authWidget->d->secretKey = secretKey;
 
     connect(authWidget, &AuthWidget::error,
-            q, [this](KGAPI2::Error error, const QString &str) { _k_fullAuthenticationFailed(error, str); });
+            q, [this](KMGraph2::Error error, const QString &str) { _k_fullAuthenticationFailed(error, str); });
     connect(authWidget, &AuthWidget::authenticated,
-            q, [this](const KGAPI2::AccountPtr &account) { _k_fullAuthenticationFinished(account); });
+            q, [this](const KMGraph2::AccountPtr &account) { _k_fullAuthenticationFinished(account); });
 
     authWidget->setUsername(username);
     authWidget->setPassword(password);
@@ -105,7 +105,7 @@ void AuthJob::Private::refreshTokens()
     params.addQueryItem(QStringLiteral("refresh_token"), account->refreshToken());
     params.addQueryItem(QStringLiteral("grant_type"), QStringLiteral("refresh_token"));
 
-    qCDebug(KGAPIRaw) << "Requesting token refresh: " << params.encodedQuery();
+    qCDebug(KMGraphRaw) << "Requesting token refresh: " << params.encodedQuery();
 
     q->enqueueRequest(request, params.encodedQuery());
 }
@@ -179,7 +179,7 @@ void AuthJob::handleReply(const QNetworkReply *reply, const QByteArray& rawData)
 
     QJsonDocument document = QJsonDocument::fromJson(rawData);
     if (document.isNull()) {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Failed to parse newly fetched tokens"));
         emitFinished();
         return;
@@ -226,7 +226,7 @@ void AuthJob::start()
     } else {
 
         if (d->account->accountName().isEmpty()) {
-            setError(KGAPI2::InvalidAccount);
+            setError(KMGraph2::InvalidAccount);
             setErrorString(tr("Account name is empty"));
             emitFinished();
             return;

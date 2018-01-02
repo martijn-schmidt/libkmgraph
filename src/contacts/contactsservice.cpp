@@ -31,7 +31,7 @@
 #include <QTextDocument>
 
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace ContactsService
@@ -745,7 +745,7 @@ QByteArray contactToXML(const ContactPtr& contact)
     }
 
     const QStringList groups = contact->custom(QStringLiteral("GCALENDAR"), QStringLiteral("groupMembershipInfo")).split(QLatin1Char(','));
-    qCDebug(KGAPIDebug) << groups;
+    qCDebug(KMGraphDebug) << groups;
     if ((!groups.isEmpty()) && !groups.at(0).isEmpty()) {
         for (const QString & group :groups) {
             bool removed = contact->groupIsDeleted(group);
@@ -1168,4 +1168,4 @@ ContactsGroupPtr XMLToContactsGroup(const QByteArray& xmlData)
 
 } // namespace ContactsService
 
-} // namespace KGAPI2
+} // namespace KMGraph2

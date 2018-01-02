@@ -19,17 +19,17 @@
 */
 
 
-#ifndef LIBKGAPI2_STATICMAPPATH_H
-#define LIBKGAPI2_STATICMAPPATH_H
+#ifndef LIBKMGRAPH2_STATICMAPPATH_H
+#define LIBKMGRAPH2_STATICMAPPATH_H
 
-#include "kgapimaps_export.h"
+#include "kmgraphmaps_export.h"
 
 #include <QColor>
 
 #include <KContacts/Address>
 #include <KContacts/Geo>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -39,7 +39,7 @@ namespace KGAPI2
  * @author Jan Grulich <grulja@gmail.com>
  * @since 0.4
  */
-class KGAPIMAPS_EXPORT StaticMapPath
+class KMGRAPHMAPS_EXPORT StaticMapPath
 {
   public:
 
@@ -204,6 +204,6 @@ class KGAPIMAPS_EXPORT StaticMapPath
     friend class Private;
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_STATICMAPPATH_H
+#endif // LIBKMGRAPH2_STATICMAPPATH_H

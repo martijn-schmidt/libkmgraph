@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,22 +20,22 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_DRIVEFILETRASHJOB_H
-#define KGAPI2_DRIVEFILETRASHJOB_H
+#ifndef KMGRAPH2_DRIVEFILETRASHJOB_H
+#define KMGRAPH2_DRIVEFILETRASHJOB_H
 
 #include "fileabstractmodifyjob.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
 class QNetworkAccessManager;
 class QNetworkRequest;
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
 {
 
-class KGAPIDRIVE_EXPORT FileTrashJob : public KGAPI2::Drive::FileAbstractModifyJob
+class KMGRAPHONEDRIVE_EXPORT FileTrashJob : public KMGraph2::Drive::FileAbstractModifyJob
 {
     Q_OBJECT
 
@@ -65,6 +65,6 @@ class KGAPIDRIVE_EXPORT FileTrashJob : public KGAPI2::Drive::FileAbstractModifyJ
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_DRIVEFILETRASHJOB_H
+#endif // KMGRAPH2_DRIVEFILETRASHJOB_H

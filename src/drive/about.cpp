@@ -23,8 +23,8 @@
 
 #include <QJsonDocument>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 ///// DriveAbout::Format
 
@@ -324,13 +324,13 @@ About::Private::Private(const About::Private &other):
 }
 
 About::About():
-    KGAPI2::Object(),
+    KMGraph2::Object(),
     d(new Private)
 {
 }
 
 About::About(const About &other):
-    KGAPI2::Object(other),
+    KMGraph2::Object(other),
     d(new Private(*(other.d)))
 {
 }
@@ -370,7 +370,7 @@ qlonglong About::quotaBytesUsedAggregate() const
     return d->quotaBytesUsedAggregate;
 }
 
-#ifndef KGAPIDRIVE_NO_DEPRECATED
+#ifndef KMGRAPHONEDRIVE_NO_DEPRECATED
 qlonglong About::quotaBytesUserAggregate() const
 {
     return quotaBytesUsedAggregate();

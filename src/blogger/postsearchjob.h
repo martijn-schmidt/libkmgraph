@@ -18,18 +18,18 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_BLOGGER_POSTSEARCHJOB_H
-#define KGAPI2_BLOGGER_POSTSEARCHJOB_H
+#ifndef KMGRAPH2_BLOGGER_POSTSEARCHJOB_H
+#define KMGRAPH2_BLOGGER_POSTSEARCHJOB_H
 
 #include "fetchjob.h"
-#include "kgapiblogger_export.h"
+#include "kmgraphblogger_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 namespace Blogger
 {
 
-class KGAPIBLOGGER_EXPORT PostSearchJob : public KGAPI2::FetchJob
+class KMGRAPHBLOGGER_EXPORT PostSearchJob : public KMGraph2::FetchJob
 {
     Q_OBJECT
 
@@ -58,4 +58,4 @@ class KGAPIBLOGGER_EXPORT PostSearchJob : public KGAPI2::FetchJob
 }
 }
 
-#endif // KGAPI2_BLOGGER_POSTSEARCHJOB_H
+#endif // KMGRAPH2_BLOGGER_POSTSEARCHJOB_H

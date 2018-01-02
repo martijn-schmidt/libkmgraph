@@ -18,18 +18,18 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_BLOGGER_POSTMODIFYJOB_H
-#define KGAPI2_BLOGGER_POSTMODIFYJOB_H
+#ifndef KMGRAPH2_BLOGGER_POSTMODIFYJOB_H
+#define KMGRAPH2_BLOGGER_POSTMODIFYJOB_H
 
 #include "modifyjob.h"
-#include "kgapiblogger_export.h"
+#include "kmgraphblogger_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 namespace Blogger
 {
 
-class KGAPIBLOGGER_EXPORT PostModifyJob : public KGAPI2::ModifyJob
+class KMGRAPHBLOGGER_EXPORT PostModifyJob : public KMGraph2::ModifyJob
 {
     Q_OBJECT
 
@@ -52,4 +52,4 @@ class KGAPIBLOGGER_EXPORT PostModifyJob : public KGAPI2::ModifyJob
 }
 }
 
-#endif // KGAPI2_BLOGGER_POSTMODIFYJOB_H
+#endif // KMGRAPH2_BLOGGER_POSTMODIFYJOB_H

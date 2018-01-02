@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -31,8 +31,8 @@
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 class Q_DECL_HIDDEN FileFetchJob::Private
 {
@@ -300,7 +300,7 @@ bool FileFetchJob::updateViewedDate() const
 void FileFetchJob::setUpdateViewedDate(bool updateViewedDate)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Can't modify updateViewedDate property when job is running.";
+        qCWarning(KMGraphDebug) << "Can't modify updateViewedDate property when job is running.";
         return;
     }
 
@@ -330,7 +330,7 @@ ObjectsList FileFetchJob::handleReplyWithItems(const QNetworkReply *reply,
 
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
-    if (ct == KGAPI2::JSON) {
+    if (ct == KMGraph2::JSON) {
         if (d->isFeed) {
             FeedData feedData;
 
@@ -347,7 +347,7 @@ ObjectsList FileFetchJob::handleReplyWithItems(const QNetworkReply *reply,
             d->processNext();
         }
     } else {
-        setError(KGAPI2::InvalidResponse);
+        setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
         emitFinished();
         return items;

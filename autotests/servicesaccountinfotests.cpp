@@ -70,8 +70,8 @@ void ServicesAccountInfoTests::testJSONParser_data()
 
 void ServicesAccountInfoTests::testJSONParser()
 {
-    KGAPI::Objects::AccountInfo *accInfo;
-    KGAPI::Services::AccountInfo *service;
+    KMGraph::Objects::AccountInfo *accInfo;
+    KMGraph::Services::AccountInfo *service;
 
     QFETCH(QString, id);
     QFETCH(QString, email);
@@ -87,9 +87,9 @@ void ServicesAccountInfoTests::testJSONParser()
     QFETCH(QString, photoUrl);
     QFETCH(QByteArray, jsonData);
 
-    service = new KGAPI::Services::AccountInfo();
+    service = new KMGraph::Services::AccountInfo();
 
-    accInfo = dynamic_cast< KGAPI::Objects::AccountInfo* >(service->JSONToObject(jsonData));
+    accInfo = dynamic_cast< KMGraph::Objects::AccountInfo* >(service->JSONToObject(jsonData));
 
     QCOMPARE(accInfo->id(), id);
     QCOMPARE(accInfo->email(), email);

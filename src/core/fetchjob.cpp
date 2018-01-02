@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -27,7 +27,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkRequest>
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 class Q_DECL_HIDDEN FetchJob::Private
 {
@@ -55,7 +55,7 @@ FetchJob::~FetchJob()
 ObjectsList FetchJob::items() const
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called items() on a running job, returning empty list.";
+        qCWarning(KMGraphDebug) << "Called items() on a running job, returning empty list.";
         return ObjectsList();
     }
 

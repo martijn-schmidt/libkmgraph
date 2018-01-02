@@ -27,8 +27,8 @@
 
 #include <QJsonDocument>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 ///// DriveFile::Labels
 
@@ -643,13 +643,13 @@ FilePtr File::Private::fromJSON(const QVariantMap &map)
 }
 
 File::File():
-    KGAPI2::Object(),
+    KMGraph2::Object(),
     d(new Private)
 {
 }
 
 File::File(const File& other):
-    KGAPI2::Object(other),
+    KMGraph2::Object(other),
     d(new Private(*(other.d)))
 { }
 

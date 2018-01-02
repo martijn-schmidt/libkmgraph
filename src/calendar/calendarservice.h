@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_CALENDARSERVICE_H
-#define LIBKGAPI2_CALENDARSERVICE_H
+#ifndef LIBKMGRAPH2_CALENDARSERVICE_H
+#define LIBKMGRAPH2_CALENDARSERVICE_H
 
 #include "types.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -42,14 +42,14 @@ namespace CalendarService
      *
      * @param JsonData
      */
-    KGAPICALENDAR_EXPORT CalendarPtr JSONToCalendar(const QByteArray& jsonData);
+    KMGRAPHCALENDAR_EXPORT CalendarPtr JSONToCalendar(const QByteArray& jsonData);
 
     /**
      * @brief Serializes calendar into JSON
      *
      * @param calendar
      */
-    KGAPICALENDAR_EXPORT QByteArray calendarToJSON(const CalendarPtr& calendar);
+    KMGRAPHCALENDAR_EXPORT QByteArray calendarToJSON(const CalendarPtr& calendar);
 
     /**
      * @brief Parses JSON feed into list of Calendars
@@ -58,21 +58,21 @@ namespace CalendarService
      * @param feedData The structure will be filled with additional information about
      *                 the feed, including URL for next page (if any)
      */
-    KGAPICALENDAR_EXPORT ObjectsList parseCalendarJSONFeed(const QByteArray& jsonFeed, FeedData& feedData);
+    KMGRAPHCALENDAR_EXPORT ObjectsList parseCalendarJSONFeed(const QByteArray& jsonFeed, FeedData& feedData);
 
     /**
      * @brief Parses event JSON into Event object
      *
      * @param jsonData
      */
-    KGAPICALENDAR_EXPORT EventPtr JSONToEvent(const QByteArray& jsonData);
+    KMGRAPHCALENDAR_EXPORT EventPtr JSONToEvent(const QByteArray& jsonData);
 
     /**
      * @brief Serializes Event into JSON
      *
      * @param event
      */
-    KGAPICALENDAR_EXPORT QByteArray eventToJSON(const EventPtr& event);
+    KMGRAPHCALENDAR_EXPORT QByteArray eventToJSON(const EventPtr& event);
 
     /**
      * @brief Parses JSON feed into list of Events
@@ -81,50 +81,50 @@ namespace CalendarService
      * @param feedData The structure will be filled with additional information about
      *                  the feed, including URL for next page (if any)
      */
-    KGAPICALENDAR_EXPORT ObjectsList parseEventJSONFeed(const QByteArray& jsonFeed, FeedData& feedData);
+    KMGRAPHCALENDAR_EXPORT ObjectsList parseEventJSONFeed(const QByteArray& jsonFeed, FeedData& feedData);
 
     /**
      * @brief Supported API verstion
      */
-    KGAPICALENDAR_EXPORT QString APIVersion();
+    KMGRAPHCALENDAR_EXPORT QString APIVersion();
 
     /**
      * @brief Returns URL for fetching calendars list.
      */
-    KGAPICALENDAR_EXPORT QUrl fetchCalendarsUrl();
+    KMGRAPHCALENDAR_EXPORT QUrl fetchCalendarsUrl();
 
     /**
      * @brief Returns URL for fetching single calendar.
      *
      * @param calendarID calendar ID
      */
-    KGAPICALENDAR_EXPORT QUrl fetchCalendarUrl(const QString &calendarID);
+    KMGRAPHCALENDAR_EXPORT QUrl fetchCalendarUrl(const QString &calendarID);
 
     /**
      * @brief Returns URL for updating existing calendar.
      *
      * @param calendarID ID of calendar to modify
      */
-    KGAPICALENDAR_EXPORT QUrl updateCalendarUrl(const QString &calendarID);
+    KMGRAPHCALENDAR_EXPORT QUrl updateCalendarUrl(const QString &calendarID);
 
     /**
      * @brief Returns URL for creating a new calendar.
      */
-    KGAPICALENDAR_EXPORT QUrl createCalendarUrl();
+    KMGRAPHCALENDAR_EXPORT QUrl createCalendarUrl();
 
     /**
      * @brief Returns URL for removing an existing calendar.
      *
      * @param calendarID ID of calendar to remove
      */
-    KGAPICALENDAR_EXPORT QUrl removeCalendarUrl(const QString &calendarID);
+    KMGRAPHCALENDAR_EXPORT QUrl removeCalendarUrl(const QString &calendarID);
 
     /**
      * @brief Returns URL for fetching all events from a specific calendar
      *
      * @param calendarID ID of calendar from which to fetch events
      */
-    KGAPICALENDAR_EXPORT QUrl fetchEventsUrl(const QString &calendarID);
+    KMGRAPHCALENDAR_EXPORT QUrl fetchEventsUrl(const QString &calendarID);
 
     /**
      * @brief Returns URL for fetching a single event from a specific calendar.
@@ -132,7 +132,7 @@ namespace CalendarService
      * @param calendarID ID of calendar from which to fetch the event
      * @param eventID ID of event to fetch
      */
-    KGAPICALENDAR_EXPORT QUrl fetchEventUrl(const QString &calendarID, const QString &eventID);
+    KMGRAPHCALENDAR_EXPORT QUrl fetchEventUrl(const QString &calendarID, const QString &eventID);
 
     /**
      * @brief Returns URL for updating a single event
@@ -140,14 +140,14 @@ namespace CalendarService
      * @param calendarID ID of calendar in which the event is
      * @param eventID ID of event to update
      */
-    KGAPICALENDAR_EXPORT QUrl updateEventUrl(const QString &calendarID, const QString &eventID);
+    KMGRAPHCALENDAR_EXPORT QUrl updateEventUrl(const QString &calendarID, const QString &eventID);
 
     /**
      * @brief Returns URL creating new events.
      *
      * @param calendarID ID of calendar in which to create the event
      */
-    KGAPICALENDAR_EXPORT QUrl createEventUrl(const QString &calendarID);
+    KMGRAPHCALENDAR_EXPORT QUrl createEventUrl(const QString &calendarID);
 
     /**
      * @brief Returns URL for removing events
@@ -155,7 +155,7 @@ namespace CalendarService
      * @param calendarID ID of parent calendar
      * @param eventID ID of event to remove.
      */
-    KGAPICALENDAR_EXPORT QUrl removeEventUrl(const QString &calendarID, const QString &eventID);
+    KMGRAPHCALENDAR_EXPORT QUrl removeEventUrl(const QString &calendarID, const QString &eventID);
 
     /**
      * @brief Returns URL for moving event between calendars.
@@ -164,15 +164,15 @@ namespace CalendarService
      * @param destCalendar ID of calendar to which to move the even
      * @param eventID ID of event in the \p sourceCalendar to move
      */
-    KGAPICALENDAR_EXPORT QUrl moveEventUrl(const QString &sourceCalendar, const QString &destCalendar, const QString &eventID);
+    KMGRAPHCALENDAR_EXPORT QUrl moveEventUrl(const QString &sourceCalendar, const QString &destCalendar, const QString &eventID);
 
     /**
      * @brief Returns URL for freebusy quries.
      */
-    KGAPICALENDAR_EXPORT QUrl freeBusyQueryUrl();
+    KMGRAPHCALENDAR_EXPORT QUrl freeBusyQueryUrl();
 
 } // namespace CalendarService
 
-} // namespace KGAPI
+} // namespace KMGraph
 
-#endif // LIBKGAPI2_CALENDARSERVICE_H
+#endif // LIBKMGRAPH2_CALENDARSERVICE_H

@@ -1,4 +1,4 @@
-set(kgapidrive_SRCS
+set(kmgraphdrive_SRCS
     about.cpp
     aboutfetchjob.cpp
     app.cpp
@@ -42,7 +42,7 @@ set(kgapidrive_SRCS
     ../debug.cpp
 )
 
-ecm_generate_headers(kgapidrive_CamelCase_HEADERS
+ecm_generate_headers(kmgraphdrive_CamelCase_HEADERS
     HEADER_NAMES
     About
     AboutFetchJob
@@ -82,56 +82,56 @@ ecm_generate_headers(kgapidrive_CamelCase_HEADERS
     RevisionFetchJob
     RevisionModifyJob
     User
-    PREFIX KGAPI/Drive
-    REQUIRED_HEADERS kgapidrive_HEADERS
+    PREFIX KMGraph/Drive
+    REQUIRED_HEADERS kmgraphdrive_HEADERS
 )
 
-add_library(KPimGAPIDrive
-    ${kgapidrive_SRCS}
+add_library(KPimMGraphDrive
+    ${kmgraphdrive_SRCS}
 )
 
-generate_export_header(KPimGAPIDrive BASE_NAME kgapidrive)
+generate_export_header(KPimMGraphDrive BASE_NAME kmgraphdrive)
 
-add_library(KPim::GAPIDrive ALIAS KPimGAPIDrive)
+add_library(KPim::MGraphDrive ALIAS KPimMGraphDrive)
 # TODO: Backwards compatibility, remove in next major release
-add_library(KF5::GAPIDrive ALIAS KPimGAPIDrive)
-target_include_directories(KPimGAPIDrive INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI>")
+add_library(KF5::MGraphDrive ALIAS KPimMGraphDrive)
+target_include_directories(KPimMGraphDrive INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph>")
 
-target_link_libraries(KPimGAPIDrive
+target_link_libraries(KPimMGraphDrive
 PUBLIC
-    KPim::GAPICore
+    KPim::MGraphCore
 PRIVATE
     Qt5::Network
 )
 
-set_target_properties(KPimGAPIDrive PROPERTIES
-    VERSION ${KGAPI_VERSION_STRING}
-    SOVERSION ${KGAPI_SOVERSION}
-    EXPORT_NAME GAPIDrive
+set_target_properties(KPimMGraphDrive PROPERTIES
+    VERSION ${KMGRAPH_VERSION_STRING}
+    SOVERSION ${KMGRAPH_SOVERSION}
+    EXPORT_NAME MGraphDrive
 )
 
 install(TARGETS
-    KPimGAPIDrive
-    EXPORT KPimGAPITargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
+    KPimMGraphDrive
+    EXPORT KPimMGraphTargets ${KDE_INSTALL_TARGETS_DEFAULT_ARGS}
 )
 
 install(FILES
-    ${kgapidrive_CamelCase_HEADERS}
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/KGAPI/Drive"
+    ${kmgraphdrive_CamelCase_HEADERS}
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph/Drive"
     COMPONENT Devel
 )
 
 install(FILES
-    ${kgapidrive_HEADERS}
-    "${CMAKE_CURRENT_BINARY_DIR}/kgapidrive_export.h"
-    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI/kgapi/drive"
+    ${kmgraphdrive_HEADERS}
+    "${CMAKE_CURRENT_BINARY_DIR}/kmgraphdrive_export.h"
+    DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph/drive"
     COMPONENT Devel
 )
 
-ecm_generate_pri_file(BASE_NAME KGAPIDrive
-    LIB_NAME KPimGAPIDrive
-    DEPS "GAPICore"
-    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KGAPI"
+ecm_generate_pri_file(BASE_NAME KMGraphDrive
+    LIB_NAME KPimMGraphDrive
+    DEPS "MGraphCore"
+    FILENAME_VAR PRI_FILENAME INCLUDE_INSTALL_DIR "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph"
 )
 
 install(FILES

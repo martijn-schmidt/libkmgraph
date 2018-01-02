@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -40,7 +40,7 @@
 #include <QTimeZone>
 #include <QVariant>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace CalendarService
@@ -337,7 +337,7 @@ ObjectPtr Private::JSONToEvent(const QVariantMap& data, const QString &timezone)
             if (tz.isValid()) {
                 dtStart = dtStart.toTimeZone(tz);
             } else {
-                qCWarning(KGAPIDebug) << "Invalid timezone" << startData.value(QStringLiteral("timeZone")).toString();
+                qCWarning(KMGraphDebug) << "Invalid timezone" << startData.value(QStringLiteral("timeZone")).toString();
             }
 
             // Otherwise try to fallback to calendar-wide timezone
@@ -346,7 +346,7 @@ ObjectPtr Private::JSONToEvent(const QVariantMap& data, const QString &timezone)
             if (tz.isValid()) {
                 dtStart.setTimeZone(tz);;
             } else {
-                qCWarning(KGAPIDebug) << "Invalid timezone" << timezone;
+                qCWarning(KMGraphDebug) << "Invalid timezone" << timezone;
             }
         }
     }
@@ -368,7 +368,7 @@ ObjectPtr Private::JSONToEvent(const QVariantMap& data, const QString &timezone)
             if (tz.isValid()) {
                 dtEnd = dtEnd.toTimeZone(tz);
             } else {
-                qCWarning(KGAPIDebug) << "Invalid timezone" << endData.value(QStringLiteral("timeZone")).toString();
+                qCWarning(KMGraphDebug) << "Invalid timezone" << endData.value(QStringLiteral("timeZone")).toString();
             }
         } else if (!timezone.isEmpty()) {
 
@@ -376,7 +376,7 @@ ObjectPtr Private::JSONToEvent(const QVariantMap& data, const QString &timezone)
             if (tz.isValid()) {
                 dtEnd = dtEnd.toTimeZone(tz);
             } else {
-                qCWarning(KGAPIDebug) << "Invalid timezone" << timezone;
+                qCWarning(KMGraphDebug) << "Invalid timezone" << timezone;
             }
         }
     }
@@ -1058,4 +1058,4 @@ QString Private::checkAndConverCDOTZID(const QString& tzid, const EventPtr& even
 
 } // namespace CalendarService
 
-} // namespace KGAPI2
+} // namespace KMGraph2

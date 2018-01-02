@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,21 +20,21 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef KGAPI2_DRIVEFILEDELETEJOB_H
-#define KGAPI2_DRIVEFILEDELETEJOB_H
+#ifndef KMGRAPH2_DRIVEFILEDELETEJOB_H
+#define KMGRAPH2_DRIVEFILEDELETEJOB_H
 
 #include "deletejob.h"
-#include "kgapidrive_export.h"
+#include "kmgraphdrive_export.h"
 
 #include <QStringList>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 namespace Drive
 {
 
-class KGAPIDRIVE_EXPORT FileDeleteJob : public KGAPI2::DeleteJob
+class KMGRAPHONEDRIVE_EXPORT FileDeleteJob : public KMGraph2::DeleteJob
 {
     Q_OBJECT
 
@@ -60,6 +60,6 @@ class KGAPIDRIVE_EXPORT FileDeleteJob : public KGAPI2::DeleteJob
 
 } // namespace Drive
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // KGAPI2_DRIVEFILEDELETEJOB_H
+#endif // KMGRAPH2_DRIVEFILEDELETEJOB_H

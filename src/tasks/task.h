@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,16 +20,16 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_TASK_H
-#define LIBKGAPI2_TASK_H
+#ifndef LIBKMGRAPH2_TASK_H
+#define LIBKMGRAPH2_TASK_H
 
 #include "object.h"
 #include "types.h"
-#include "kgapitasks_export.h"
+#include "kmgraphtasks_export.h"
 
 #include <KCalCore/Todo>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -38,7 +38,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 0.3
  */
-class KGAPITASKS_EXPORT Task: public KGAPI2::Object,
+class KMGRAPHTASKS_EXPORT Task: public KMGraph2::Object,
                               public KCalCore::Todo
 {
   public:
@@ -82,6 +82,6 @@ class KGAPITASKS_EXPORT Task: public KGAPI2::Object,
 
 };
 
-} // namespace KGAPI2/
+} // namespace KMGraph2/
 
-#endif // LIBKGAPI2_OBJECTS_TASK_H
+#endif // LIBKMGRAPH2_OBJECTS_TASK_H

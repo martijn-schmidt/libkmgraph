@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,13 +20,13 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_DELETEJOB_H
-#define LIBKGAPI2_DELETEJOB_H
+#ifndef LIBKMGRAPH2_DELETEJOB_H
+#define LIBKMGRAPH2_DELETEJOB_H
 
 #include "job.h"
-#include "kgapicore_export.h"
+#include "kmgraphcore_export.h"
 
-namespace KGAPI2 {
+namespace KMGraph2 {
 
 /**
  * @headerfile DeleteJob
@@ -35,7 +35,7 @@ namespace KGAPI2 {
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
  */
-class KGAPICORE_EXPORT DeleteJob : public KGAPI2::Job
+class KMGRAPHCORE_EXPORT DeleteJob : public KMGraph2::Job
 {
     Q_OBJECT
 
@@ -54,7 +54,7 @@ class KGAPICORE_EXPORT DeleteJob : public KGAPI2::Job
      * @param account Account to use to authenticate the requests send by this job
      * @param parent
      */
-    explicit DeleteJob(const KGAPI2::AccountPtr &account, QObject* parent = nullptr);
+    explicit DeleteJob(const KMGraph2::AccountPtr &account, QObject* parent = nullptr);
 
     /**
      * @brief Destructor
@@ -64,7 +64,7 @@ class KGAPICORE_EXPORT DeleteJob : public KGAPI2::Job
   protected:
 
     /**
-     * @brief KGAPI::Job::dispatchRequest immplementation
+     * @brief KMGraph::Job::dispatchRequest immplementation
      *
      * @param accessManager
      * @param request
@@ -77,7 +77,7 @@ class KGAPICORE_EXPORT DeleteJob : public KGAPI2::Job
                                  const QString& contentType) override;
 
     /**
-     * KGAPI2::Job::handleReply implementation
+     * KMGraph2::Job::handleReply implementation
      *
      * Ths implementation will automatically call start() again in order to
      * process another item in queue. Programmer should call emitFinished()
@@ -98,6 +98,6 @@ class KGAPICORE_EXPORT DeleteJob : public KGAPI2::Job
 
 };
 
-} // namespace KGAPI2
+} // namespace KMGraph2
 
-#endif // LIBKGAPI2_DELETEJOB_H
+#endif // LIBKMGRAPH2_DELETEJOB_H

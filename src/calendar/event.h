@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -20,16 +20,16 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef LIBKGAPI2_EVENT_H
-#define LIBKGAPI2_EVENT_H
+#ifndef LIBKMGRAPH2_EVENT_H
+#define LIBKMGRAPH2_EVENT_H
 
 #include "object.h"
 #include "types.h"
-#include "kgapicalendar_export.h"
+#include "kmgraphcalendar_export.h"
 
 #include <KCalCore/Event>
 
-namespace KGAPI2
+namespace KMGraph2
 {
 
 /**
@@ -38,7 +38,7 @@ namespace KGAPI2
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 0.1
  */
-class KGAPICALENDAR_EXPORT Event: public KGAPI2::Object,
+class KMGRAPHCALENDAR_EXPORT Event: public KMGraph2::Object,
                               public KCalCore::Event
 {
   public:
@@ -92,6 +92,6 @@ class KGAPICALENDAR_EXPORT Event: public KGAPI2::Object,
 
 };
 
-} // namespace KGAPI
+} // namespace KMGraph
 
-#endif // LIBKGAPI2_EVENT_H
+#endif // LIBKMGRAPH2_EVENT_H

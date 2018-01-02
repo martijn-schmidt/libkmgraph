@@ -23,8 +23,8 @@
 
 #include <QJsonDocument>
 
-using namespace KGAPI2;
-using namespace KGAPI2::Drive;
+using namespace KMGraph2;
+using namespace KMGraph2::Drive;
 
 Permission::Role Permission::Private::roleFromName(const QString &roleName)
 {
@@ -140,13 +140,13 @@ Permission::Private::Private(const Private &other):
 }
 
 Permission::Permission():
-    KGAPI2::Object(),
+    KMGraph2::Object(),
     d(new Private)
 {
 }
 
 Permission::Permission(const Permission &other):
-    KGAPI2::Object(other),
+    KMGraph2::Object(other),
     d(new Private(*(other.d)))
 { }
 

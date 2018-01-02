@@ -1,5 +1,5 @@
 /*
- * This file is part of LibKGAPI library
+ * This file is part of LibKMGraph library
  *
  * Copyright (C) 2013  Daniel Vrátil <dvratil@redhat.com>
  *
@@ -30,12 +30,12 @@
 
 #include <QJsonDocument>
 
-using namespace KGAPI2;
+using namespace KMGraph2;
 
 
 Job::Private::Private(Job *parent):
     isRunning(false),
-    error(KGAPI2::NoError),
+    error(KMGraph2::NoError),
     accessManager(nullptr),
     maxTimeout(0),
     q(parent)
@@ -101,60 +101,60 @@ void Job::Private::_k_replyReceived(QNetworkReply* reply)
         if (!reply->rawHeaderList().isEmpty()) {
             QString status = QLatin1String(reply->rawHeaderList().first());
             if (status.startsWith(QLatin1String("HTTP/1.1 401")))
-                replyCode = KGAPI2::Unauthorized;
+                replyCode = KMGraph2::Unauthorized;
         }
     }
 
     const QByteArray rawData = reply->readAll();
 
-    qCDebug(KGAPIDebug) << "Received reply from" << reply->url();
-    qCDebug(KGAPIDebug) << "Status code: " << replyCode;
-    qCDebug(KGAPIRaw) << rawData;
+    qCDebug(KMGraphDebug) << "Received reply from" << reply->url();
+    qCDebug(KMGraphDebug) << "Status code: " << replyCode;
+    qCDebug(KMGraphRaw) << rawData;
 
     switch (replyCode) {
-        case KGAPI2::NoError:
-        case KGAPI2::OK:           /** << OK status (fetched, updated, removed) */
-        case KGAPI2::Created:      /** << OK status (created) */
-        case KGAPI2::NoContent:    /** << OK status (removed task using Tasks API) */
+        case KMGraph2::NoError:
+        case KMGraph2::OK:           /** << OK status (fetched, updated, removed) */
+        case KMGraph2::Created:      /** << OK status (created) */
+        case KMGraph2::NoContent:    /** << OK status (removed task using Tasks API) */
             break;
 
-        case KGAPI2::TemporarilyMoved: {  /** << Temporarily moved - Google provides a new URL where to send the request */
-            qCDebug(KGAPIDebug) << "Google says: Temporarily moved to " << reply->header(QNetworkRequest::LocationHeader).toUrl();
+        case KMGraph2::TemporarilyMoved: {  /** << Temporarily moved - Google provides a new URL where to send the request */
+            qCDebug(KMGraphDebug) << "Google says: Temporarily moved to " << reply->header(QNetworkRequest::LocationHeader).toUrl();
             QNetworkRequest request = reply->request();
             request.setUrl(reply->header(QNetworkRequest::LocationHeader).toUrl());
             q->enqueueRequest(request);
             return;
         }
 
-        case KGAPI2::BadRequest: /** << Bad request - malformed data, API changed, something went wrong... */
-            qCWarning(KGAPIDebug) << "Bad request, Google replied '" << rawData << "'";
-            q->setError(KGAPI2::BadRequest);
+        case KMGraph2::BadRequest: /** << Bad request - malformed data, API changed, something went wrong... */
+            qCWarning(KMGraphDebug) << "Bad request, Google replied '" << rawData << "'";
+            q->setError(KMGraph2::BadRequest);
             q->setErrorString(tr("Bad request."));
             q->emitFinished();
             return;
 
-        case KGAPI2::Unauthorized: /** << Unauthorized - Access token has expired, request a new token */
-            qCWarning(KGAPIDebug) << "Unauthorized. Access token has expired or is invalid.";
-            q->setError(KGAPI2::Unauthorized);
+        case KMGraph2::Unauthorized: /** << Unauthorized - Access token has expired, request a new token */
+            qCWarning(KMGraphDebug) << "Unauthorized. Access token has expired or is invalid.";
+            q->setError(KMGraph2::Unauthorized);
             q->setErrorString(tr("Invalid authentication."));
             q->emitFinished();
             return;
 
-        case KGAPI2::Forbidden: {
-            qCWarning(KGAPIDebug) << "Requested resource is forbidden.";
-            qCDebug(KGAPIRaw) << rawData;
+        case KMGraph2::Forbidden: {
+            qCWarning(KMGraphDebug) << "Requested resource is forbidden.";
+            qCDebug(KMGraphRaw) << rawData;
             const QString msg = parseErrorMessage(rawData);
-            q->setError(KGAPI2::Forbidden);
+            q->setError(KMGraph2::Forbidden);
             q->setErrorString(tr("Requested resource is forbidden.\n\nGoogle replied '%1'").arg(msg));
             q->emitFinished();
             return;
         }
 
-        case KGAPI2::NotFound: {
-            qCWarning(KGAPIDebug) << "Requested resource does not exist";
-            qCDebug(KGAPIRaw) << rawData;
+        case KMGraph2::NotFound: {
+            qCWarning(KMGraphDebug) << "Requested resource does not exist";
+            qCDebug(KMGraphRaw) << rawData;
             const QString msg = parseErrorMessage(rawData);
-            q->setError(KGAPI2::NotFound);
+            q->setError(KMGraph2::NotFound);
             q->setErrorString(tr("Requested resource does not exist.\n\nGoogle replied '%1'").arg(msg));
             // don't emit finished() here, we can get 404 when fetching contact photos or so,
             // in that case 404 is not fatal. Let subclass decide whether to terminate or not.
@@ -166,39 +166,39 @@ void Job::Private::_k_replyReceived(QNetworkReply* reply)
             return;
         }
 
-        case KGAPI2::Conflict: {
-            qCWarning(KGAPIDebug) << "Conflict. Remote resource is newer then local.";
-            qCDebug(KGAPIRaw) << rawData;
+        case KMGraph2::Conflict: {
+            qCWarning(KMGraphDebug) << "Conflict. Remote resource is newer then local.";
+            qCDebug(KMGraphRaw) << rawData;
             const QString msg = parseErrorMessage(rawData);
-            q->setError(KGAPI2::Conflict);
+            q->setError(KMGraph2::Conflict);
             q->setErrorString(tr("Conflict. Remote resource is newer than local.\n\nGoogle replied '%1'").arg(msg));
             q->emitFinished();
             return;
         }
 
-        case KGAPI2::Gone: {
-            qCWarning(KGAPIDebug) << "Requested resource does not exist anymore.";
-            qCDebug(KGAPIRaw) << rawData;
+        case KMGraph2::Gone: {
+            qCWarning(KMGraphDebug) << "Requested resource does not exist anymore.";
+            qCDebug(KMGraphRaw) << rawData;
             const QString msg = parseErrorMessage(rawData);
-            q->setError(KGAPI2::Gone);
+            q->setError(KMGraph2::Gone);
             q->setErrorString(tr("Requested resource does not exist anymore.\n\nGoogle replied '%1'").arg(msg));
             q->emitFinished();
             return;
         }
 
-        case KGAPI2::InternalError: {
-            qCWarning(KGAPIDebug) << "Internal server error.";
-            qCDebug(KGAPIRaw) << rawData;
+        case KMGraph2::InternalError: {
+            qCWarning(KMGraphDebug) << "Internal server error.";
+            qCDebug(KMGraphRaw) << rawData;
             const QString msg = parseErrorMessage(rawData);
-            q->setError(KGAPI2::InternalError);
+            q->setError(KMGraph2::InternalError);
             q->setErrorString(tr("Internal server error. Try again later.\n\nGoogle replied '%1'").arg(msg));
             q->emitFinished();
             return;
         }
 
-        case KGAPI2::QuotaExceeded: {
-            qCWarning(KGAPIDebug) << "User quota exceeded.";
-            qCDebug(KGAPIRaw) << rawData;
+        case KMGraph2::QuotaExceeded: {
+            qCWarning(KMGraphDebug) << "User quota exceeded.";
+            qCDebug(KMGraphRaw) << rawData;
 
             // Extend the interval (if possible) and enqueue the request again
             int interval = dispatchTimer->interval() / 1000;
@@ -208,14 +208,14 @@ void Job::Private::_k_replyReceived(QNetworkReply* reply)
                 interval = 2;
             } else if ((interval > maxTimeout) && (maxTimeout > 0)) {
                 const QString msg = parseErrorMessage(rawData);
-                q->setError(KGAPI2::QuotaExceeded);
+                q->setError(KMGraph2::QuotaExceeded);
                 q->setErrorString(tr("Maximum quota exceeded. Try again later.\n\nGoogle replied '%1'").arg(msg));
                 q->emitFinished();
                 return;
             } else {
                 interval = interval ^ 2;
             }
-            qCDebug(KGAPIDebug) << "Increasing dispatch interval to" << interval * 1000 << "msecs";
+            qCDebug(KMGraphDebug) << "Increasing dispatch interval to" << interval * 1000 << "msecs";
             dispatchTimer->setInterval(interval * 1000);
 
             const QNetworkRequest request = reply->request();
@@ -227,10 +227,10 @@ void Job::Private::_k_replyReceived(QNetworkReply* reply)
         }
 
         default:{  /** Something went wrong, there's nothing we can do about it */
-            qCWarning(KGAPIDebug) << "Unknown error" << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
-            qCDebug(KGAPIRaw) << rawData;
+            qCWarning(KMGraphDebug) << "Unknown error" << reply->attribute(QNetworkRequest::HttpStatusCodeAttribute).toInt();
+            qCDebug(KMGraphRaw) << rawData;
             const QString msg = parseErrorMessage(rawData);
-            q->setError(KGAPI2::UnknownError);
+            q->setError(KMGraph2::UnknownError);
             q->setErrorString(tr("Unknown error.\n\nGoogle replied '%1'").arg(msg));
             q->emitFinished();
             return;
@@ -244,7 +244,7 @@ void Job::Private::_k_replyReceived(QNetworkReply* reply)
         return;
     }
 
-    qCDebug(KGAPIDebug) << requestQueue.length() << "requests in requestQueue.";
+    qCDebug(KMGraphDebug) << requestQueue.length() << "requests in requestQueue.";
     if (requestQueue.isEmpty()) {
         q->emitFinished();
         return;
@@ -265,8 +265,8 @@ void Job::Private::_k_dispatchTimeout()
     const Request r = requestQueue.dequeue();
     currentRequest = r;
 
-    qCDebug(KGAPIDebug) << q << "Dispatching request to" << r.request.url();
-    qCDebug(KGAPIRaw) << r.rawData;
+    qCDebug(KMGraphDebug) << q << "Dispatching request to" << r.request.url();
+    qCDebug(KMGraphRaw) << r.rawData;
 
     q->dispatchRequest(accessManager, r.request, r.rawData, r.contentType);
 
@@ -307,8 +307,8 @@ void Job::setError(Error error)
 Error Job::error() const
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called error() on running job, returning nothing";
-        return KGAPI2::NoError;
+        qCWarning(KMGraphDebug) << "Called error() on running job, returning nothing";
+        return KMGraph2::NoError;
     }
 
     return d->error;
@@ -322,7 +322,7 @@ void Job::setErrorString(const QString& errorString)
 QString Job::errorString() const
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called errorString() on running job, returning nothing";
+        qCWarning(KMGraphDebug) << "Called errorString() on running job, returning nothing";
         return QString();
     }
 
@@ -342,7 +342,7 @@ int Job::maxTimeout() const
 void Job::setMaxTimeout(int maxTimeout)
 {
     if (isRunning()) {
-        qCWarning(KGAPIDebug) << "Called setMaxTimeout() on running job. Ignoring.";
+        qCWarning(KMGraphDebug) << "Called setMaxTimeout() on running job. Ignoring.";
         return;
     }
 
@@ -357,7 +357,7 @@ AccountPtr Job::account() const
 void Job::setAccount(const AccountPtr& account)
 {
     if (d->isRunning) {
-        qCWarning(KGAPIDebug) << "Called setAccount() on running job. Ignoring.";
+        qCWarning(KMGraphDebug) << "Called setAccount() on running job. Ignoring.";
         return;
     }
 
@@ -367,7 +367,7 @@ void Job::setAccount(const AccountPtr& account)
 void Job::restart()
 {
     if (d->isRunning) {
-        qCWarning(KGAPIDebug) << "Running job cannot be restarted.";
+        qCWarning(KMGraphDebug) << "Running job cannot be restarted.";
         return;
     }
 
@@ -376,7 +376,7 @@ void Job::restart()
 
 void Job::emitFinished()
 {
-    qCDebug(KGAPIDebug);
+    qCDebug(KMGraphDebug);
     aboutToFinish();
 
     d->isRunning = false;
@@ -396,12 +396,12 @@ void Job::emitProgress(int processed, int total)
 void Job::enqueueRequest(const QNetworkRequest& request, const QByteArray& data, const QString& contentType)
 {
     if (!isRunning()) {
-        qCDebug(KGAPIDebug) << "Can't enqueue requests when job is not running.";
-        qCDebug(KGAPIDebug) << "Not enqueueing" << request.url();
+        qCDebug(KMGraphDebug) << "Can't enqueue requests when job is not running.";
+        qCDebug(KMGraphDebug) << "Not enqueueing" << request.url();
         return;
     }
 
-    qCDebug(KGAPIDebug) << "Queued" << request.url();
+    qCDebug(KMGraphDebug) << "Queued" << request.url();
 
     Request r_;
     r_.request = request;
@@ -421,7 +421,7 @@ void Job::aboutToFinish()
 
 void Job::aboutToStart()
 {
-    d->error = KGAPI2::NoError;
+    d->error = KMGraph2::NoError;
     d->errorString.clear();
     d->currentRequest.contentType.clear();
     d->currentRequest.rawData.clear();
