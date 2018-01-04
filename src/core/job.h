@@ -315,7 +315,7 @@ class KMGRAPHCORE_EXPORT Job : public QObject
      * queue. The request is automatically dispatched, and reply is handled.
      *
      * @param request Request to enqueue
-     * @param data Data to be send in body of the request
+     * @param data Data to be sent in body of the request
      * @param contentType Content type of @p data
      */
     virtual void enqueueRequest(const QNetworkRequest &request, const QByteArray &data = QByteArray(),
