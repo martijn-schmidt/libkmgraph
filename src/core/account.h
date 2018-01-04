@@ -34,10 +34,10 @@ namespace KMGraph2
 
 /**
  * @headerfile Account
- * @brief A Google account
+ * @brief A Microsoft account
  *
- * This class represents a single Google account. The account is uniquely
- * identified by Account::accountName (which is actually user's GMail address).
+ * This class represents a single Microsoft account. The account is uniquely
+ * identified by Account::accountName (which is actually the user's e-mail address).
  *
  * The class stores an access token, refresh token (to retrieve a new access token
  * when the old one expires) and list of scopes (APIs that current access token
@@ -46,7 +46,7 @@ namespace KMGraph2
  * Unlike in previous versions, account management is not handled by LibKMGraph
  * anymore and it's up to programmer to store the account in a persistent storage.
  *
- * To obtain a new account, use AuthJob.
+ * To obtain a new account, use KAccounts.
  *
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 0.1
@@ -63,7 +63,7 @@ class KMGRAPHCORE_EXPORT Account
     /**
      * @brief Constructs a new valid account
      *
-     * @param account Google account name (usually user.name@gmail.com)
+     * @param account Microsoft account name (usually user.name@subdomain.onmicrosoft.com)
      * @param accessToken Access token to \p scopes for \p account
      * @param refreshToken Refresh token
      * @param scopes List of scopes
@@ -131,6 +131,8 @@ class KMGRAPHCORE_EXPORT Account
      * automatically started and user will be prompted with a dialog to grant
      * access to all scopes.
      * 
+     * TODO: AuthJob is no longer there, either rewrite the comment or clean up.
+     * 
      * @param scopes
      */
     void setScopes(const QList< QUrl > &scopes);
@@ -182,16 +184,17 @@ private:
      * Whether scopes were changed or not.
      *
      * AuthJob reads this attribute when Account is passed to it to
-     * determine whether completely new process of authentication is needed,
+     * determine whether a completely new process of authentication is needed,
      * or whether just refreshing tokens is enough.
      *
-     * When m_scopesChanged is \p true and AuthJob successffulyperforms full
+     * When m_scopesChanged is \p true and AuthJob successfully performs full
      * re-authentication it sets this attribute to \p false and next time it
      * will just refresh existing tokens until the scopes are changed again.
+     * 
+     * TODO: AuthJob is no longer there, either rewrite the comment or clean up.
+     * 
      */
     bool m_scopesChanged; //krazy:exclude=dpointer
-
-    friend class AuthJob;
 
 };
 

@@ -325,8 +325,6 @@ class KMGRAPHCORE_EXPORT Job : public QObject
     class Private;
     Private * const d;
     friend class Private;
-
-    friend class AuthJob;
 };
 
 } // namespace KMGraph2

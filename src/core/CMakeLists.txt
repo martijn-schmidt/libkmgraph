@@ -4,10 +4,7 @@ set(kmgraphcore_SRCS
     accountinfo/accountinfo.cpp
     accountinfo/accountinfofetchjob.cpp
     private/newtokensfetchjob.cpp
-    ui/authwidget.cpp
-    ui/authwidget_p.cpp
     account.cpp
-    authjob.cpp
     createjob.cpp
     deletejob.cpp
     fetchjob.cpp
@@ -23,7 +20,6 @@ set(kmgraphcore_SRCS
 ecm_generate_headers(kmgraphcore_base_CamelCase_HEADERS
     HEADER_NAMES
     Account
-    AuthJob
     CreateJob
     DeleteJob
     FetchJob
@@ -42,13 +38,6 @@ ecm_generate_headers(kmgraphcore_accountinfo_CamelCase_HEADERS
     AccountInfoFetchJob
     REQUIRED_HEADERS kmgraphcore_accountinfo_HEADERS
     RELATIVE accountinfo
-)
-
-ecm_generate_headers(kmgraphcore_ui_CamelCase_HEADERS
-    HEADER_NAMES
-    AuthWidget
-    REQUIRED_HEADERS kmgraphcore_ui_HEADERS
-    RELATIVE ui
 )
 
 add_library(KPimMGraphCore
@@ -85,7 +74,6 @@ install(TARGETS
 install(FILES
     ${kmgraphcore_base_CamelCase_HEADERS}
     ${kmgraphcore_accountinfo_CamelCase_HEADERS}
-    ${kmgraphcore_ui_CamelCase_HEADERS}
     DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph"
     COMPONENT Devel
 )
@@ -93,7 +81,6 @@ install(FILES
 install(FILES
     ${kmgraphcore_base_HEADERS}
     ${kmgraphcore_accountinfo_HEADERS}
-    ${kmgraphcore_ui_HEADERS}
     "${CMAKE_CURRENT_BINARY_DIR}/kmgraphcore_export.h"
     DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph"
     COMPONENT Devel

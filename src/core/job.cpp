@@ -25,7 +25,6 @@
 #include "account.h"
 
 #include "../debug.h"
-#include "authjob.h"
 
 
 #include <QJsonDocument>
