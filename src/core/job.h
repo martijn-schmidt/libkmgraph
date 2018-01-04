@@ -60,8 +60,8 @@ class KMGRAPHCORE_EXPORT Job : public QObject
      * Some Google APIs have a quota on maximum amount of requests per account
      * per second. When this quota is exceeded, the Job will automatically increase
      * the interval between dispatching requests, wait for a while and then try
-     * again. If however the interval is incresed over @p maxTimeout, the job
-     * will fail and finish immediatelly. By default @p maxTimeout is @p -1, which
+     * again. If however the interval is increased over @p maxTimeout, the job
+     * will fail and finish immediately. By default @p maxTimeout is @p -1, which
      * allows the interval to be increased indefinitely.
      *
      * @see Job::maxTimeout, Job::setMaxTimeout
@@ -132,7 +132,7 @@ class KMGRAPHCORE_EXPORT Job : public QObject
      * a request that has previously failed due to exceeded quota.
      *
      * Default timeout is 1 seconds, then after every failed request the timeout
-     * is increesed exponentially until reaching @p maxTimeout.
+     * is increased exponentially until reaching @p maxTimeout.
      *
      * @param maxTimeout Maximum timeout (in seconds), or @p -1 for no timeout
      */
@@ -248,7 +248,7 @@ class KMGRAPHCORE_EXPORT Job : public QObject
     /**
      * @brief This method is invoked right before finished() is emitted
      *
-     * Sublcasses can reimplement this method to do final clean up before
+     * Subclasses can reimplement this method to do a final cleanup before
      * the Job::finished() signal is emitted.
      *
      * @note Note that after Job::finished() the job is not running anymore and
@@ -270,7 +270,7 @@ class KMGRAPHCORE_EXPORT Job : public QObject
     /**
      * @brief This method is invoked right before Job::start() is called.
      *
-     * Sublcasses should reset their internal state and call parent implementation.
+     * Subclasses should reset their internal state and call parent implementation.
      */
     virtual void aboutToStart();
 
@@ -299,7 +299,7 @@ class KMGRAPHCORE_EXPORT Job : public QObject
     /**
      * @brief Called when a reply is received.
      *
-     * Sublcasses must reimplement this method to handle reply content.
+     * Subclasses must reimplement this method to handle reply content.
      *
      * @param reply A reply received from server
      * @param rawData Raw content of the reply. Don't use QNetworkReply::readAll,
