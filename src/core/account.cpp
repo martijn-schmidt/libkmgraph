@@ -34,7 +34,6 @@ class Q_DECL_HIDDEN Account::Private
     QString accessToken;
     QString refreshToken;
     QDateTime expireDateTime;
-    QList< QUrl > scopes;
 };
 
 Account::Private::Private()
@@ -46,14 +45,12 @@ Account::Private::Private(const Private& other):
     accName(other.accName),
     accessToken(other.accessToken),
     refreshToken(other.refreshToken),
-    expireDateTime(other.expireDateTime),
-    scopes(other.scopes)
+    expireDateTime(other.expireDateTime)
 { }
 
 
 Account::Account():
-    d(new Private),
-    m_scopesChanged(false)
+    d(new Private)
 { }
 
 
@@ -69,8 +66,7 @@ Account::Account(const QString &accName, const QString &accessToken,
 }
 
 Account::Account(const Account& other):
-    d(new Private(*(other.d))),
-    m_scopesChanged(other.m_scopesChanged)
+    d(new Private(*(other.d)))
 { }
 
 
@@ -109,33 +105,6 @@ void Account::setRefreshToken(const QString &refreshToken)
     d->refreshToken = refreshToken;
 }
 
-QList< QUrl > Account::scopes() const
-{
-    return d->scopes;
-}
-
-void Account::setScopes(const QList< QUrl > &scopes)
-{
-    d->scopes = scopes;
-    m_scopesChanged = true;
-}
-
-void Account::addScope(const QUrl &scope)
-{
-    if (!d->scopes.contains(scope)) {
-        d->scopes.append(scope);
-        m_scopesChanged = true;
-    }
-}
-
-void Account::removeScope(const QUrl &scope)
-{
-    if (d->scopes.contains(scope)) {
-        d->scopes.removeOne(scope);
-        m_scopesChanged = true;
-    }
-}
-
 QDateTime Account::expireDateTime() const
 {
     return d->expireDateTime;
@@ -144,14 +113,4 @@ QDateTime Account::expireDateTime() const
 void Account::setExpireDateTime(const QDateTime &expire)
 {
     d->expireDateTime = expire;
-}
-
-QUrl Account::accountInfoScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/userinfo.profile"));
-}
-
-QUrl Account::accountInfoEmailScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/userinfo.email"));
 }
