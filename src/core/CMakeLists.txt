@@ -1,8 +1,6 @@
 ecm_create_qm_loader(QM_LOADER libkmgraph_qt)
 
 set(kmgraphcore_SRCS
-    accountinfo/accountinfo.cpp
-    accountinfo/accountinfofetchjob.cpp
     createjob.cpp
     deletejob.cpp
     fetchjob.cpp
@@ -27,14 +25,6 @@ ecm_generate_headers(kmgraphcore_base_CamelCase_HEADERS
     Utils
     PREFIX KMGraph
     REQUIRED_HEADERS kmgraphcore_base_HEADERS
-)
-
-ecm_generate_headers(kmgraphcore_accountinfo_CamelCase_HEADERS
-    HEADER_NAMES
-    AccountInfo
-    AccountInfoFetchJob
-    REQUIRED_HEADERS kmgraphcore_accountinfo_HEADERS
-    RELATIVE accountinfo
 )
 
 add_library(KPimMGraphCore
@@ -71,14 +61,12 @@ install(TARGETS
 
 install(FILES
     ${kmgraphcore_base_CamelCase_HEADERS}
-    ${kmgraphcore_accountinfo_CamelCase_HEADERS}
     DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/KMGraph"
     COMPONENT Devel
 )
 
 install(FILES
     ${kmgraphcore_base_HEADERS}
-    ${kmgraphcore_accountinfo_HEADERS}
     "${CMAKE_CURRENT_BINARY_DIR}/kmgraphcore_export.h"
     DESTINATION "${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph"
     COMPONENT Devel

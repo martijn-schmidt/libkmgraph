@@ -26,9 +26,4 @@ macro(add_libkmgraph2_test _module _testname)
                           KPimMGraphOneDrive)
 endmacro(add_libkmgraph2_test)
 
-#LIBKMGRAPH_TESTS(
-#    objectsaccountinfotests
-#    servicesaccountinfotests
-#)
-
 add_libkmgraph2_test(onedrive filesearchquerytest)
