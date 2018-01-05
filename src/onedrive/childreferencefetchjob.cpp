@@ -21,6 +21,7 @@
  */
 
 #include "childreferencefetchjob.h"
+#include "account.h"
 #include "childreference.h"
 #include "onedriveservice.h"
 #include "utils.h"

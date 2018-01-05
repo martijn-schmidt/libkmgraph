@@ -21,6 +21,7 @@
  */
 
 #include "parentreferencecreatejob.h"
+#include "account.h"
 #include "onedriveservice.h"
 #include "parentreference.h"
 #include "utils.h"

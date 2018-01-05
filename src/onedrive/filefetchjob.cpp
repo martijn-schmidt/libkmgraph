@@ -22,6 +22,7 @@
 
 #include "filefetchjob.h"
 #include "filesearchquery.h"
+#include "account.h"
 #include "../debug.h"
 #include "onedriveservice.h"
 #include "file.h"

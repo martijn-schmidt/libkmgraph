@@ -21,6 +21,7 @@
  */
 
 #include "revisionmodifyjob.h"
+#include "account.h"
 #include "onedriveservice.h"
 #include "revision.h"
 #include "utils.h"

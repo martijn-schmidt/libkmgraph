@@ -21,6 +21,7 @@
  */
 
 #include "fileabstractmodifyjob.h"
+#include "account.h"
 #include "onedriveservice.h"
 #include "file.h"
 #include "utils.h"
