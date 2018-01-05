@@ -3,8 +3,6 @@ ecm_create_qm_loader(QM_LOADER libkmgraph_qt)
 set(kmgraphcore_SRCS
     accountinfo/accountinfo.cpp
     accountinfo/accountinfofetchjob.cpp
-    private/newtokensfetchjob.cpp
-    account.cpp
     createjob.cpp
     deletejob.cpp
     fetchjob.cpp
@@ -19,7 +17,6 @@ set(kmgraphcore_SRCS
 
 ecm_generate_headers(kmgraphcore_base_CamelCase_HEADERS
     HEADER_NAMES
-    Account
     CreateJob
     DeleteJob
     FetchJob
@@ -51,6 +48,7 @@ add_library(KPim::MGraphCore ALIAS KPimMGraphCore)
 add_library(KF5::MGraphCore ALIAS KPimMGraphCore)
 target_include_directories(KPimMGraphCore INTERFACE "$<INSTALL_INTERFACE:${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph;${KDE_INSTALL_INCLUDEDIR}/KPim/KMGraph/kmgraph>")
 
+# TODO: Can the following section be removed now that we no longer do authentication (account.cpp + account.h) in LibKMGraph? Then also clean up stale Qt5 dependencies!
 target_link_libraries(KPimMGraphCore
 PRIVATE
     KF5::KIOWidgets
