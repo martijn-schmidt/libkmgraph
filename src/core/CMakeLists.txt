@@ -1,6 +1,7 @@
 ecm_create_qm_loader(QM_LOADER libkmgraph_qt)
 
 set(kmgraphcore_SRCS
+    account.cpp
     createjob.cpp
     deletejob.cpp
     fetchjob.cpp
@@ -15,6 +16,7 @@ set(kmgraphcore_SRCS
 
 ecm_generate_headers(kmgraphcore_base_CamelCase_HEADERS
     HEADER_NAMES
+    Account
     CreateJob
     DeleteJob
     FetchJob

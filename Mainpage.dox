@@ -31,9 +31,10 @@ Microsoft, it automatically parses the response and through replyReceived() sign
 KMGraph::Reply with already parsed data to user.
 
 <h2>Authentication</h2>
-Authentication has mostly been handed over to the 3rd party application which uses LibKMGraph.
-It is suggested that the 3rd party application in turn relies on KAccounts to perform all
-OAuth2-related tasks such as username, password, scope and token management.
+Authentication is handled by KMGraph::Account, but this task has been handed over to the 3rd party
+application which uses LibKMGraph for the majority of the work. It is suggested that the 3rd party
+application in turn relies on KAccounts to perform all OAuth2-related tasks such as username,
+password, scope and token management.
 
 @authors
 Dan Vratil \<dan@progdan.cz\>

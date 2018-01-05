@@ -127,6 +127,7 @@ enum Error {
     UnknownService = 4,      ///< LibKMGraph error - application requested unknown service.
     InvalidResponse = 5,     ///< LibKMGraph error - Google returned invalid response.
     BackendNotReady = 6,     ///< @deprecated LibKMGraph error - backend is not ready (for example KWallet is not opened).
+    InvalidAccount = 7,      ///< LibKMGraph error - the KMGraph2::Account object is invalid.
     NetworkError = 8,        ///< LibKMGraph error - standard network request returned other code then 200.
     AuthCancelled = 9,       ///< LibKMGraph error - when authentication dialog is canceled
 
@@ -137,7 +138,7 @@ enum Error {
     TemporarilyMoved = 302,  ///< The object is located on a different URL provided in reply.
     NotModified = 304,       ///< Request was successful, but no data were updated.
     BadRequest = 400,        ///< Invalid (malformed) request.
-    Unauthorized = 401,      ///< Invalid or expired token. TODO: which function takes care of token refresh in KAccounts?
+    Unauthorized = 401,      ///< Invalid or expired token. See KMGraph2::Account::refreshTokens(). TODO: which function takes care of token refresh in KAccounts?
     Forbidden = 403,         ///< The requested data are not accessible to this account
     NotFound = 404,          ///< Requested object was not found on the remote side
     Conflict = 409,          ///< Object on the remote site differs from the submitted one. @see KMGraph2::Object::setEtag.
