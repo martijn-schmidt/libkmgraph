@@ -38,7 +38,7 @@ class KMGRAPHONEDRIVE_EXPORT FileAbstractDataJob : public KMGraph2::Job
     Q_OBJECT
 
     /**
-     * Whether to convert this file to the corresponding Google Docs format.
+     * Whether to convert this file to the corresponding Microsoft Office format.
      *
      * Default value is false.
      *

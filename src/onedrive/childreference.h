@@ -37,8 +37,8 @@ namespace OneDrive
 /**
  * @brief ChildReference contains a reference to a folder's child.
  *
- * Getters and setters' documentation is based on Google OneDrive's API v2 reference
- * @see <a href="https://developers.google.com/drive/v2/reference/children">Children</a>
+ * Getters and setters' documentation is based on Microsoft OneDrive's Graph API v1.0
+ * @see <a href="https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/driveitem_list_children">DriveItem List children</a>
  *
  * @since 2.0
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>

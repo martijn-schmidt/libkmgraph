@@ -35,7 +35,7 @@ namespace OneDrive
  * FileSearchQuery class allows simply building even complex file search queries
  * for FileFetchJob.
  *
- * See https://developers.google.com/drive/web/search-parameters for allowed
+ * See https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/driveitem_search for allowed
  * combinations of fields, compare operators, and value types.
  *
  * @since 2.3

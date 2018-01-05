@@ -125,13 +125,13 @@ enum Error {
     AuthError = 2,           ///< LibKMGraph error - authentication process failed.
     UnknownAccount = 3,      ///< LibKMGraph error - application requested unknown account.
     UnknownService = 4,      ///< LibKMGraph error - application requested unknown service.
-    InvalidResponse = 5,     ///< LibKMGraph error - Google returned invalid response.
+    InvalidResponse = 5,     ///< LibKMGraph error - Microsoft Graph returned invalid response.
     BackendNotReady = 6,     ///< @deprecated LibKMGraph error - backend is not ready (for example KWallet is not opened).
     InvalidAccount = 7,      ///< LibKMGraph error - the KMGraph2::Account object is invalid.
     NetworkError = 8,        ///< LibKMGraph error - standard network request returned other code then 200.
     AuthCancelled = 9,       ///< LibKMGraph error - when authentication dialog is canceled
 
-    /* Following error codes identify Google errors */
+    /* Following error codes identify Microsoft Graph errors */
     OK = 200,                ///< Request successfully executed.
     Created = 201,           ///< Create request successfully executed.
     NoContent = 204,         ///< OneDrive API returns 204 when file is successfully removed.
@@ -143,7 +143,7 @@ enum Error {
     NotFound = 404,          ///< Requested object was not found on the remote side
     Conflict = 409,          ///< Object on the remote site differs from the submitted one. @see KMGraph2::Object::setEtag.
     Gone = 410,              ///< The requested does not exist anymore on the remote site
-    InternalError = 500,     ///< An unexpected error on the Google service occurred
+    InternalError = 500,     ///< An unexpected error on the Microsoft Graph service occurred
     QuotaExceeded = 503      ///< User quota has been exceeded, the request should be send again later.
 };
 

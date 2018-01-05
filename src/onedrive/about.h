@@ -38,10 +38,10 @@ namespace OneDrive
 
 /**
  * @brief OneDriveAbout contains information about the current user along with
- *        Google OneDrive API settings.
+ *        Microsoft Graph OneDrive API settings.
  *
- * Getters and setters' documentation is based on Google OneDrive's API v2 reference
- * @see <a href="https://developers.google.com/drive/v2/reference/about">About</a>
+ * Getters and setters' documentation is based on Microsoft OneDrive's Graph API v1.0
+ * @see <a href="https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/api/drive_get">About</a>
  *
  * @since 2.0
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>
@@ -240,15 +240,15 @@ public:
     qlonglong quotaBytesUsedInTrash() const;
 
     /**
-     * @brief returns the total number of quota bytes used by all Google apps
-     *        (OneDrive, Picasa, etc.).
+     * @brief returns the total number of quota bytes used by all Microsoft apps
+     *        (OneDrive, etc.).
      * @since 5.3.2
      */
     qlonglong quotaBytesUsedAggregate() const;
 
     /**
-     * @brief returns the total number of quota bytes used by all Google apps
-     *        (OneDrive, Picasa, etc.).
+     * @brief returns the total number of quota bytes used by all Microsoft apps
+     *        (OneDrive, etc.).
      * @deprecated since 5.3.2, use quotaBytesUsedAggregate() instead.
      */
 #ifndef KMGRAPHONEDRIVE_NO_DEPRECATED

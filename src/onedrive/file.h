@@ -41,8 +41,8 @@ namespace OneDrive
 
 /**
  * @brief File contains metadata for a file.
- * Getters and setters' documentation is based on Google OneDrive's API v2 reference
- * @see <a href="https://developers.google.com/drive/v2/reference/files">Files</a>
+ * Getters and setters' documentation is based on Microsoft OneDrive's Graph API v1.0
+ * @see <a href="https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/driveitem">DriveItems</a>
  *
  * @since 2.0
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>
@@ -454,7 +454,7 @@ class KMGRAPHONEDRIVE_EXPORT File: public KMGraph2::Object
 
     /**
      * @brief Returns a link for opening the file in using a relevant
-     *        Google editor or viewer.
+     *        Microsoft editor or viewer.
      */
     QUrl alternateLink() const;
 
@@ -489,7 +489,7 @@ class KMGRAPHONEDRIVE_EXPORT File: public KMGraph2::Object
     void setParents(const ParentReferencesList &parents);
 
     /**
-     * @brief Returns the links for exporting Google Docs to specific formats.
+     * @brief Returns the links for exporting Microsoft documents to specific formats.
      *
      * This is a map from the export format to URL.
      */
