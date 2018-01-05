@@ -127,11 +127,9 @@ class KMGRAPHCORE_EXPORT Account
      * \brief Sets new scopes.
      *
      * @note Note that changing scopes requires makes current tokens invalid.
-     * This means that when this Account is used next time, AuthJob will be
+     * This means that when this Account is used next time, KAccounts will be
      * automatically started and user will be prompted with a dialog to grant
      * access to all scopes.
-     * 
-     * TODO: AuthJob is no longer there, either rewrite the comment or clean up.
      * 
      * @param scopes
      */
@@ -165,16 +163,6 @@ class KMGRAPHCORE_EXPORT Account
      */
     void setExpireDateTime(const QDateTime &expire);
 
-    /**
-     * Returns scope URL for AccountInfo service.
-     */
-    static QUrl accountInfoScopeUrl();
-
-    /**
-     * Returns scope URL to retrieve AccountInfo with email.
-     */
-    static QUrl accountInfoEmailScopeUrl();
-
 private:
     class Private;
     Private * const d;
@@ -183,15 +171,14 @@ private:
      * @internal
      * Whether scopes were changed or not.
      *
-     * AuthJob reads this attribute when Account is passed to it to
+     * KAccounts reads this attribute when Account is passed to it to
      * determine whether a completely new process of authentication is needed,
      * or whether just refreshing tokens is enough.
      *
-     * When m_scopesChanged is \p true and AuthJob successfully performs full
+     * When m_scopesChanged is \p true and KAccounts successfully performs full
      * re-authentication it sets this attribute to \p false and next time it
      * will just refresh existing tokens until the scopes are changed again.
      * 
-     * TODO: AuthJob is no longer there, either rewrite the comment or clean up.
      * 
      */
     bool m_scopesChanged; //krazy:exclude=dpointer

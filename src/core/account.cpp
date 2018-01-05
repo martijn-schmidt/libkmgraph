@@ -145,13 +145,3 @@ void Account::setExpireDateTime(const QDateTime &expire)
 {
     d->expireDateTime = expire;
 }
-
-QUrl Account::accountInfoScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/userinfo.profile"));
-}
-
-QUrl Account::accountInfoEmailScopeUrl()
-{
-    return QUrl(QStringLiteral("https://www.googleapis.com/auth/userinfo.email"));
-}
