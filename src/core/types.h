@@ -60,6 +60,10 @@ class Object;
 typedef QSharedPointer<Object> ObjectPtr;
 typedef QList<ObjectPtr> ObjectsList;
 
+class Account;
+typedef QSharedPointer<Account> AccountPtr;
+typedef QList<AccountPtr> AccountsList;
+
 namespace OneDrive
 {
 
