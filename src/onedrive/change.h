@@ -32,7 +32,7 @@ namespace KMGraph2
 {
 
 namespace OneDrive
-{w
+{
 
 /**
  * @brief Change contains the representation of a change to a file
