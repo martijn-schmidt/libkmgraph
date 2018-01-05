@@ -22,7 +22,6 @@
 
 #include "aboutfetchjob.h"
 #include "about.h"
-#include "account.h"
 #include "../debug.h"
 #include "onedriveservice.h"
 #include "utils.h"

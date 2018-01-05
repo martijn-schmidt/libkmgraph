@@ -21,7 +21,6 @@
  */
 
 #include "filedeletejob.h"
-#include "account.h"
 #include "onedriveservice.h"
 #include "file.h"
 

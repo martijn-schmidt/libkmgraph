@@ -21,7 +21,6 @@
  */
 
 #include "permissioncreatejob.h"
-#include "account.h"
 #include "onedriveservice.h"
 #include "permission.h"
 #include "utils.h"

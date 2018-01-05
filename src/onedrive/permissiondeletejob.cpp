@@ -23,7 +23,6 @@
 
 #include "permissiondeletejob.h"
 #include "permission.h"
-#include "account.h"
 #include "onedriveservice.h"
 
 #include <QNetworkRequest>

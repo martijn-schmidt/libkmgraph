@@ -21,7 +21,6 @@
  */
 
 #include "accountinfofetchjob.h"
-#include "account.h"
 #include "accountinfo.h"
 #include "../debug.h"
 #include "utils.h"

@@ -20,7 +20,6 @@
  * License along with this library.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "filecopyjob.h"
-#include "account.h"
 #include "onedriveservice.h"
 #include "file.h"
 #include "utils.h"

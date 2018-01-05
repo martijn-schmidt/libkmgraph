@@ -21,7 +21,6 @@
  */
 
 #include "childreferencedeletejob.h"
-#include "account.h"
 #include "childreference.h"
 #include "onedriveservice.h"
 
