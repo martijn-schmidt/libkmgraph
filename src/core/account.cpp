@@ -55,14 +55,12 @@ Account::Account():
 
 
 Account::Account(const QString &accName, const QString &accessToken,
-                 const QString &refreshToken, const QList< QUrl > &scopes):
-    d(new Private),
-    m_scopesChanged(false)
+                 const QString &refreshToken:
+    d(new Private)
 {
     d->accName = accName;
     d->accessToken = accessToken;
     d->refreshToken = refreshToken;
-    d->scopes = scopes;
 }
 
 Account::Account(const Account& other):
