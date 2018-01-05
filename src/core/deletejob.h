@@ -30,7 +30,7 @@ namespace KMGraph2 {
 
 /**
  * @headerfile DeleteJob
- * @brief Abstract superclass for all jobs that delete resources from Google
+ * @brief Abstract superclass for all jobs that delete resources from Microsoft Graph
  *
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
@@ -51,7 +51,7 @@ class KMGRAPHCORE_EXPORT DeleteJob : public KMGraph2::Job
     /**
      * @brief Constructor for jobs that require authentication
      *
-     * @param account Account to use to authenticate the requests send by this job
+     * @param account Account to use to authenticate the requests sent by this job
      * @param parent
      */
     explicit DeleteJob(const KMGraph2::AccountPtr &account, QObject* parent = nullptr);

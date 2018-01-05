@@ -30,7 +30,7 @@ namespace KMGraph2 {
 
 /**
  * @headerfile CreateJob
- * @brief Abstract superclass for all jobs that create a new objects on the
+ * @brief Abstract superclass for all jobs that create new objects on the
  *        server.
  *
  * @author Daniel Vrátil <dvratil@redhat.com>
@@ -106,7 +106,7 @@ class KMGRAPHCORE_EXPORT CreateJob: public KMGraph2::Job
      * usually requires reimplementing FetchJob::items as well and storing the
      * parsed items in your implementation.
      *
-     * @param reply A QNetworkReply received from Google server
+     * @param reply A QNetworkReply received from the Microsoft Graph server
      * @param rawData Content of body of the @p reply. Don't use
      *        QNetworkReply::readAll(), because the content has already been read
      *        by Job implementation and thus it would return empty data.

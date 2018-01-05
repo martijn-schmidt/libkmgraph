@@ -35,9 +35,9 @@ namespace KMGraph2
 /**
  * @brief Base class for all objects
  *
- * There are many container classes to represent data fetched from Google servers,
- * like KMGraph2::OneDrive, etc. All these container classes must be subclasses of
- * KMGraph2::Object.
+ * There are many container classes to represent data fetched from the Microsoft
+ * Graph servers, like KMGraph2::OneDrive, etc. All these container classes must
+ * be subclasses of the KMGraph2::Object.
  *
  * @author Daniel Vrátil <dvratil@redhat.com>
  * @since 2.0
@@ -61,17 +61,17 @@ class KMGRAPHCORE_EXPORT Object
     virtual ~Object();
 
     /**
-     * @brief Sets etag of this object.
+     * @brief Sets the etag of this object.
      *
-     * Etag represents a revision of an object When object is changed on the 
-     * remote side is given a new etag.
+     * Etag represents a revision of an object. When the object is changed
+     * on the remote side it is given a new etag.
      *
      * @param etag
      */
     void setEtag(const QString &etag);
 
     /**
-     * @brief Returns etag of this object.
+     * @brief Returns the etag of this object.
      *
      * @return Etag string
      */
