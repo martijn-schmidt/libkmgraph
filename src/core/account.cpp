@@ -55,7 +55,7 @@ Account::Account():
 
 
 Account::Account(const QString &accName, const QString &accessToken,
-                 const QString &refreshToken):
+                 const QString &refreshToken:
     d(new Private)
 {
     d->accName = accName;
