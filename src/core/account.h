@@ -39,8 +39,8 @@ namespace KMGraph2
  * This class represents a single Microsoft account. The account is uniquely
  * identified by Account::accountName (which is actually the user's e-mail address).
  *
- * The class stores an access token, refresh token (to retrieve a new access token
- * when the old one expires) and list of scopes (APIs that current access token
+ * The class stores an access token, a refresh token (to retrieve a new access token
+ * when the old one expires) and a list of scopes (APIs that the current access token
  * can be used to access).
  *
  * Unlike in previous versions, account management is not handled by LibKMGraph
@@ -124,32 +124,12 @@ class KMGRAPHCORE_EXPORT Account
     QList< QUrl > scopes() const;
 
     /**
-     * \brief Sets new scopes.
-     *
-     * @note Note that changing scopes requires makes current tokens invalid.
-     * This means that when this Account is used next time, KAccounts will be
-     * automatically started and user will be prompted with a dialog to grant
-     * access to all scopes.
-     * 
-     * @param scopes
-     */
-    void setScopes(const QList< QUrl > &scopes);
-
-    /**
      * Adds a single scope to account scopes.
      *
      * @param scope
      * @see Account::setScopes(const QList<QUrl>)
      */
     void addScope(const QUrl &scope);
-
-    /**
-     * Removes scope from the list.
-     *
-     * @param scope
-     * @see Account::setScopes(const QList<QUrl>)
-     */
-    void removeScope(const QUrl &scope);
 
     /**
      * @since 2.0.82
@@ -166,22 +146,6 @@ class KMGRAPHCORE_EXPORT Account
 private:
     class Private;
     Private * const d;
-
-    /**
-     * @internal
-     * Whether scopes were changed or not.
-     *
-     * KAccounts reads this attribute when Account is passed to it to
-     * determine whether a completely new process of authentication is needed,
-     * or whether just refreshing tokens is enough.
-     *
-     * When m_scopesChanged is \p true and KAccounts successfully performs full
-     * re-authentication it sets this attribute to \p false and next time it
-     * will just refresh existing tokens until the scopes are changed again.
-     * 
-     * 
-     */
-    bool m_scopesChanged; //krazy:exclude=dpointer
 
 };
 
