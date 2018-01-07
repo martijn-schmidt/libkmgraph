@@ -38,8 +38,8 @@ namespace OneDrive
 /**
  * @brief Permission contains a permission for a file.
  *
- * Getters and setters' documentation is based on Google OneDrive's API v2 reference
- * @see <a href="https://developers.google.com/drive/v2/reference/permissions">Permissions</a>
+ * Getters and setters' documentation is based on Microsoft OneDrive's Graph API v1.0
+ * @see <a href="https://developer.microsoft.com/en-us/graph/docs/api-reference/v1.0/resources/permission">Permissions</a>
  *
  * @since 2.0
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>

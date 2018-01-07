@@ -37,10 +37,10 @@ namespace OneDrive
 {
 
 /**
- * @brief Revision contains a revision of a file.
+ * @brief Revision contains a revision of a file. NOTE: BETA FEATURE per OneDrive documentation.
  *
- * Getters and setters' documentation is based on Google OneDrive's API v2 reference
- * @see <a href="https://developers.google.com/drive/v2/reference/revisions">Revisions</a>
+ * Getters and setters' documentation is based on Microsoft OneDrive's Graph API v1.0
+ * @see <a href="https://docs.microsoft.com/en-us/onedrive/developer/rest-api/api/driveitem_list_versions">DriveItem List versions</a>
  *
  * @since 2.0
  * @author Andrius da Costa Ribas <andriusmao@gmail.com>
@@ -78,7 +78,7 @@ class KMGRAPHONEDRIVE_EXPORT Revision: public KMGraph2::Object
      * @brief Returns whether this revision is pinned to prevent automatic purging.
      *
      * This will only be populated and can only be modified on files with content
-     * stored in OneDrive which are not Google Docs.
+     * stored in OneDrive which are not Microsoft Documents. TODO: is this accurate for Graph?
      *
      * Revisions can also be pinned when they are created through the
      * drive.files.insert/update/copy by using the pinned query parameter.
@@ -89,7 +89,7 @@ class KMGRAPHONEDRIVE_EXPORT Revision: public KMGraph2::Object
      * @brief Sets whether this revision is pinned to prevent automatic purging.
      *
      * This will only be populated and can only be modified on files with content
-     * stored in OneDrive which are not Google Docs.
+     * stored in OneDrive which are not Microsoft Documents. TODO: is this accurate for Graph?
      *
      * Revisions can also be pinned when they are created through the
      * drive.files.insert/update/copy by using the pinned query parameter.
@@ -101,7 +101,7 @@ class KMGRAPHONEDRIVE_EXPORT Revision: public KMGraph2::Object
     /**
      * @brief Returns whether this revision is published.
      *
-     * This is only populated and can only be modified for Google Docs.
+     * This is only populated and can only be modified for Microsoft Documents. TODO: is this accurate for Graph?
      */
     bool published() const;
 
@@ -120,14 +120,14 @@ class KMGRAPHONEDRIVE_EXPORT Revision: public KMGraph2::Object
     /**
      * @brief Returns whether subsequent revisions will be automatically republished.
      *
-     * This is only populated and can only be modified for Google Docs.
+     * This is only populated and can only be modified for Microsoft Documents. TODO: is this accurate for Graph?
      */
     bool publishAuto() const;
 
     /**
      * @brief Sets whether subsequent revisions will be automatically republished.
      *
-     * This is only populated and can only be modified for Google Docs.
+     * This is only populated and can only be modified for Microsoft Documents. TODO: is this accurate for Graph?
      *
      * @param publishedAuto
      */
@@ -136,14 +136,14 @@ class KMGRAPHONEDRIVE_EXPORT Revision: public KMGraph2::Object
     /**
      * @brief Returns whether this revision is published outside the domain.
      *
-     * This is only populated and can only be modified for Google Docs.
+     * This is only populated and can only be modified for Microsoft Documents. TODO: is this accurate for Graph?
      */
     bool publishedOutsideDomain() const;
 
     /**
      * @brief Sets whether this revision is published outside the domain.
      *
-     * This is only populated and can only be modified for Google Docs.
+     * This is only populated and can only be modified for Microsoft Documents. TODO: is this accurate for Graph?
      *
      * @param publishedOutsideDomain
      */
@@ -157,7 +157,7 @@ class KMGRAPHONEDRIVE_EXPORT Revision: public KMGraph2::Object
     QUrl downloadUrl() const;
 
     /**
-     * @brief Returns the links for exporting Google Docs to specific formats.
+     * @brief Returns the links for exporting OneDrive documents to specific formats.
      *
      * This is a map from the export format to URL.
      */
