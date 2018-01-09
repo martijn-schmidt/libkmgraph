@@ -45,7 +45,7 @@ class Q_DECL_HIDDEN ParentReferenceFetchJob::Private
 ParentReferenceFetchJob::ParentReferenceFetchJob(const QString &fileId,
                                                  const AccountPtr &account,
                                                  QObject *parent):
-                                                 FetchJob(account, parent),
+    FetchJob(account, parent),
     d(new Private)
 {
     d->fileId = fileId;

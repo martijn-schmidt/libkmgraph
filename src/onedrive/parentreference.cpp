@@ -21,6 +21,8 @@
 #include "parentreference.h"
 #include "parentreference_p.h"
 
+#include "../debug.h"
+
 #include <QVariantMap>
 #include <QJsonDocument>
 
@@ -126,12 +128,15 @@ ParentReferencePtr ParentReference::fromJSON(const QByteArray &jsonData)
 ParentReferencesList ParentReference::fromJSONFeed(const QByteArray &jsonData)
 {
     QJsonDocument document = QJsonDocument::fromJson(jsonData);
+    qCDebug(KMGraphDebug) << "Dumping the content of document:" << document;
     if (document.isNull()) {
         return ParentReferencesList();
     }
 
     const QVariant data = document.toVariant();
+    qCDebug(KMGraphDebug) << "Dumping the content of data:" << data;
     const QVariantMap map = data.toMap();
+    qCDebug(KMGraphDebug) << "Dumping the content of map:" << map;
     if (!map.contains(QStringLiteral("kind")) ||
             map[QStringLiteral("kind")].toString() != QLatin1String("kind#parentList")) {
         return ParentReferencesList();
@@ -139,6 +144,7 @@ ParentReferencesList ParentReference::fromJSONFeed(const QByteArray &jsonData)
 
     ParentReferencesList list;
     const QVariantList items = map[QStringLiteral("items")].toList();
+    qCDebug(KMGraphDebug) << "Dumping the content of items:" << items;
     for (const QVariant & item : items) {
         const ParentReferencePtr reference = Private::fromJSON(item.toMap());
 
@@ -146,7 +152,7 @@ ParentReferencesList ParentReference::fromJSONFeed(const QByteArray &jsonData)
             list << reference;
         }
     }
-
+    qCDebug(KMGraphDebug) << "Dumping the content of list:" << list;
     return list;
 }
 
