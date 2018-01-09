@@ -26,6 +26,8 @@
 #include "parentreference.h"
 #include "utils.h"
 
+#include "../debug.h"
+
 #include <QNetworkRequest>
 #include <QNetworkReply>
 
