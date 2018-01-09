@@ -138,7 +138,7 @@ ParentReferencesList ParentReference::fromJSONFeed(const QByteArray &jsonData)
     const QVariantMap map = data.toMap();
     qCDebug(KMGraphDebug) << "Dumping the content of map:" << map;
     if (!map.contains(QStringLiteral("kind")) ||
-            map[QStringLiteral("kind")].toString() != QLatin1String("kind#parentList")) {
+            map[QStringLiteral("kind")].toString() != QLatin1String("drive#parentList")) {
         return ParentReferencesList();
     }
 
