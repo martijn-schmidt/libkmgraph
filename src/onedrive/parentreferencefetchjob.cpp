@@ -82,6 +82,7 @@ ObjectsList ParentReferenceFetchJob::handleReplyWithItems(const QNetworkReply *r
                                                           const QByteArray &rawData)
 {
     ObjectsList items;
+    qCDebug(KMGraphDebug) << "Dumping the content of items the first time:" << items
 
     const QString contentType = reply->header(QNetworkRequest::ContentTypeHeader).toString();
     ContentType ct = Utils::stringToContentType(contentType);
@@ -95,6 +96,7 @@ ObjectsList ParentReferenceFetchJob::handleReplyWithItems(const QNetworkReply *r
         setError(KMGraph2::InvalidResponse);
         setErrorString(tr("Invalid response content type"));
     }
+    qCDebug(KMGraphDebug) << "Dumping the content of items the second time:" << items
 
     emitFinished();
     return items;
