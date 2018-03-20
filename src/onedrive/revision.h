@@ -52,7 +52,7 @@ class KMGRAPHONEDRIVE_EXPORT Revision: public KMGraph2::Object
   public:
     explicit Revision();
     explicit Revision(const Revision &other);
-    virtual ~Revision();
+    ~Revision() override;
 
     /**
      * @brief Returns the id of the revision.

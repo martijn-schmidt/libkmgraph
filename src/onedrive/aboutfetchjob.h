@@ -96,7 +96,7 @@ class KMGRAPHONEDRIVE_EXPORT AboutFetchJob : public KMGraph2::FetchJob
      * @param parent
      */
     explicit AboutFetchJob(const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~AboutFetchJob();
+    ~AboutFetchJob() override;
 
     /**
      * @brief Returns whether to include shared and public files to change IDs count.

@@ -59,7 +59,7 @@ class KMGRAPHCORE_EXPORT DeleteJob : public KMGraph2::Job
     /**
      * @brief Destructor
      */
-    virtual ~DeleteJob();
+    ~DeleteJob() override;
 
   protected:
 

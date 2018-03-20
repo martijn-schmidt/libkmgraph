@@ -45,7 +45,7 @@ class KMGRAPHONEDRIVE_EXPORT FileTouchJob : public KMGraph2::OneDrive::FileAbstr
                           const AccountPtr &account, QObject *parent = nullptr);
     explicit FileTouchJob(const FilesList &files,
                           const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~FileTouchJob();
+    ~FileTouchJob() override;
 
   protected:
     QUrl url(const QString &fileId) override;

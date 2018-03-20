@@ -50,7 +50,7 @@ class KMGRAPHONEDRIVE_EXPORT FileCreateJob : public KMGraph2::OneDrive::FileAbst
                            const AccountPtr &account, QObject *parent = nullptr);
     explicit FileCreateJob(const QMap < QString /* filepath */, FilePtr /* metadata */ > &files,
                            const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~FileCreateJob();
+    ~FileCreateJob() override;
 
   protected:
     QNetworkReply *dispatch(QNetworkAccessManager *accessManager,

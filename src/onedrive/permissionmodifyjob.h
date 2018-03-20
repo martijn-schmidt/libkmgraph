@@ -44,7 +44,7 @@ class KMGRAPHONEDRIVE_EXPORT PermissionModifyJob : public KMGraph2::ModifyJob
     explicit PermissionModifyJob(const QString &fileId,
                                  const PermissionsList &permissions,
                                  const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~PermissionModifyJob();
+    ~PermissionModifyJob() override;
 
   protected:
     void start() override;

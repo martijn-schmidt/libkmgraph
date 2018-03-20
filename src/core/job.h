@@ -99,7 +99,7 @@ class KMGRAPHCORE_EXPORT Job : public QObject
     /**
      * @brief Destructor
      */
-    virtual ~Job();
+    ~Job() override;
 
     /**
      * @brief Error code

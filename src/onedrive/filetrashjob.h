@@ -48,7 +48,7 @@ class KMGRAPHONEDRIVE_EXPORT FileTrashJob : public KMGraph2::OneDrive::FileAbstr
                           const AccountPtr &account, QObject *parent = nullptr);
     explicit FileTrashJob(const FilesList &files,
                           const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~FileTrashJob();
+    ~FileTrashJob() override;
 
   protected:
     QUrl url(const QString &fileId) override;

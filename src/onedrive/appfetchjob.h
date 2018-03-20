@@ -39,7 +39,7 @@ class KMGRAPHONEDRIVE_EXPORT AppFetchJob : public KMGraph2::FetchJob
     explicit AppFetchJob(const AccountPtr &account, QObject *parent = nullptr);
     explicit AppFetchJob(const QString &appId, const AccountPtr &account,
                          QObject *parent = nullptr);
-    virtual ~AppFetchJob();
+    ~AppFetchJob() override;
 
   protected:
     void start() override;

@@ -58,7 +58,7 @@ class KMGRAPHCORE_EXPORT ModifyJob : public KMGraph2::Job
     /**
      * Destructor
      */
-    virtual ~ModifyJob();
+    ~ModifyJob() override;
 
     /**
      * @return Returns modified items.

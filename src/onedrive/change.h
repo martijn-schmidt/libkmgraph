@@ -49,7 +49,7 @@ class KMGRAPHONEDRIVE_EXPORT Change: public KMGraph2::Object
   public:
     explicit Change();
     explicit Change(const Change& other);
-    virtual ~Change();
+    ~Change() override;
 
     /**
      * @brief Returns the id of the change.

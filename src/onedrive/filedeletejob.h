@@ -47,7 +47,7 @@ class KMGRAPHONEDRIVE_EXPORT FileDeleteJob : public KMGraph2::DeleteJob
                            const AccountPtr &account, QObject *parent = nullptr);
     explicit FileDeleteJob(const FilesList &files,
                            const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~FileDeleteJob();
+    ~FileDeleteJob() override;
 
   protected:
     void start() override;

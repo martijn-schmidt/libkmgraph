@@ -1,12 +1,12 @@
 cmake_minimum_required(VERSION 3.0)
-set(PIM_VERSION "5.7.40")
+set(PIM_VERSION "5.8.40")
 
 set(KMGRAPH_LIB_VERSION ${PIM_VERSION})
 
 project(kmgraph VERSION ${KMGRAPH_LIB_VERSION})
 
 # ECM setup
-set(KF5_VERSION "5.42.0")
+set(KF5_VERSION "5.44.0")
 
 find_package(ECM ${KF5_VERSION} CONFIG REQUIRED)
 set(CMAKE_MODULE_PATH ${ECM_MODULE_PATH})

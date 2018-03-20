@@ -55,7 +55,7 @@ class KMGRAPHONEDRIVE_EXPORT ParentReferenceCreateJob : public KMGraph2::CreateJ
                                       const ParentReferencesList &references,
                                       const AccountPtr &account,
                                       QObject *parent = nullptr);
-    virtual ~ParentReferenceCreateJob();
+    ~ParentReferenceCreateJob() override;
 
   protected:
     void start() override;

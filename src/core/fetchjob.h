@@ -59,7 +59,7 @@ class KMGRAPHCORE_EXPORT FetchJob : public KMGraph2::Job
     /**
      * @brief Destructor
      */
-    virtual ~FetchJob();
+    ~FetchJob() override;
 
     /**
      * @brief Returns all items fetched by this job.

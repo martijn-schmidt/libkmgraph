@@ -67,7 +67,7 @@ class KMGRAPHONEDRIVE_EXPORT Permission: public KMGraph2::Object
 
     explicit Permission();
     explicit Permission(const Permission &other);
-    virtual ~Permission();
+    ~Permission() override;
 
     /**
      * @brief Returns the id of the permission.

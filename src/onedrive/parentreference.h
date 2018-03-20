@@ -51,7 +51,7 @@ class KMGRAPHONEDRIVE_EXPORT ParentReference: public KMGraph2::Object
   public:
     explicit ParentReference(const QString &id);
     explicit ParentReference(const ParentReference &other);
-    virtual ~ParentReference();
+    ~ParentReference() override;
 
     /**
      * @brief Returns the id of the parent.

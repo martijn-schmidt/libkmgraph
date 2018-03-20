@@ -47,7 +47,7 @@ class KMGRAPHONEDRIVE_EXPORT RevisionDeleteJob : public KMGraph2::DeleteJob
                                const AccountPtr &account, QObject *parent = nullptr);
     explicit RevisionDeleteJob(const QString &fileId, const RevisionsList &revisions,
                                const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~RevisionDeleteJob();
+    ~RevisionDeleteJob() override;
 
   protected:
     void start() override;

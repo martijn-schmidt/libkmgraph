@@ -41,7 +41,7 @@ class KMGRAPHONEDRIVE_EXPORT RevisionFetchJob : public KMGraph2::FetchJob
                               QObject *parent = nullptr);
     explicit RevisionFetchJob(const QString &fileId, const QString &revisionId,
                               const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~RevisionFetchJob();
+    ~RevisionFetchJob() override;
 
   protected:
     void start() override;

@@ -44,7 +44,7 @@ class KMGRAPHONEDRIVE_EXPORT ParentReferenceFetchJob : public KMGraph2::FetchJob
                                      const QString &referenceId,
                                      const AccountPtr &account,
                                      QObject *parent = nullptr);
-    virtual ~ParentReferenceFetchJob();
+    ~ParentReferenceFetchJob() override;
 
   protected:
     void start() override;

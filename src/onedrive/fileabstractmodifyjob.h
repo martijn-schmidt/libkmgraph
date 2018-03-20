@@ -47,7 +47,7 @@ class KMGRAPHONEDRIVE_EXPORT FileAbstractModifyJob : public KMGraph2::ModifyJob
                                    const AccountPtr &account, QObject *parent = nullptr);
     explicit FileAbstractModifyJob(const FilesList &files,
                                    const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~FileAbstractModifyJob();
+    ~FileAbstractModifyJob() override;
 
   protected:
     void start() override;

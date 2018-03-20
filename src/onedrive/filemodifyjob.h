@@ -85,7 +85,7 @@ class KMGRAPHONEDRIVE_EXPORT FileModifyJob : public KMGraph2::OneDrive::FileAbst
                            const AccountPtr &account, QObject *parent = nullptr);
     explicit FileModifyJob(const QMap < QString /* file path */, FilePtr /* metadata */ > &files,
                            const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~FileModifyJob();
+    ~FileModifyJob() override;
 
     bool createNewRevision() const;
     void setCreateNewRevision(bool createNewRevision);

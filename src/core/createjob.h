@@ -60,7 +60,7 @@ class KMGRAPHCORE_EXPORT CreateJob: public KMGraph2::Job
     /**
      * @brief Destructor
      */
-    virtual ~CreateJob();
+    ~CreateJob() override;
 
     /**
      * @return Returns newly created items

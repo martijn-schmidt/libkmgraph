@@ -41,7 +41,7 @@ class KMGRAPHONEDRIVE_EXPORT FileFetchContentJob : public KMGraph2::FetchJob
                                  QObject *parent = nullptr);
     explicit FileFetchContentJob(const QUrl &url, const AccountPtr &account,
                                  QObject *parent = nullptr);
-    virtual ~FileFetchContentJob();
+    ~FileFetchContentJob() override;
 
     QByteArray data() const;
 

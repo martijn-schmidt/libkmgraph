@@ -55,7 +55,7 @@ class KMGRAPHONEDRIVE_EXPORT ChildReferenceDeleteJob : public KMGraph2::DeleteJo
                                      const ChildReferencesList &references,
                                      const AccountPtr &account,
                                      QObject *parent = nullptr);
-    virtual ~ChildReferenceDeleteJob();
+    ~ChildReferenceDeleteJob() override;
 
   protected:
     void start() override;

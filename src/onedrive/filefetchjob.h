@@ -112,7 +112,7 @@ class KMGRAPHONEDRIVE_EXPORT FileFetchJob : public KMGraph2::FetchJob
     explicit FileFetchJob(const FileSearchQuery &query,
                           const AccountPtr &account, QObject *parent = nullptr);
     explicit FileFetchJob(const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~FileFetchJob();
+    ~FileFetchJob() override;
 
     bool updateViewedDate() const;
     void setUpdateViewedDate(bool updateViewedDate);

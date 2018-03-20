@@ -43,7 +43,7 @@ class KMGRAPHONEDRIVE_EXPORT RevisionModifyJob : public KMGraph2::ModifyJob
     explicit RevisionModifyJob(const QString &fileId,
                                const RevisionsList &revisions,
                                const AccountPtr &account, QObject *parent = nullptr);
-    virtual ~RevisionModifyJob();
+    ~RevisionModifyJob() override;
 
   protected:
     void start() override;

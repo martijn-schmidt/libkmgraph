@@ -101,7 +101,7 @@ class KMGRAPHONEDRIVE_EXPORT FileAbstractDataJob : public KMGraph2::Job
   public:
     explicit FileAbstractDataJob(const AccountPtr &account,
                                  QObject *parent = nullptr);
-    virtual ~FileAbstractDataJob();
+    ~FileAbstractDataJob() override;
 
     bool convert() const;
     void setConvert(bool convert);
